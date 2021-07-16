@@ -100,9 +100,9 @@ DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(100) NOT NULL,
-  `last_name` VARCHAR(100) NOT NULL,
-  `address_id` INT NOT NULL,
+  `first_name` VARCHAR(100) NULL,
+  `last_name` VARCHAR(100) NULL,
+  `address_id` INT NULL,
   `email` VARCHAR(100) NULL,
   `reputation` DOUBLE NULL,
   `create_date` DATETIME NULL,
@@ -138,3 +138,13 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'beerbuds'@'localhos
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beer_budsdb`;
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `email`, `reputation`, `create_date`, `last_update`, `username`, `password`, `enabled`, `role`) VALUES (1, '', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', 'wombat', 1, NULL);
+
+COMMIT;
+
