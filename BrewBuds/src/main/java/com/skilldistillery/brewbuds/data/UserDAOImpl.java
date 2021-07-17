@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public User findById(int id) {
-		// TODO Auto-generated method stub
+		// Kyles Comment
 		return em.find(User.class, id);
 	}
 
