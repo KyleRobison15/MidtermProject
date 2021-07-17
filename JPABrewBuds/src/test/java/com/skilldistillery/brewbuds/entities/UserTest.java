@@ -43,7 +43,7 @@ class UserTest {
 	}
 	
 	@Test
-	@DisplayName("TEST: User Field Mappings")
+	@DisplayName("TEST: User Field Mappings for Non-Foreign Keys")
 	void test1() throws Exception {
 		assertNotNull(user);
 		
