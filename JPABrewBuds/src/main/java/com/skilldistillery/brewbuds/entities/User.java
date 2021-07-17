@@ -18,8 +18,7 @@ public class User {
 	
 	
 	// Methods
-	public User() {
-	}
+	public User() {}
 	
 	public int getId() {
 		return id;

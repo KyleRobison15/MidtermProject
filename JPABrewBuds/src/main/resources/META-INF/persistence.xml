@@ -11,6 +11,7 @@
 		<!-- START: Entities List -->
 
 		<class>com.skilldistillery.brewbuds.entities.User</class>
+		<class>com.skilldistillery.brewbuds.entities.Address</class>
 
 		<!-- END: Entities List -->
 
