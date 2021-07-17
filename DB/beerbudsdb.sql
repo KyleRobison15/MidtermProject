@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `beer` (
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT NULL,
   `alcohol_by_volume` DOUBLE NULL,
-  `color_srm_value` INT NULL,
+  `color_srm` INT NULL,
   `bitterness_ibu` INT NULL,
   `brewery_id` INT NOT NULL,
   `user_id` INT NOT NULL,
@@ -277,7 +277,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
-INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm_value`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (1, 'Hazy Little Thing', 'Nice Hazy IPA', 6.7, 6, 35, 1, 1, 17, NULL);
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (1, 'Hazy Little Thing', 'Nice Hazy IPA', 6.7, 6, 35, 1, 1, 17, NULL);
 
 COMMIT;
 

@@ -7,9 +7,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Beer {
+
+//////////////////////// FIELDS ///////////////////////////////
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	
+	
 }
