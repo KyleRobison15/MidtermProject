@@ -43,7 +43,6 @@ public class User {
 	@JoinColumn(name="address_id")
 	private Address address;
 	
-	
 //////////////////////// CONSTRUCTORS //////////////////////////
 	
 	public User() {}
