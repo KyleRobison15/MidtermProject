@@ -10,6 +10,7 @@
 
 		<!-- START: Entities List -->
 
+		<class>com.skilldistillery.brewbuds.entities.Beer</class>
 		<class>com.skilldistillery.brewbuds.entities.User</class>
 
 		<!-- END: Entities List -->

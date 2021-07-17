@@ -47,16 +47,32 @@ class UserTest {
 	void test1() throws Exception {
 		assertNotNull(user);
 		
-		assertEquals("BeerTaster25", user.getUsername()); // username mapping
-		assertEquals("beer", user.getPassword()); // password mapping
+		assertEquals("KyleRobison", user.getUsername()); // username mapping
+		assertEquals("admin1", user.getPassword()); // password mapping
 		assertTrue(user.isEnabled()); // enabled mapping
-		assertEquals("user", user.getRole()); // role mapping
+		assertEquals("admin", user.getRole()); // role mapping
 		
 		
 		assertEquals("Kyle", user.getFirstName()); // firstName mapping
 		assertEquals("Robison", user.getLastName()); // lastName mapping
-		assertEquals("kyler@gmail.com", user.getEmail()); // email mapping
+		assertEquals("admin1@example.com", user.getEmail()); // email mapping
+		
+		assertEquals(2017, user.getCreateDate().getYear());
+		assertEquals(07, user.getCreateDate().getMonthValue()); // createDate mapping
+		assertEquals(16, user.getCreateDate().getDayOfMonth());
 		
 	}
+	
+/*
+ 
+User Non Foreign Key Mapping Test:
+	SELECT * FROM user WHERE id = 1;
+	+----+-------------+----------+------------+-----------+--------------------+---------------------+---------+-------+------------+
+	| id | username    | password | first_name | last_name | email              | create_date         | enabled | role  | address_id |
+	+----+-------------+----------+------------+-----------+--------------------+---------------------+---------+-------+------------+
+	|  1 | KyleRobison | admin1   | Kyle       | Robison   | admin1@example.com | 2017-07-16 00:00:00 |       1 | admin |          2 |
+	+----+-------------+----------+------------+-----------+--------------------+---------------------+---------+-------+------------+
+
+ */	
 
 }
