@@ -2,7 +2,6 @@ package com.skilldistillery.brewbuds.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,7 +22,7 @@ class AddressTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-	    emf = Persistence.createEntityManagerFactory("VideoStore");
+	    emf = Persistence.createEntityManagerFactory("JPABrewBuds");
 	}
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
@@ -38,6 +37,13 @@ class AddressTest {
 	void tearDown() throws Exception {
 		em.close(); 
 		address = null; 
+	}
+	
+	@Test
+	@DisplayName("test address to country mapping")
+	void test2() {
+		assertNotNull(address);
+		assertEquals("US", address.getCountryCode());
 	}
 	
 
