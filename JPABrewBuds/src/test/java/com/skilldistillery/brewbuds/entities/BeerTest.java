@@ -65,5 +65,13 @@ Beer Non Foreign Key Mapping Test:
 	+----+-------------------+---------------+-------------------+-----------------+----------------+------------+---------+-----------------+----------------+
 
 */	
+	
+	@Test
+	@DisplayName("TEST: Beer and Brewery Mappings")
+	void test2() {
+		assertNotNull(beer.getBrewery());
+		assertEquals("Sierra Nevada", beer.getBrewery().getName());
+		assertEquals(1, beer.getBrewery().getAddressId());
+	}
 
 }
