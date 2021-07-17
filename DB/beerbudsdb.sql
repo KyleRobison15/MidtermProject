@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `first_name` VARCHAR(100) NULL,
   `last_name` VARCHAR(100) NULL,
   `email` VARCHAR(100) NULL,
-  `create_date` TIMESTAMP NULL DEFAULT current_timestamp,
+  `create_date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `enabled` TINYINT NOT NULL,
   `role` VARCHAR(45) NULL,
   `address_id` INT NOT NULL,
@@ -246,8 +246,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (1, 'admin', 'wombat', '', NULL, NULL, NULL, 1, NULL, 2);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Kyle', 'Robison', 'kyler@gmail.com', NULL, 1, 'user', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (1, 'KyleRobison', 'admin1', 'Kyle', 'Robison', 'admin1@example.com', '2017-07-16', 1, 'admin', 2);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Beer', 'Taster', 'beertaster@example.com', '2017-07-16', 1, 'user', 1);
 
 COMMIT;
 
