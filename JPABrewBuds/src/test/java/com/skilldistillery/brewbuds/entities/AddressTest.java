@@ -40,10 +40,29 @@ class AddressTest {
 	}
 	
 	@Test
+	@DisplayName("test address entity mapping")
+	void test2() {
+		assertNotNull(address);
+		assertEquals("US", address.getCountryCode());
+		assertEquals("1075 E 20th Street", address.getAddress());
+		assertEquals("Chico", address.getCity());
+		assertEquals("CA", address.getStateProvince());
+		assertEquals("95928", address.getPostalCode());
+		assertEquals("5308933520", address.getPhone());
+		
+	}
+	
+	@Test
 	@DisplayName("test address to country mapping")
 	void test2() {
 		assertNotNull(address);
 		assertEquals("US", address.getCountryCode());
+		assertEquals("1075 E 20th Street", address.getAddress());
+		assertEquals("Chico", address.getCity());
+		assertEquals("CA", address.getStateProvince());
+		assertEquals("95928", address.getPostalCode());
+		assertEquals("5308933520", address.getPhone());
+		
 	}
 	
 

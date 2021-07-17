@@ -1,6 +1,5 @@
 package com.skilldistillery.brewbuds.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity 
 public class Brewery {
@@ -21,8 +22,9 @@ public class Brewery {
 	
 	private String description; 
 	
+	@OneToOne
 	@Column(name="address_id")
-	private int addressId;
+	private Address address;
 	
 	@Column(name="logo_image_url")
 	private String logoImageUrl; 
@@ -57,13 +59,14 @@ public class Brewery {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 
-	public int getAddressId() {
-		return addressId;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public String getLogoImageUrl() {
@@ -84,8 +87,9 @@ public class Brewery {
 
 	@Override
 	public String toString() {
-		return "Brewery [id=" + id + ", name=" + name + ", description=" + description + ", addressId=" + addressId
-				+ ", logoImageUrl=" + logoImageUrl + "]";
+		return "Brewery [id=" + id + ", name=" + name + ", description=" + description + ", logoImageUrl="
+				+ logoImageUrl + "]";
 	}
+
 
 }
