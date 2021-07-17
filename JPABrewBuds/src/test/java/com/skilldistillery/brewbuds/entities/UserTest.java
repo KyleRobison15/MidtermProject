@@ -2,6 +2,7 @@ package com.skilldistillery.brewbuds.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
@@ -43,7 +44,7 @@ class UserTest {
 	}
 	
 	@Test
-	@DisplayName("TEST: User Field Mappings for Non-Foreign Keys")
+	@DisplayName("TEST: User Mappings for Non-Foreign Key Fields")
 	void test1() throws Exception {
 		assertNotNull(user);
 		
@@ -63,16 +64,20 @@ class UserTest {
 		
 	}
 	
-/*
- 
-User Non Foreign Key Mapping Test:
-	SELECT * FROM user WHERE id = 1;
-	+----+-------------+----------+------------+-----------+--------------------+---------------------+---------+-------+------------+
-	| id | username    | password | first_name | last_name | email              | create_date         | enabled | role  | address_id |
-	+----+-------------+----------+------------+-----------+--------------------+---------------------+---------+-------+------------+
-	|  1 | KyleRobison | admin1   | Kyle       | Robison   | admin1@example.com | 2017-07-16 00:00:00 |       1 | admin |          2 |
-	+----+-------------+----------+------------+-----------+--------------------+---------------------+---------+-------+------------+
-
- */	
+	@Test
+	@DisplayName("TEST: User Address Mapping")
+	void test2() throws Exception {
+		assertNotNull(user);
+		
+		assertEquals(2, user.getAddress().getId());
+		assertEquals("100 Main Street", user.getAddress().getAddress());
+		assertNull(user.getAddress().getAddress2());
+		assertEquals("Atlanta", user.getAddress().getCity());
+		assertEquals("GA", user.getAddress().getStateProvince());
+		assertEquals("50000", user.getAddress().getPostalCode());
+		assertEquals("US", user.getAddress().getCountryCode());
+		assertNull(user.getAddress().getPhone());
+		
+	}
 
 }

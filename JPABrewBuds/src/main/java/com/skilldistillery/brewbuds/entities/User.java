@@ -1,6 +1,7 @@
 package com.skilldistillery.brewbuds.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,9 +39,11 @@ public class User {
 	@Column(name="create_date")
 	private LocalDateTime createDate;
 	
-//	@OneToOne
-//	@JoinColumn(name="address_id")
-//	private Address address;
+	@OneToOne
+	@JoinColumn(name="address_id")
+	private Address address;
+	
+	private List<Beer> favoriteBeers;
 	
 	
 //////////////////////// CONSTRUCTORS //////////////////////////
@@ -136,6 +139,14 @@ public class User {
 
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
