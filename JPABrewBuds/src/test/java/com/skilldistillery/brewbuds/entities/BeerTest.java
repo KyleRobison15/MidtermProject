@@ -72,6 +72,8 @@ Beer Non Foreign Key Mapping Test:
 		assertNotNull(beer.getBrewery());
 		assertEquals("Sierra Nevada", beer.getBrewery().getName());
 		assertEquals(1, beer.getBrewery().getAddressId());
+		assertEquals("It changed tastes, made hops famous, and brought an industry back from extinction. That’s a hard-working beer."
+				, beer.getBrewery().getDescription());
 	}
 
 }
