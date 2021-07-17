@@ -1,10 +1,11 @@
 package com.skilldistillery.brewbuds.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,12 +18,11 @@ public class SubCategory {
 	
 	private String name; 
 	
-	@Column(name="main_category_id")
-	private int mainCategoryId;
+	@ManyToOne
+	@JoinColumn(name="main_category_id")
+	private MainCategory mainCategory;
 	
-	//no-arg constructor
-	public SubCategory() {
-	}
+	public SubCategory() {}
 
 	public int getId() {
 		return id;
@@ -40,17 +40,42 @@ public class SubCategory {
 		this.name = name;
 	}
 
-	public int getMainCategoryId() {
-		return mainCategoryId;
+	public MainCategory getMainCategory() {
+		return mainCategory;
 	}
 
-	public void setMainCategoryId(int mainCategoryId) {
-		this.mainCategoryId = mainCategoryId;
+	public void setMainCategory(MainCategory mainCategory) {
+		this.mainCategory = mainCategory;
 	}
 
 	@Override
 	public String toString() {
-		return "SubCategory [id=" + id + ", name=" + name + ", mainCategoryId=" + mainCategoryId + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("SubCategory [id=").append(id).append(", name=").append(name).append(", mainCategory=")
+				.append(mainCategory).append("]");
+		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SubCategory other = (SubCategory) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 }

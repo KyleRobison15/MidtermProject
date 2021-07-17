@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -42,6 +43,9 @@ public class User {
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Rating> ratings;
 	
 //////////////////////// CONSTRUCTORS //////////////////////////
 	
@@ -144,6 +148,14 @@ public class User {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
 
 	@Override

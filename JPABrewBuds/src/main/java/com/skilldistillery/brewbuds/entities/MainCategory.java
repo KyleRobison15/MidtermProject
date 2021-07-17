@@ -1,9 +1,12 @@
 package com.skilldistillery.brewbuds.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,9 +19,10 @@ public class MainCategory {
 	
 	private String name; 
 	
-	//no-arg constructor
-	public MainCategory() {
-	}
+	@OneToMany(mappedBy="mainCategory")
+	private List<SubCategory> subCategories;
+	
+	public MainCategory() {}
 
 	public int getId() {
 		return id;
@@ -34,6 +38,14 @@ public class MainCategory {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public List<SubCategory> getSubCategories() {
+		return subCategories;
+	}
+
+	public void setSubCategories(List<SubCategory> subCategories) {
+		this.subCategories = subCategories;
 	}
 
 	@Override

@@ -65,5 +65,23 @@ Beer Non Foreign Key Mapping Test:
 	+----+-------------------+---------------+-------------------+-----------------+----------------+------------+---------+-----------------+----------------+
 
 */	
+	
+	@Test
+	@DisplayName("TEST: Beer and Brewery Mappings")
+	void test2() {
+		assertNotNull(beer.getBrewery());
+		assertEquals("Sierra Nevada", beer.getBrewery().getName());
+		assertEquals(1, beer.getBrewery().getAddressId());
+		assertEquals("It changed tastes, made hops famous, and brought an industry back from extinction. That’s a hard-working beer."
+				, beer.getBrewery().getDescription());
+	}
+	
+	@Test
+	@DisplayName("Testing bi-directional mapping for list of ratings")
+	void test3() {
+		assertNotNull(beer);
+		assertTrue(beer.getRatings().size() > 0);
+		assertEquals(5, beer.getRatings().get(0).getRating());
+	}
 
 }

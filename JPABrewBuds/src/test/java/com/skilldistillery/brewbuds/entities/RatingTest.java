@@ -51,6 +51,7 @@ class RatingTest {
 		
 		assertNotNull(rating);
 		assertEquals(5, rating.getRating());
+		assertEquals("One of my favorites", rating.getComment());
 		
 	}
 
