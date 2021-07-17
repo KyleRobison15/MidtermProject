@@ -14,37 +14,39 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class AddressTest {
+class MainCategoryTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Address address; 
-	
+	private MainCategory main;  
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-	    emf = Persistence.createEntityManagerFactory("JPABrewBuds");
+		emf = Persistence.createEntityManagerFactory("JPABrewBuds");
 	}
+
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		emf.close(); 
+		emf.close();
 	}
+
 	@BeforeEach
 	void setUp() throws Exception {
-		em = emf.createEntityManager(); 
-		address = em.find(Address.class, 1); 
- 	}
+		em = emf.createEntityManager();
+		main = em.find(MainCategory.class, 4);
+	}
+
 	@AfterEach
 	void tearDown() throws Exception {
-		em.close(); 
-		address = null; 
+		em.close();
+		main = null; 
 	}
 	
 	@Test
-	@DisplayName("test address to country mapping")
-	void test2() {
-		assertNotNull(address);
-		assertEquals("US", address.getCountryCode());
+	@DisplayName("testing main_category mapping")
+	void test() {
+		assertNotNull(main);
+		assertEquals("India Pale Ale", main.getName()); 
 	}
 	
-
 }

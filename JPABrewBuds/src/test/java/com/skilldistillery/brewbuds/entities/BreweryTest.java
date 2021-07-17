@@ -14,37 +14,43 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class AddressTest {
+class BreweryTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Address address; 
-	
+	private Brewery brewery; 
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-	    emf = Persistence.createEntityManagerFactory("JPABrewBuds");
+		emf = Persistence.createEntityManagerFactory("JPABrewBuds");
 	}
+
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		emf.close(); 
+		emf.close();
 	}
+
 	@BeforeEach
 	void setUp() throws Exception {
-		em = emf.createEntityManager(); 
-		address = em.find(Address.class, 1); 
- 	}
+		em = emf.createEntityManager();
+		brewery = em.find(Brewery.class, 1);
+	}
+
 	@AfterEach
 	void tearDown() throws Exception {
-		em.close(); 
-		address = null; 
+		em.close();
+		brewery = null; 
 	}
 	
 	@Test
-	@DisplayName("test address to country mapping")
+	@DisplayName("testing brewery mapping")
 	void test2() {
-		assertNotNull(address);
-		assertEquals("US", address.getCountryCode());
+		assertNotNull(brewery);
+		assertEquals("Sierra Nevada", brewery.getName());
+		assertEquals("It changed tastes, made hops famous, and brought an industry back from extinction. That’s a hard-working beer."
+						, brewery.getDescription());
 	}
 	
+
 
 }
