@@ -1,10 +1,14 @@
 package com.skilldistillery.brewbuds.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity 
 public class Brewery {
@@ -22,6 +26,9 @@ public class Brewery {
 	
 	@Column(name="logo_image_url")
 	private String logoImageUrl; 
+	
+	@OneToMany(mappedBy= "brewery")
+	private List<Beer> beers;
 	
 	//no-arg constructor
 	public Brewery() {
@@ -65,6 +72,14 @@ public class Brewery {
 
 	public void setLogoImageUrl(String logoImageUrl) {
 		this.logoImageUrl = logoImageUrl;
+	}
+	
+	public List<Beer> getBeers() {
+		return beers;
+	}
+
+	public void setBeers(List<Beer> beers) {
+		this.beers = beers;
 	}
 
 	@Override

@@ -33,9 +33,9 @@ public class Beer {
 	@Column(name="beer_image_url")
 	private String imageURL;
 	
-//	@ManyToOne
-//	@JoinColumn(name="brewery_id")
-//	private Brewery brewery;
+	@ManyToOne
+	@JoinColumn(name="brewery_id")
+	private Brewery brewery;
 	
 //////////////////////// CONSTRUCTORS //////////////////////////	
 	
@@ -98,6 +98,15 @@ public class Beer {
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
+	
+	public Brewery getBrewery() {
+		return brewery;
+	}
+
+	public void setBrewery(Brewery brewery) {
+		this.brewery = brewery;
+	}
+
 
 	@Override
 	public String toString() {
