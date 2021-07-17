@@ -1,5 +1,7 @@
 package com.skilldistillery.brewbuds.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Beer {
@@ -36,6 +39,9 @@ public class Beer {
 	@ManyToOne
 	@JoinColumn(name="brewery_id")
 	private Brewery brewery;
+	
+	@OneToMany(mappedBy = "beer")
+	private List<Rating> ratings;
 	
 //////////////////////// CONSTRUCTORS //////////////////////////	
 	
@@ -107,6 +113,14 @@ public class Beer {
 		this.brewery = brewery;
 	}
 
+
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
+	}
 
 	@Override
 	public String toString() {

@@ -54,6 +54,14 @@ class BeerTest {
 
 	}
 	
+	@Test
+	@DisplayName("Testing bi-directional mapping for list of ratings")
+	void test2() {
+		assertNotNull(beer);
+		assertTrue(beer.getRatings().size() > 0);
+		assertEquals(5, beer.getRatings().get(0).getRating());
+	}
+	
 /*
 	 
 Beer Non Foreign Key Mapping Test:
