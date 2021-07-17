@@ -23,7 +23,7 @@ public class Brewery {
 	private String description; 
 	
 	@OneToOne
-	@Column(name="address_id")
+	@JoinColumn(name="address_id")
 	private Address address;
 	
 	@Column(name="logo_image_url")
