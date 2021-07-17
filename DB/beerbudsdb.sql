@@ -16,42 +16,6 @@ CREATE SCHEMA IF NOT EXISTS `beer_budsdb` DEFAULT CHARACTER SET utf8 ;
 USE `beer_budsdb` ;
 
 -- -----------------------------------------------------
--- Table `beer`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `beer` ;
-
-CREATE TABLE IF NOT EXISTS `beer` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  `description` TEXT NULL,
-  `srm_value` INT NULL,
-  `alcohol_content` DOUBLE NULL,
-  `ibu` INT NULL,
-  `category_id` INT NOT NULL,
-  `brewery_id` INT NOT NULL,
-  `average_rating` DOUBLE NULL,
-  `rating_id` INT NULL,
-  `user_id` INT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `brewery`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `brewery` ;
-
-CREATE TABLE IF NOT EXISTS `brewery` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  `description` TEXT NULL,
-  `address_id` INT NULL,
-  `average_rating` DOUBLE NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `address`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `address` ;
@@ -70,15 +34,54 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sub_category`
+-- Table `brewery`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `sub_category` ;
+DROP TABLE IF EXISTS `brewery` ;
 
-CREATE TABLE IF NOT EXISTS `sub_category` (
+CREATE TABLE IF NOT EXISTS `brewery` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`))
+  `description` TEXT NULL,
+  `address_id` INT NOT NULL,
+  `logo_image_url` VARCHAR(5000) NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_brewery_address1`
+    FOREIGN KEY (`address_id`)
+    REFERENCES `address` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+CREATE INDEX `fk_brewery_address1_idx` ON `brewery` (`address_id` ASC);
+
+
+-- -----------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user` ;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(200) NOT NULL,
+  `first_name` VARCHAR(100) NULL,
+  `last_name` VARCHAR(100) NULL,
+  `email` VARCHAR(100) NULL,
+  `create_date` TIMESTAMP NULL DEFAULT current_timestamp,
+  `enabled` TINYINT NOT NULL,
+  `role` VARCHAR(45) NULL,
+  `address_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_user_address1`
+    FOREIGN KEY (`address_id`)
+    REFERENCES `address` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE UNIQUE INDEX `username_UNIQUE` ON `user` (`username` ASC);
+
+CREATE INDEX `fk_user_address1_idx` ON `user` (`address_id` ASC);
 
 
 -- -----------------------------------------------------
@@ -94,27 +97,64 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `user`
+-- Table `sub_category`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
+DROP TABLE IF EXISTS `sub_category` ;
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `sub_category` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(100) NULL,
-  `last_name` VARCHAR(100) NULL,
-  `address_id` INT NULL,
-  `email` VARCHAR(100) NULL,
-  `reputation` DOUBLE NULL,
-  `create_date` DATETIME NULL,
-  `last_update` DATETIME NULL,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(200) NOT NULL,
-  `enabled` TINYINT NOT NULL,
-  `role` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
+  `name` VARCHAR(100) NOT NULL,
+  `main_category_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_sub_category_main_category1`
+    FOREIGN KEY (`main_category_id`)
+    REFERENCES `main_category` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE UNIQUE INDEX `username_UNIQUE` ON `user` (`username` ASC);
+CREATE INDEX `fk_sub_category_main_category1_idx` ON `sub_category` (`main_category_id` ASC);
+
+
+-- -----------------------------------------------------
+-- Table `beer`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `beer` ;
+
+CREATE TABLE IF NOT EXISTS `beer` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `description` TEXT NULL,
+  `alcohol_by_volume` DOUBLE NULL,
+  `color_srm_value` INT NULL,
+  `bitterness_ibu` INT NULL,
+  `brewery_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `sub_category_id` INT NOT NULL,
+  `beer_image_url` VARCHAR(5000) NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_beer_brewery1`
+    FOREIGN KEY (`brewery_id`)
+    REFERENCES `brewery` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_beer_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_beer_sub_category1`
+    FOREIGN KEY (`sub_category_id`)
+    REFERENCES `sub_category` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE INDEX `fk_beer_brewery1_idx` ON `beer` (`brewery_id` ASC);
+
+CREATE INDEX `fk_beer_user1_idx` ON `beer` (`user_id` ASC);
+
+CREATE INDEX `fk_beer_sub_category1_idx` ON `beer` (`sub_category_id` ASC);
 
 
 -- -----------------------------------------------------
@@ -123,10 +163,51 @@ CREATE UNIQUE INDEX `username_UNIQUE` ON `user` (`username` ASC);
 DROP TABLE IF EXISTS `rating` ;
 
 CREATE TABLE IF NOT EXISTS `rating` (
-  `id` INT NOT NULL,
-  `rating` DOUBLE NULL,
-  PRIMARY KEY (`id`))
+  `rating` INT NOT NULL DEFAULT 0,
+  `beer_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `comment` TEXT NULL,
+  `rating_date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`beer_id`, `user_id`),
+  CONSTRAINT `fk_rating_beer1`
+    FOREIGN KEY (`beer_id`)
+    REFERENCES `beer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rating_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+CREATE INDEX `fk_rating_beer1_idx` ON `rating` (`beer_id` ASC);
+
+CREATE INDEX `fk_rating_user1_idx` ON `rating` (`user_id` ASC);
+
+
+-- -----------------------------------------------------
+-- Table `favorite_beer`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `favorite_beer` ;
+
+CREATE TABLE IF NOT EXISTS `favorite_beer` (
+  `beer_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`beer_id`, `user_id`),
+  CONSTRAINT `fk_user_beer_beer`
+    FOREIGN KEY (`beer_id`)
+    REFERENCES `beer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_beer_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE INDEX `fk_user_beer_user1_idx` ON `favorite_beer` (`user_id` ASC);
 
 SET SQL_MODE = '';
 DROP USER IF EXISTS beerbuds@localhost;
@@ -140,11 +221,83 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- Data for table `address`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beer_budsdb`;
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (1, '1075 E 20th Street', '', 'Chico', 'CA', '95928', 'US', '5308933520');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (2, '100 Main Street', NULL, 'Atlanta', 'GA', '50000', 'US', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `brewery`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beer_budsdb`;
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (1, 'Sierra Nevada', 'It changed tastes, made hops famous, and brought an industry back from extinction. That’s a hard-working beer.', 1, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `email`, `reputation`, `create_date`, `last_update`, `username`, `password`, `enabled`, `role`) VALUES (1, '', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', 'wombat', 1, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (1, 'admin', 'wombat', '', NULL, NULL, NULL, 1, NULL, 2);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Kyle', 'Robison', 'kyler@gmail.com', NULL, 1, 'user', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `main_category`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beer_budsdb`;
+INSERT INTO `main_category` (`id`, `name`) VALUES (4, 'India Pale Ale');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `sub_category`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beer_budsdb`;
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (17, 'New England IPA', 4);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `beer`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beer_budsdb`;
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm_value`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (1, 'Hazy Little Thing', 'Nice Hazy IPA', 6.7, 6, 35, 1, 1, 17, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `rating`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beer_budsdb`;
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 1, 2, 'One of my favorites', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `favorite_beer`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beer_budsdb`;
+INSERT INTO `favorite_beer` (`beer_id`, `user_id`) VALUES (1, 2);
 
 COMMIT;
 
