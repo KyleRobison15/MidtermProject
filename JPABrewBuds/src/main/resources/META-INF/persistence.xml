@@ -10,9 +10,13 @@
 
 		<!-- START: Entities List -->
 
-		<class>com.skilldistillery.brewbuds.entities.Beer</class>
-		<class>com.skilldistillery.brewbuds.entities.User</class>
 		<class>com.skilldistillery.brewbuds.entities.Address</class>
+		<class>com.skilldistillery.brewbuds.entities.Beer</class>
+		<class>com.skilldistillery.brewbuds.entities.Brewery</class>
+		<class>com.skilldistillery.brewbuds.entities.MainCategory</class>
+		<class>com.skilldistillery.brewbuds.entities.Rating</class>
+		<class>com.skilldistillery.brewbuds.entities.SubCategory</class>
+		<class>com.skilldistillery.brewbuds.entities.User</class>
 
 		<!-- END: Entities List -->
 
