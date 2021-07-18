@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `address` VARCHAR(100) NULL,
   `address2` VARCHAR(100) NULL,
-  `city` VARCHAR(100) NOT NULL,
-  `state_province` VARCHAR(100) NOT NULL,
-  `postal_code` VARCHAR(10) NOT NULL,
+  `city` VARCHAR(100) NULL,
+  `state_province` VARCHAR(100) NULL,
+  `postal_code` VARCHAR(10) NULL,
   `country_code` VARCHAR(2) NULL,
   `phone` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -82,6 +82,8 @@ ENGINE = InnoDB;
 CREATE UNIQUE INDEX `username_UNIQUE` ON `user` (`username` ASC);
 
 CREATE INDEX `fk_user_address1_idx` ON `user` (`address_id` ASC);
+
+CREATE UNIQUE INDEX `email_UNIQUE` ON `user` (`email` ASC);
 
 
 -- -----------------------------------------------------
@@ -246,8 +248,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (1, 'KyleRobison', 'admin1', 'Kyle', 'Robison', 'admin1@example.com', '2017-07-16 12:00:00', 1, 'admin', 2);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Beer', 'Taster', 'beertaster@example.com', '2017-07-16 12:00:00', 1, 'user', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (1, 'KyleRobison', 'admin1', 'Kyle', 'Robison', 'admin1@example.com', '2017-07-16', 1, 'admin', 2);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Beer', 'Taster', 'beertaster@example.com', '2017-07-16', 1, 'user', 1);
 
 COMMIT;
 
@@ -257,7 +259,21 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
+INSERT INTO `main_category` (`id`, `name`) VALUES (1, 'Pale Ale');
+INSERT INTO `main_category` (`id`, `name`) VALUES (2, 'Dark Lager');
+INSERT INTO `main_category` (`id`, `name`) VALUES (3, 'Brown Ale');
 INSERT INTO `main_category` (`id`, `name`) VALUES (4, 'India Pale Ale');
+INSERT INTO `main_category` (`id`, `name`) VALUES (5, 'Wheat Beer');
+INSERT INTO `main_category` (`id`, `name`) VALUES (6, 'Strong Ale');
+INSERT INTO `main_category` (`id`, `name`) VALUES (7, 'Belgian Style');
+INSERT INTO `main_category` (`id`, `name`) VALUES (8, 'Hybrid Beer');
+INSERT INTO `main_category` (`id`, `name`) VALUES (9, 'Porter');
+INSERT INTO `main_category` (`id`, `name`) VALUES (10, 'Stout');
+INSERT INTO `main_category` (`id`, `name`) VALUES (11, 'Bock');
+INSERT INTO `main_category` (`id`, `name`) VALUES (12, 'Scottish-Style Ale');
+INSERT INTO `main_category` (`id`, `name`) VALUES (13, 'Wild or Sour Beer');
+INSERT INTO `main_category` (`id`, `name`) VALUES (14, 'Pilsner or Pale Lager');
+INSERT INTO `main_category` (`id`, `name`) VALUES (15, 'Specialty Beer');
 
 COMMIT;
 
@@ -267,7 +283,86 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (1, 'American Amber Ale', 1);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (2, 'American Pale Ale', 1);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (3, 'Blonde Ale', 1);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (4, 'English-Style Bitter', 1);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (5, 'English-Style Pale Ale (ESB)', 1);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (6, 'American Amber Lager', 2);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (7, 'German-Style Dunkel', 2);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (8, 'German-Style Marzen / Oktoberfest', 2);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (9, 'German-Style Schwarzbier', 2);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (10, 'Vienna-Style Lager', 2);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (11, 'American Brown Ale', 3);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (12, 'English-Style Brown Ale', 3);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (13, 'English-Style Mild', 3);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (14, 'American IPA', 4);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (15, 'English-Style IPA', 4);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (16, 'Imperial India Pale Ale', 4);
 INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (17, 'New England IPA', 4);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (18, 'American-Style Wheat Wine Ale', 5);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (19, 'American Wheat', 5);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (20, 'Belgian-Style Witbier', 5);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (21, 'Berliner-Style Weisse', 5);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (22, 'German-Style Dunkelweizen', 5);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (23, 'German-Style Hefeweizen', 5);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (24, 'American Barley Wine', 6);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (25, 'American Imperial Red Ale', 6);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (26, 'British-Style Barley Wine Ale', 6);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (27, 'English-Style Old Ale', 6);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (28, 'Belgian-Style Blonde Ale', 7);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (29, 'Belgian-Style Dubbel', 7);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (30, 'Belgian-Style Golden Strong Ale', 7);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (31, 'Belgian-Style Pale Ale', 7);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (32, 'Belgian-Style Quadrupel', 7);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (33, 'Belgian-Style Saison', 7);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (34, 'Belgian-Style Tripel', 7);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (35, 'American Cream Ale', 8);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (36, 'French-Style Biere de Garde', 8);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (37, 'California Common', 8);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (38, 'German-Style Brown/Altbier', 8);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (39, 'German-Style Kolsch', 8);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (40, 'Irish-Style Red Beer', 8);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (41, 'American Imperial Porter', 9);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (42, 'Baltic-Style Porter', 9);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (43, 'English-Style Brown Porter', 9);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (44, 'Robust Porter', 9);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (45, 'Smoke Porter', 9);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (46, 'American Imperial Stout', 10);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (47, 'American Stout', 10);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (48, 'English-Style Oatmeal Stout', 10);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (49, 'English-Style Sweet Stout (Milk Stout)', 10);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (50, 'Irish-Style Dry Stout', 10);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (51, 'German-Style Bock', 11);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (52, 'German-Style Doppelbock', 11);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (53, 'German-Style Maibock', 11);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (54, 'German-Style Weizenbock', 11);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (55, 'Scotch Ale/Wee Heavy', 12);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (56, 'Scottish-Style Ale', 12);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (57, 'American Brett', 13);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (58, 'American Sour', 13);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (59, 'Belgian-Style Flanders', 13);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (60, 'Belgian-Style Fruit Lambic', 13);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (61, 'Belgian-Style Lambic/Gueuze', 13);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (62, 'Contemporary Gose', 13);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (63, 'American Lager', 14);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (64, 'Bohemian-Style Pilsener', 14);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (65, 'European-Style Export', 14);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (66, 'German-Style Helles', 14);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (67, 'German-Style Pilsner', 14);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (68, 'American Black Ale', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (69, 'Barrel-Aged Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (70, 'Chocolate Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (71, 'Coffee Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (72, 'Fruit and Field Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (73, 'Gluten-Free Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (74, 'Herb and Spice Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (75, 'Honey Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (76, 'Pumpkin Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (77, 'Rye Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (78, 'Session Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (79, 'Smoke Beer', 15);
+INSERT INTO `sub_category` (`id`, `name`, `main_category_id`) VALUES (80, 'Specialty Beer', 15);
 
 COMMIT;
 
