@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `address` VARCHAR(100) NULL,
   `address2` VARCHAR(100) NULL,
-  `city` VARCHAR(100) NOT NULL,
-  `state_province` VARCHAR(100) NOT NULL,
-  `postal_code` VARCHAR(10) NOT NULL,
+  `city` VARCHAR(100) NULL,
+  `state_province` VARCHAR(100) NULL,
+  `postal_code` VARCHAR(10) NULL,
   `country_code` VARCHAR(2) NULL,
   `phone` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -82,6 +82,8 @@ ENGINE = InnoDB;
 CREATE UNIQUE INDEX `username_UNIQUE` ON `user` (`username` ASC);
 
 CREATE INDEX `fk_user_address1_idx` ON `user` (`address_id` ASC);
+
+CREATE UNIQUE INDEX `email_UNIQUE` ON `user` (`email` ASC);
 
 
 -- -----------------------------------------------------
@@ -246,8 +248,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (1, 'KyleRobison', 'admin1', 'Kyle', 'Robison', 'admin1@example.com', '2017-07-16 12:00:00', 1, 'admin', 2);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Beer', 'Taster', 'beertaster@example.com', '2017-07-16 12:00:00', 1, 'user', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (1, 'KyleRobison', 'admin1', 'Kyle', 'Robison', 'admin1@example.com', '2017-07-16', 1, 'admin', 2);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Beer', 'Taster', 'beertaster@example.com', '2017-07-16', 1, 'user', 1);
 
 COMMIT;
 
