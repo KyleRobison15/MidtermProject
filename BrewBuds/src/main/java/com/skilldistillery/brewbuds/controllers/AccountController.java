@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.brewbuds.data.AddressDAO;
 import com.skilldistillery.brewbuds.data.UserDAO;
 import com.skilldistillery.brewbuds.entities.User;
 
@@ -17,11 +18,13 @@ public class AccountController {
 
 	@Autowired
 	private UserDAO userDao;
+	private AddressDAO addressDao;
 	
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
 	public String createAccount(User newUser, String confirmPassword, RedirectAttributes redir, Model model) {
 		
 		boolean isCreated = userDao.createUserAccount(newUser, confirmPassword);
+		
 		
 		if (isCreated) {
 			redir.addFlashAttribute("newUser", newUser);
