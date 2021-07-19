@@ -53,7 +53,8 @@ class MainCategoryTest {
 	@DisplayName("TEST: List<SubCategory> Mapping Test")
 	void test2() {
 		assertNotNull(main.getSubCategories());
-		assertEquals(1, main.getSubCategories().size()); 
+		assertEquals(4, main.getSubCategories().size()); 
+		assertEquals("India Pale Ale", main.getName());
 	}
 	
 }
