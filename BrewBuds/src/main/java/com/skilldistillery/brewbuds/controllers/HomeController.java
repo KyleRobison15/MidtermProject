@@ -17,5 +17,15 @@ public class HomeController {
 	public String home(Model model) {
 		return "home";
 	}
+	
+	@RequestMapping(path = "createAccountPage.do")
+	public String showCreateAccountPage(Model model) {
+		return "createAccount";
+	}
 
+	@RequestMapping(path = "loginPage.do")
+	public String showLoginPage(Model model) {
+		return "login";
+	}
+	
 }

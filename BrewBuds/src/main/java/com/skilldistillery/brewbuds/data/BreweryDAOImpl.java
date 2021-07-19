@@ -48,12 +48,14 @@ public class BreweryDAOImpl implements BreweryDAO {
 	}
 
 	@Override
-	public List<Brewery> showAll() {
+	public List<Brewery> showBeers() {
 		String jpql = "SELECT b FROM Brewery b";
 		List<Brewery> Brews = em.createQuery(jpql, Brewery.class).getResultList();
 		return Brews;
 	}
 
+	//Add Average Rating Calculation 
+	//It will average all of the Brewery's Beers Ratings - Beer Rating Total / Number of Beers
 	
 	
 }

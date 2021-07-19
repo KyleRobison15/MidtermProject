@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="styles.jsp"%> 
+<%@ include file="nav.jsp"%>    
     
 <!DOCTYPE html>
 <html>
@@ -10,11 +10,9 @@
 </head>
 <body>
 
-<h1>Cheers! Welcome to BrewBuds</h1>
-
-<form action="ShowAll.do" method="get">
-<input type="submit" value="Show all Reviews">
-</form>
-
+	<div class="container">
+		<h1>Cheers! Welcome to BrewBuds</h1>
+	</div>
+	
 </body>
 </html>

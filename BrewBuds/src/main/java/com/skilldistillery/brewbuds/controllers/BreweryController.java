@@ -17,6 +17,7 @@ public class BreweryController {
 	@RequestMapping(path = "BreweryInfo.do", method = RequestMethod.GET)
 	public String showReviews(int id, Model model) {
 		model.addAttribute("brewery", dao.getBrewery(id));
+		model.addAttribute("beers", dao.showBeers());
 		return "brewery/info";
 	}
 	

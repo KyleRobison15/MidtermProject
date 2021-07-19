@@ -9,5 +9,5 @@ public interface BreweryDAO {
 	public Brewery create(Brewery brew); 
 	public Brewery update(int id, Brewery brew); 
 	public boolean remove(int id); 
-	public List<Brewery> showAll();
+	public List<Brewery> showBeers();
 }
