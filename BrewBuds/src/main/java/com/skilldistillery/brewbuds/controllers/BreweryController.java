@@ -18,7 +18,7 @@ public class BreweryController {
 	public String showReviews(int id, Model model) {
 		model.addAttribute("brewery", dao.getBrewery(id));
 		model.addAttribute("beers", dao.showBeers());
-		return "brewery/info";
+		return "info";
 	}
 	
 }

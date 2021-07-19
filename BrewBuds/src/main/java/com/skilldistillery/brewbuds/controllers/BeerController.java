@@ -28,7 +28,7 @@ public class BeerController {
 	@RequestMapping(path = "ShowAll.do", method = RequestMethod.GET)
 	public String showReviews(Model model) {
 		model.addAttribute("beers", dao.showAll());
-		return "beer/reviews";
+		return "reviews";
 	}
 	
 	@RequestMapping(path = "submitRating.do", method = RequestMethod.POST,
@@ -39,14 +39,14 @@ public class BeerController {
 		ratingDao.addBeerRating(Integer.valueOf(beerId), Integer.valueOf(userId), Integer.valueOf(rating), comment);
 		
 		mv.addObject("beer", dao.find(Integer.valueOf(beerId)));
-		mv.setViewName("beer/beerProfile");
+		mv.setViewName("beerProfile");
 		return mv;
 	}
 	
 	@RequestMapping(path = "beerProfile.do", method = RequestMethod.GET)
 	public String beerProfile(Model model, int id) {
 		model.addAttribute("beer", dao.find(id));
-		return "beer/beerProfile";
+		return "beerProfile";
 	}
 	
 	
