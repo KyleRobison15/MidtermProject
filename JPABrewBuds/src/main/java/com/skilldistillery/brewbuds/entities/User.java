@@ -1,6 +1,7 @@
 package com.skilldistillery.brewbuds.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -157,7 +158,26 @@ public class User {
 	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
 	}
-
+	
+	public void addRating(Rating rating) {
+		if(ratings == null) {
+			ratings = new ArrayList<>();
+		}
+		if(!ratings.contains(rating)) {
+			ratings.add(rating);
+			if(rating.getUser() != null) {
+				rating.getUser().getRatings().remove(rating);
+			}
+			rating.setUser(this);
+		}
+	}
+	public void removeRating(Rating rating) {
+		rating.setUser(null);
+		if(ratings != null) {
+			ratings.remove(rating);
+		}
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
