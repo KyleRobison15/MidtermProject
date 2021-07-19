@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="styles.jsp"%>
+<%@ include file="nav.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,9 +12,8 @@
 	
 	<div class="container">
 		<h1 class="display-4">Success! Welcome to BrewBuds ${newUser.username }.</h1>
+		<a class="btn btn-outline-dark" href="loginPage.do">Log In</a>
 	</div>
-	
-	<a class="btn btn-outline-dark" href="loginPage.do">Log In</a>
 	
 </body>
 </html>

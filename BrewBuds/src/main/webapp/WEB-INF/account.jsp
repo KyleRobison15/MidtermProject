@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="styles.jsp"%>
+<%@ include file="nav.jsp"%> 
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,6 @@
 
 	<div class="container">
 		${user}
-		<a class="btn btn-outline-dark" href="logout.do">Log Out</a>
 	</div>
 	
 </body>
