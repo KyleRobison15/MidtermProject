@@ -12,7 +12,9 @@
 
 <h1>Cheers! Welcome to BrewBuds</h1>
 
-${DEBUG}
+<form action="ShowAll.do" method="get">
+<input type="submit" value="Show all Reviews">
+</form>
 
 </body>
 </html>
