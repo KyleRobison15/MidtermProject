@@ -28,7 +28,7 @@ public class AccountController {
 		
 		if (isCreated) {
 			redir.addFlashAttribute("newUser", newUser);
-			return "redirect: accountCreated.do";
+			return "redirect:accountCreated.do";
 		}
 			model.addAttribute("newUser",newUser);
 		return "creationFailed";

@@ -20,23 +20,13 @@
 <!-- ///////////////////////////////////////////// EMAIL ////////////////////////////////////////////////////////////// -->
 		
 		<label for="email" class="col-sm-2 col-form-label">Email</label>
-		<input type="text" class="form-control" id="email" name="email" required>
+		<input type="email" class="form-control" id="email" name="email" required>
 		
 <!-- ///////////////////////////////////////////// USERNAME ////////////////////////////////////////////////////////////// -->
 
 		<label for="username" class="col-sm-2 col-form-label">Username</label>
 		<input type="text" class="form-control" id="username" name="username" required>
 		
-<!-- ///////////////////////////////////////////// PASSWORD ////////////////////////////////////////////////////////////// -->
-
-		<label for="password" class="col-sm-2 col-form-label">Password</label>
-		<input type="text" class="form-control" id="password" name="password" required>
-		
-<!-- ///////////////////////////////////////////// CONFIRM PASSWORD ////////////////////////////////////////////////////////////// -->
-
-		<label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
-		<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" required>
-			
 <!-- ///////////////////////////////////////////// FIRST NAME ////////////////////////////////////////////////////////////// -->
 
 		<label for="firstName" class="col-sm-2 col-form-label">First Name</label>
@@ -47,10 +37,24 @@
 		<label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
 		<input type="text" class="form-control" id="lastName" name="lastName" required>
 		
-<!-- ///////////////////////////////////////////// ADDRESS ////////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////////////////// PASSWORD ////////////////////////////////////////////////////////////// -->
+
+		<label for="password" class="col-sm-2 col-form-label">Password</label>
+		<input type="password" class="form-control" id="password" name="password" required>
+		
+<!-- ///////////////////////////////////////////// CONFIRM PASSWORD ////////////////////////////////////////////////////////////// -->
+
+		<label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+		<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+		
+<!-- ///////////////////////////////////////////// ROLE ////////////////////////////////////////////////////////////// -->
 			
-		 <input type="hidden" id="address" name="address" value="${null }">
+		<input type="hidden" id="role" name="role" value="user">
+		
+<!-- ///////////////////////////////////////////// ENABLED ////////////////////////////////////////////////////////////// -->
 			
+		<input type="hidden" id="enabled" name="enabled" value="true">
+		
 <!-- ///////////////////////////////////////////// SUBMIT ////////////////////////////////////////////////////////////// -->
 
 		<br/><button type="submit" class="btn btn-outline-dark">Get Started!</button>
