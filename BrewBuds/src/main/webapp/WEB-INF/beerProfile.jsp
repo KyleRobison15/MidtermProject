@@ -20,7 +20,7 @@
 <li>SRM: ${beer.color}</li>
 <li>IBU: ${beer.bitterness} </li>
 <li>Brewery: ${beer.brewery.name}</li>
-<li>Category: </li>
+<li>Category: ${beer.subCategory.name}</li>
 <li>Image: </li>
 </ul>
 
