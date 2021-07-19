@@ -34,7 +34,7 @@ public class Address {
 	
 	// Methods
 	
-	public Address() {	}
+	public Address() {}
 	
 	public int getId() {
 		return id;

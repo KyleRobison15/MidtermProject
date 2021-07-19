@@ -28,4 +28,8 @@ public class HomeController {
 		return "login";
 	}
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 35769507a1c767573dcc5462c6e3b91ad4bdd463
