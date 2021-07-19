@@ -37,7 +37,7 @@ public class RatingDAOImpl implements RatingDAO {
 		rating.setUser(user);
 		
 		rating.setRating(ratingVal);
-		rating.setComment("this is just a test comment");
+		rating.setComment(comment);
 		rating.setRatingDate(null);
 
 		em.persist(rating);
@@ -45,7 +45,6 @@ public class RatingDAOImpl implements RatingDAO {
 		
 	}
 
-	
 	
 	@Override
 	public void deleteBeerRating(RatingId ratingId) {

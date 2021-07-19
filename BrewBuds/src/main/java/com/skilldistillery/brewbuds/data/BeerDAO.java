@@ -9,4 +9,5 @@ public interface BeerDAO {
 	public Beer update(int id, Beer beer); 
 	public boolean remove(int id); 
 	public List<Beer> showAll();
+	public Beer find(int beerId);
 }

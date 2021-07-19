@@ -51,4 +51,10 @@ public class BeerDAOImpl implements BeerDAO {
 		return beers;
 	}
 
+	@Override
+	public Beer find(int beerId) {
+
+		return em.find(Beer.class, beerId);
+	}
+
 }
