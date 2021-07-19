@@ -1,5 +1,6 @@
 package com.skilldistillery.brewbuds.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -124,6 +125,25 @@ public class Beer {
 
 	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
+	}
+	
+	public void addRating(Rating rating) {
+		if(ratings == null) {
+			ratings = new ArrayList<>();
+		}
+		if(!ratings.contains(rating)) {
+			ratings.add(rating);
+			if(rating.getBeer() != null) {
+				rating.getBeer().getRatings().remove(rating);
+			}
+			rating.setBeer(this);
+		}
+	}
+	public void removeRating(Rating rating) {
+		rating.setBeer(null);
+		if(ratings != null) {
+			ratings.remove(rating);
+		}
 	}
 
 	public SubCategory getSubCategory() {

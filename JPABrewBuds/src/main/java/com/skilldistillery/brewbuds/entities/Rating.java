@@ -72,6 +72,22 @@ public class Rating {
 		this.ratingDate = ratingDate;
 	}
 
+	public Beer getBeer() {
+		return beer;
+	}
+
+	public void setBeer(Beer beer) {
+		this.beer = beer;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
