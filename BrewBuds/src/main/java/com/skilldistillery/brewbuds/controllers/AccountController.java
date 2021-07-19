@@ -18,7 +18,6 @@ public class AccountController {
 
 	@Autowired
 	private UserDAO userDao;
-	private AddressDAO addressDao;
 	
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
 	public String createAccount(User newUser, String confirmPassword, RedirectAttributes redir, Model model) {
@@ -39,6 +38,24 @@ public class AccountController {
 		model.addAttribute("newUser", newUser);
 		return"accountCreated";
 	}
+		
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
+	public String login(User user, HttpSession session) {
+	
+		if (session.getAttribute("user") != null) {
+			return "redirect:home.do";
+		}
+		
+		User u = userDao.getUserByLoginCredentials(user.getUsername(), user.getPassword());
+		
+		if (u != null) {
+			session.setAttribute("user", u);
+			return "redirect:account.do";
+		}
+		else {
+			return "login";
+		}	
+	}
 	
 	@RequestMapping(path = "account.do", method = RequestMethod.GET)
 	public String account(HttpSession session) {
@@ -46,7 +63,14 @@ public class AccountController {
 			return "account";
 		}
 		
-		return "";
+		return "home";
+	}
+	
+	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
+	public String logOut(HttpSession session) {
+		session.removeAttribute("user");
+		
+		return "redirect:home.do";
 	}
 	
 }

@@ -5,9 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${user.username }</title>
 </head>
 <body>
 
+	<div class="container">
+		${user}
+		<a class="btn btn-outline-dark" href="logout.do">Log Out</a>
+	</div>
+	
 </body>
 </html>
