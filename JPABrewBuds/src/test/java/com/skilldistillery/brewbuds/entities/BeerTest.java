@@ -83,5 +83,12 @@ Beer Non Foreign Key Mapping Test:
 		assertTrue(beer.getRatings().size() > 0);
 		assertEquals(5, beer.getRatings().get(0).getRating());
 	}
+	
+	@Test
+	@DisplayName("Testing bi-directional mapping for list of ratings")
+	void test4() {
+		assertNotNull(beer.getSubCategory());
+		assertEquals("New England IPA", beer.getSubCategory().getName());	
+	}
 
 }

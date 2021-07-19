@@ -44,6 +44,10 @@ public class Beer {
 	@OneToMany(mappedBy = "beer")
 	private List<Rating> ratings;
 	
+	@ManyToOne
+	@JoinColumn(name="sub_category_id")
+	private SubCategory subCategory;
+	
 //////////////////////// CONSTRUCTORS //////////////////////////	
 	
 	public Beer() {}
@@ -140,6 +144,14 @@ public class Beer {
 		if(ratings != null) {
 			ratings.remove(rating);
 		}
+	}
+
+	public SubCategory getSubCategory() {
+		return subCategory;
+	}
+
+	public void setSubCategory(SubCategory subCategory) {
+		this.subCategory = subCategory;
 	}
 
 	@Override
