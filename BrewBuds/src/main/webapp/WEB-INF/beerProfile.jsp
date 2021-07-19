@@ -10,7 +10,7 @@
 <title>Beer Profile</title>
 </head>
 <body>
-
+<img src="${beer.imageURL}" alt="beer img" class="beer-img"/>
 <div class="container">
 
 <ul>
