@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 public class User {
 	
@@ -38,6 +40,7 @@ public class User {
 	private String email;
 	
 	@Column(name="create_date")
+	@CreationTimestamp
 	private LocalDateTime createDate;
 	
 	@OneToOne

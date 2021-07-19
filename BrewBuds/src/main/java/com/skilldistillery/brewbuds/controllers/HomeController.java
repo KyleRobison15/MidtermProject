@@ -15,8 +15,17 @@ public class HomeController {
 	
 	@RequestMapping(path = {"/", "home.do"})
 	public String home(Model model) {
-		model.addAttribute("DEBUG", userDao.findById(2));
 		return "home";
 	}
+	
+	@RequestMapping(path = "createAccountPage.do")
+	public String showCreateAccountPage(Model model) {
+		return "createAccount";
+	}
 
+	@RequestMapping(path = "loginPage.do")
+	public String showLoginPage(Model model) {
+		return "login";
+	}
+	
 }
