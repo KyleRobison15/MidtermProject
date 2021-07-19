@@ -41,6 +41,7 @@
 
 <c:choose>
 <c:when test="${!empty sessionScope.user }">
+	<c:choose>
 	<c:when test="true">
 		<form action="submitRating.do" method="POST">
 		
@@ -68,6 +69,7 @@
 	<c:otherwise>
 		You have already left a review.
 	</c:otherwise>
+	</c:choose>
 </c:when>
 <c:otherwise>
 	<br/><p>New to BeerBuds? <a href="createAccountPage.do">Create Account</a></p>
