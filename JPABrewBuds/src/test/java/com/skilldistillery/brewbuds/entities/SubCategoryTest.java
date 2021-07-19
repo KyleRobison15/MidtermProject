@@ -53,5 +53,11 @@ class SubCategoryTest {
 	void test2() {
 		assertEquals("India Pale Ale", sub.getMainCategory().getName()); 
 	}
-
+	
+	@Test
+	@DisplayName("TEST: MainCategory Mapping")
+	void test3() {
+		assertNotNull(sub.getBeers());
+		assertEquals(1, sub.getBeers().size());
+	}
 }

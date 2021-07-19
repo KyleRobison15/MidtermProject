@@ -1,17 +1,22 @@
 package com.skilldistillery.brewbuds.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="sub_category")
 public class SubCategory {
 
+////////////////////////FIELDS ///////////////////////////////
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
@@ -22,8 +27,16 @@ public class SubCategory {
 	@JoinColumn(name="main_category_id")
 	private MainCategory mainCategory;
 	
+	@OneToMany(mappedBy = "subCategory")
+	private List<Beer> beers;
+
+////////////////////////CONSTRUCTORS //////////////////////////	
+
 	public SubCategory() {}
 
+////////////////////////METHODS ///////////////////////////////	
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -46,6 +59,14 @@ public class SubCategory {
 
 	public void setMainCategory(MainCategory mainCategory) {
 		this.mainCategory = mainCategory;
+	}
+
+	public List<Beer> getBeers() {
+		return beers;
+	}
+
+	public void setBeers(List<Beer> beers) {
+		this.beers = beers;
 	}
 
 	@Override

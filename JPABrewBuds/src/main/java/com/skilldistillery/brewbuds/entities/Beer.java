@@ -43,6 +43,10 @@ public class Beer {
 	@OneToMany(mappedBy = "beer")
 	private List<Rating> ratings;
 	
+	@ManyToOne
+	@JoinColumn(name="sub_category_id")
+	private SubCategory subCategory;
+	
 //////////////////////// CONSTRUCTORS //////////////////////////	
 	
 	public Beer() {}
@@ -120,6 +124,14 @@ public class Beer {
 
 	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
+	}
+
+	public SubCategory getSubCategory() {
+		return subCategory;
+	}
+
+	public void setSubCategory(SubCategory subCategory) {
+		this.subCategory = subCategory;
 	}
 
 	@Override
