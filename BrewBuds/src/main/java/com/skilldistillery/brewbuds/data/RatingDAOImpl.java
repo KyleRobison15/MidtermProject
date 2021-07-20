@@ -1,14 +1,15 @@
 package com.skilldistillery.brewbuds.data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.brewbuds.entities.Beer;
+import com.skilldistillery.brewbuds.entities.Brewery;
 import com.skilldistillery.brewbuds.entities.Rating;
 import com.skilldistillery.brewbuds.entities.RatingId;
 import com.skilldistillery.brewbuds.entities.User;
@@ -81,8 +82,8 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		return average;
 	}
-
-
+	
+	
 	@Override
 	public double findAverageUserRating(int userId) {
 		
@@ -103,5 +104,30 @@ public class RatingDAOImpl implements RatingDAO {
 		return average;
 		
 	}
+
+
+	@Override
+	public double findAverageBreweryRating(int breweryId) {
+
+		double average;
+		
+		Brewery brewery = em.find(Brewery.class, breweryId);
+		
+		List<Beer> beers = brewery.getBeers();
+		
+		int total = 0;
+		
+		for(Beer beer : beers) {
+			total += findAverageBeerRating(beer.getId());
+		}
+		
+		average = (double) total / (double) beers.size();
+		
+		return average;
+	}
+	
+	
+	
+	
 	
 }

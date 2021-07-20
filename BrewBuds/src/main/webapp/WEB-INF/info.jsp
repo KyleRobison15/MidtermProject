@@ -15,6 +15,7 @@
 <div class = "breweryInfo">
 	<ul>
 		<li>Brewery ID: ${brewery.id}</li>
+		<li>Rating: ${average}</li>
 		<li>Description: ${brewery.description}</li>
 		<li>Address:</li>	
 			<ul>
