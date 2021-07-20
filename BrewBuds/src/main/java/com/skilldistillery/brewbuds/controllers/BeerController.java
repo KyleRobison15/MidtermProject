@@ -87,9 +87,10 @@ public class BeerController {
 		
 		model.addAttribute("beer", dao.findBeerById(id));
 		
+		
 		User loggedUser = (User) session.getAttribute("user");
 		
-		
+		if(loggedUser != null) {
 		//Checks to see if user has already left a rating
 				RatingId ratingId = new RatingId();
 				ratingId.setBeerId(Integer.valueOf(id));
@@ -106,6 +107,7 @@ public class BeerController {
 				}
 				model.addAttribute("alreadyRated", alreadyRated);
 		////////////////////////////////////////////////////////////
+		}
 
 		
 		Double average = ratingDao.findAverageBeerRating(id);
