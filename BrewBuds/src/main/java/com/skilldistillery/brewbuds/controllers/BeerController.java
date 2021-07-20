@@ -50,13 +50,25 @@ public class BeerController {
 		ratingDao.addBeerRating(Integer.valueOf(beerId), Integer.valueOf(userId), Integer.valueOf(rating), comment);
 		
 		mv.addObject("beer", dao.findBeerById(Integer.valueOf(beerId)));
+		
+		double average = ratingDao.findAverageBeerRating(Integer.valueOf(beerId));
+		mv.addObject("average", average);
+		
 		mv.setViewName("beerProfile");
 		return mv;
 	}
 	
 	@RequestMapping(path = "beerProfile.do", method = RequestMethod.GET)
 	public String beerProfile(Model model, int id) {
+
 		model.addAttribute("beer", dao.findBeerById(id));
+
+		
+		Double average = ratingDao.findAverageBeerRating(id);
+		model.addAttribute("average", average);
+		
+//		model.addAttribute("beer", dao.find(id));
+
 		return "beerProfile";
 	}
 	

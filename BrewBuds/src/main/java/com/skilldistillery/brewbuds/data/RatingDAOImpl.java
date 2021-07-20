@@ -56,5 +56,52 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		em.remove(rating);
 	}
+
+
+	@Override
+	public double findAverageBeerRating(int beerId) {
+
+		//String jpql = "SELECT AVG(r.rating) FROM Rating r WHERE r.beer_id= :beerId";
+		
+		//Double average = em.createQuery(jpql, Double.class).setParameter("beerId", beerId).getSingleResult();
+		
+		double average;
+		
+		Beer beer = em.find(Beer.class, beerId);
+		
+		int total = 0;
+		
+		for (Rating rating : beer.getRatings()) {
+			
+			total += rating.getRating();
+			
+		}
+		
+		average = (double) total / (double) beer.getRatings().size();
+		
+		return average;
+	}
+
+
+	@Override
+	public double findAverageUserRating(int userId) {
+		
+		double average;
+		
+		User user = em.find(User.class, userId);
+		
+		int total = 0;
+		
+		for (Rating rating : user.getRatings()) {
+			
+			total += rating.getRating();
+			
+		}
+		
+		average = (double) total / (double) user.getRatings().size();
+		
+		return average;
+		
+	}
 	
 }

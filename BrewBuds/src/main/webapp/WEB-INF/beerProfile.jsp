@@ -14,6 +14,7 @@
 <div class="container">
 
 <ul>
+<li>Rating:  ${average}</li>
 <li>Name: ${beer.name}</li>
 <li>Description: ${beer.description}</li>
 <li>ABV: ${beer.alcoholByVolume}</li>
