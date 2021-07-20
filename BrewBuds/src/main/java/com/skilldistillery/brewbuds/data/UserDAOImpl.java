@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.brewbuds.entities.Address;
+import com.skilldistillery.brewbuds.entities.Beer;
 import com.skilldistillery.brewbuds.entities.User;
 
 @Service
@@ -63,7 +64,7 @@ public class UserDAOImpl implements UserDAO {
 				.getSingleResult();
 		return u;
 	}
-
+	
 	@Override
 	public User updateUser(int userId, User user) {
 		// TODO Auto-generated method stub

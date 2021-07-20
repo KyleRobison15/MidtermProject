@@ -35,6 +35,7 @@ public class HomeController {
 	
 	@RequestMapping(path = {"/", "home.do"}, method = RequestMethod.GET)
 	public String home(Model model) {
+		
 //		model.addAttribute("beers", beerDAO.showTopFive());
 //		model.addAttribute("breweries", breweryDAO.showTopFive());
 //		Double average = ratingDao.findAverageBeerRating(id);
@@ -51,6 +52,7 @@ public class HomeController {
 		model.addAttribute("beers", beerAndRating); 
 		
 		
+
 		return "home";
 	}
 	
