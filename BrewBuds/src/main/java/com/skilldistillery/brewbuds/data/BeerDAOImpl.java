@@ -76,7 +76,14 @@ public class BeerDAOImpl implements BeerDAO {
 			beer.setBrewery(newBrewery);
 		}
 		
+		
+		//////////////// Persist the new Beer //////////////////
 		em.persist(beer); 
+		
+		
+		//////////////// Add beer to User's list of addedBeers //////////////////
+		
+		user.addBeer(beer);
 		return beer;
 	}
 
