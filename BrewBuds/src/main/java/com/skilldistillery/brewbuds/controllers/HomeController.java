@@ -31,8 +31,8 @@ public class HomeController {
 	public String home(Model model) {
 		model.addAttribute("beers", beerDAO.showTopFive());
 		model.addAttribute("breweries", breweryDAO.showTopFive());
-		Double average = ratingDao.findAverageBeerRating(id);
-		model.addAttribute("average", average);
+//		Double average = ratingDao.findAverageBeerRating(id);
+//		model.addAttribute("average", average);
 		return "home";
 	}
 	

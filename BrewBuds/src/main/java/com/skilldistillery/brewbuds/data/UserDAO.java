@@ -1,5 +1,8 @@
 package com.skilldistillery.brewbuds.data;
 
+import java.util.List;
+
+import com.skilldistillery.brewbuds.entities.Beer;
 import com.skilldistillery.brewbuds.entities.User;
 
 public interface UserDAO {
@@ -8,5 +11,4 @@ public interface UserDAO {
 	public boolean createUserAccount(User newUser, String confirmPassword);
 	public User getUserByLoginCredentials(String username, String password);
 	public User updateUser(int userId, User user);
-
 }

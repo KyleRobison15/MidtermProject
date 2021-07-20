@@ -1,5 +1,7 @@
 package com.skilldistillery.brewbuds.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.brewbuds.data.RatingDAO;
 import com.skilldistillery.brewbuds.data.UserDAO;
+import com.skilldistillery.brewbuds.entities.Beer;
 import com.skilldistillery.brewbuds.entities.User;
 
 @Controller
@@ -82,6 +85,8 @@ public class AccountController {
 			User loggedUser = (User) session.getAttribute("user");
 			Double rating = ratingDao.findAverageUserRating(loggedUser.getId());
 			model.addAttribute("rating", rating);
+			List<Beer> addedBeers = loggedUser.getAddedBeers();
+			model.addAttribute("addedBeers", addedBeers);
 			
 			return "userProfileAdd";
 		}
