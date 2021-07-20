@@ -10,6 +10,10 @@
 </head>
 <body>
 
+<!-- Display User's Basic Information -->
+<!-- Display User's Rating (getAverageUserRating method in RatingDAOImpl)-->
+<!-- Display User's Rating (getAverageUserRating method in RatingDAOImpl)-->
+
 	<div class="container">
 		${user}
 	</div>
