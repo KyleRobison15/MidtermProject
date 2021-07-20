@@ -28,7 +28,8 @@
 							<li class="nav-item"><a class="nav-link active" href="createAccountPage.do"> Create Account </a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="nav-item"><a class="nav-link active" href="showProfileAdd.do"> My Profile </a></li>
+							<li class="nav-item"><a class="nav-link active" href="showProfileAdd.do"> Add Beers </a></li>
+							<li class="nav-item"><a class="nav-link active" href="showProfileFind.do"> Find Beers </a></li>
 							<li class="nav-item"><a class="nav-link active" href="account.do"> My Account </a></li>
 							<li class="nav-item"><a class="nav-link active" href="logout.do"> Logout </a></li>
 						</c:otherwise>
