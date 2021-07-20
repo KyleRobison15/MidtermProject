@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="styles.jsp"%> 
+<%@ include file="nav.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,14 +27,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
 				<c:forEach var="beer" items="${beers}">
-		 		<td><a href="BeerInfo.do?id=${beer.id}">${beer.name}</a></td>
+				<tr>
+		 		<td><a href="beerProfile.do?id=${beer.id}">${beer.name}</a></td>
 		 		<td><a href="BreweryInfo.do?id=${beer.brewery.id}">${beer.brewery.name}</a></td>
 		 		<td>${beer.description}</td>
-		 		
-		 		<!--Beer Category Table Data here  -->
-		 		
+				<td>${beer.subCategory.name}</td>
+				<td>${beer.user.username}</td>
+				
+					<c:forEach var="rating" items="${ratings}">
+					<td>${beer.rating.rating}
+					</c:forEach>
+					
 				</c:forEach>
 			</tbody>
 		</table>

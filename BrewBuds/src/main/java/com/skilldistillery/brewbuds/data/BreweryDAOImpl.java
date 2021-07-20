@@ -1,5 +1,6 @@
 package com.skilldistillery.brewbuds.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.brewbuds.entities.Beer;
 import com.skilldistillery.brewbuds.entities.Brewery;
 
 @Service
@@ -53,9 +55,16 @@ public class BreweryDAOImpl implements BreweryDAO {
 		List<Brewery> Brews = em.createQuery(jpql, Brewery.class).getResultList();
 		return Brews;
 	}
-
-	//Add Average Rating Calculation 
-	//It will average all of the Brewery's Beers Ratings - Beer Rating Total / Number of Beers
+	
+	@Override
+	public List<Brewery> showTopFive() {
+		
+		String jpql = "SELECT b FROM Brewery b";
+		List<Brewery> breweries = em.createQuery(jpql, Brewery.class).getResultList();
+		List<Brewery> topFive = new ArrayList<Brewery>(breweries.subList(breweries.size() -1, breweries.size()));
+		
+		return topFive;
+	} 
 	
 	
 }

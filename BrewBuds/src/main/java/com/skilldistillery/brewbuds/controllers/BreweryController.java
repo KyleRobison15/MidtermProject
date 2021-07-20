@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.brewbuds.data.BreweryDAO;
+import com.skilldistillery.brewbuds.data.RatingDAO;
 
 @Controller
 public class BreweryController {
@@ -14,11 +15,15 @@ public class BreweryController {
 	@Autowired
 	BreweryDAO dao; 
 	
+	@Autowired
+	RatingDAO ratingDao;
+	
 	@RequestMapping(path = "BreweryInfo.do", method = RequestMethod.GET)
 	public String showReviews(int id, Model model) {
 		model.addAttribute("brewery", dao.getBrewery(id));
+		model.addAttribute("average", ratingDao.findAverageBreweryRating(id));
 		model.addAttribute("beers", dao.showBeers());
-		return "brewery/info";
+		return "info";
 	}
 	
 }

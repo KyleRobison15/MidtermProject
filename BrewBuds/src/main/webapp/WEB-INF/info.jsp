@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="styles.jsp"%> 
+<%@ include file="nav.jsp"%> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 <div class = "breweryInfo">
 	<ul>
 		<li>Brewery ID: ${brewery.id}</li>
+		<li>Rating: ${average}</li>
 		<li>Description: ${brewery.description}</li>
 		<li>Address:</li>	
 			<ul>

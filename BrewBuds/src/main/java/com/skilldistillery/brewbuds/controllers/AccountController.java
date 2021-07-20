@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.skilldistillery.brewbuds.data.AddressDAO;
+import com.skilldistillery.brewbuds.data.RatingDAO;
 import com.skilldistillery.brewbuds.data.UserDAO;
 import com.skilldistillery.brewbuds.entities.User;
 
@@ -18,6 +18,10 @@ public class AccountController {
 
 	@Autowired
 	private UserDAO userDao;
+	@Autowired
+	private RatingDAO ratingDao;
+	
+	
 	
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
 	public String createAccount(User newUser, String confirmPassword, RedirectAttributes redir, Model model) {
@@ -62,7 +66,6 @@ public class AccountController {
 		if (session.getAttribute("user") != null) {
 			return "account";
 		}
-		
 		return "home";
 	}
 	
@@ -73,4 +76,23 @@ public class AccountController {
 		return "redirect:home.do";
 	}
 	
+	@RequestMapping(path = "showProfileAdd.do", method = RequestMethod.GET)
+	public String showProfileAdd(Model model, HttpSession session) {
+		if (session.getAttribute("user") != null) {
+			User loggedUser = (User) session.getAttribute("user");
+			Double rating = ratingDao.findAverageUserRating(loggedUser.getId());
+			model.addAttribute("rating", rating);
+			
+			return "userProfileAdd";
+		}
+		return "home";
+	}
+	@RequestMapping(path = "showProfileFind.do", method = RequestMethod.GET)
+	public String showProfileFind(HttpSession session) {
+		if (session.getAttribute("user") != null) {
+			return "userProfileFind";
+		}
+		return "home";
+	}
+
 }
