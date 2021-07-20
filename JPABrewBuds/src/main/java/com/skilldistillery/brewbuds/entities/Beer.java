@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -41,6 +43,16 @@ public class Beer {
 	@JoinColumn(name="brewery_id")
 	private Brewery brewery;
 	
+	@ManyToOne
+	@JoinColumn(name="user_id") 
+	private User user;  					// User who added this beer
+	
+	@ManyToMany
+	@JoinTable(name="favorite_beer", 
+	joinColumns=@JoinColumn(name= "beer_id"), 
+	inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<User> users;				// Users who have this beer in their favorites list
+	
 	@OneToMany(mappedBy = "beer")
 	private List<Rating> ratings;
 	
@@ -69,7 +81,7 @@ public class Beer {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public String getDescription() {
 		return description;
 	}
@@ -118,6 +130,13 @@ public class Beer {
 		this.brewery = brewery;
 	}
 
+	public User getUser() { // User who added this beer
+		return user;
+	}
+
+	public void setUser(User user) { // User who added this beer
+		this.user = user;
+	}
 
 	public List<Rating> getRatings() {
 		return ratings;
@@ -127,6 +146,14 @@ public class Beer {
 		this.ratings = ratings;
 	}
 	
+	public List<User> getUsers() { // Users who have this beer in their favorites list
+		return users; 
+	}
+
+	public void setUsers(List<User> users) { // Users who have this beer in their favorites list
+		this.users = users;
+	}
+
 	public void addRating(Rating rating) {
 		if(ratings == null) {
 			ratings = new ArrayList<>();
@@ -143,6 +170,24 @@ public class Beer {
 		rating.setBeer(null);
 		if(ratings != null) {
 			ratings.remove(rating);
+		}
+	}
+	
+	public void addUser(User user) {
+		if (users == null) {
+			users = new ArrayList<>(); // If films is null - we need to instantiate a new ArrayList
+		}
+		if (!users.contains(user)) {
+			users.add(user);
+			user.addBeer(this);
+		}
+
+	}
+
+	public void removeUser(User user) {
+		if (users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeBeer(this);
 		}
 	}
 

@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -47,6 +49,15 @@ public class User {
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
+	
+	@OneToMany(mappedBy="user")
+	private List<Beer> addedBeers;
+	
+	@ManyToMany
+	@JoinTable(name="favorite_beer", 
+	joinColumns=@JoinColumn(name= "user_id"), 
+	inverseJoinColumns=@JoinColumn(name="beer_id"))
+	private List<Beer> favoriteBeers;
 	
 	@OneToMany(mappedBy = "user")
 	private List<Rating> ratings;
@@ -162,6 +173,22 @@ public class User {
 		this.ratings = ratings;
 	}
 	
+	public List<Beer> getAddedBeers() {
+		return addedBeers;
+	}
+
+	public void setAddedBeers(List<Beer> addedBeers) {
+		this.addedBeers = addedBeers;
+	}
+
+	public List<Beer> getFavoriteBeers() {
+		return favoriteBeers;
+	}
+
+	public void setFavoriteBeers(List<Beer> favoriteBeers) {
+		this.favoriteBeers = favoriteBeers;
+	}
+
 	public void addRating(Rating rating) {
 		if(ratings == null) {
 			ratings = new ArrayList<>();
@@ -178,6 +205,24 @@ public class User {
 		rating.setUser(null);
 		if(ratings != null) {
 			ratings.remove(rating);
+		}
+	}
+	
+	public void addBeer(Beer beer) { //Added this method to so we can easily add a film to the actor's list of films ON THE JAVA SIDE
+		if (addedBeers == null) {
+			addedBeers = new ArrayList<>(); //If films is null - we need to instantiate a new ArrayList
+		}
+		if (!addedBeers.contains(beer)) {
+			addedBeers.add(beer);
+			beer.addUser(this);
+		}
+		
+	}
+	
+	public void removeBeer(Beer beer) {
+		if (addedBeers != null && addedBeers.contains(beer)) {
+			addedBeers.remove(beer);
+			beer.removeUser(this);
 		}
 	}
 	

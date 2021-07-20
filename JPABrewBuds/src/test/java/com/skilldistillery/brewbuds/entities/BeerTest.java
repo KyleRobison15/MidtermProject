@@ -91,4 +91,13 @@ Beer Non Foreign Key Mapping Test:
 		assertEquals("New England IPA", beer.getSubCategory().getName());	
 	}
 
+	@Test
+	@DisplayName("TEST: user and users mapping")
+	void test5() throws Exception {
+		assertNotNull(beer);
+		assertNotNull(beer.getUser());
+		assertNotNull(beer.getUsers());
+		assertEquals(1,beer.getUsers().size());
+	}
+	
 }

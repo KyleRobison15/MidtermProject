@@ -8,7 +8,11 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.brewbuds.entities.Address;
 import com.skilldistillery.brewbuds.entities.Beer;
+import com.skilldistillery.brewbuds.entities.Brewery;
+import com.skilldistillery.brewbuds.entities.SubCategory;
+import com.skilldistillery.brewbuds.entities.User;
 
 @Service
 @Transactional
@@ -16,15 +20,66 @@ public class BeerDAOImpl implements BeerDAO {
 	
 	@PersistenceContext
 	private EntityManager em; 
+	private String jpql;
 
 	@Override
-	public Beer create(Beer beer) {
+	public Beer addBeer(Beer beer, User user, String breweryName, String subCatName) {
+		System.out.println("------------------------------------------------------------------");
+		System.out.println(user);
+		System.out.println("------------------------------------------------------------------");
+		
+		///////////// Check if beer name already exists /////////////
+		
+		jpql = "SELECT b.name FROM Beer b WHERE b.name = :name";
+		List<String> names = em.createQuery(jpql, String.class)
+				.setParameter("name", beer.getName())
+				.getResultList();
+		
+		if (names.size() > 0) {
+			return null;
+		}
+		
+		//////////////// Set the beer's User //////////////////
+			
+		beer.setUser(user);
+		
+		//////////////// Set the beer's SubCategory //////////////////
+		
+		jpql = "SELECT s FROM SubCategory s WHERE s.name = :subCatName";
+		
+		SubCategory subCat = em.createQuery(jpql, SubCategory.class)
+				.setParameter("subCatName", subCatName)
+				.getSingleResult();
+		
+		beer.setSubCategory(subCat);
+		
+		//////////////// Set the beer's Brewery //////////////////
+		
+		jpql = "SELECT b FROM Brewery b WHERE b.name = :breweryName";
+		
+		List<Brewery> breweries = em.createQuery(jpql, Brewery.class)
+				.setParameter("breweryName", breweryName)
+				.getResultList();
+	
+		if (breweries.size() > 0 && breweries.size() <= 1) {
+			beer.setBrewery(breweries.get(0));  // If brewery exists, set beer's brewery to the brewery that was returned from DB.
+		}
+		else {
+			Address breweryAddress = new Address();
+			Brewery newBrewery = new Brewery();
+			newBrewery.setAddress(breweryAddress);
+			em.persist(breweryAddress);
+			newBrewery.setName(breweryName);
+			em.persist(newBrewery);
+			beer.setBrewery(newBrewery);
+		}
+		
 		em.persist(beer); 
 		return beer;
 	}
 
 	@Override
-	public Beer update(int id, Beer beer) {
+	public Beer updateBeer(int id, Beer beer) {
 		Beer dbBeer = em.find(Beer.class,id);
 		dbBeer.setAlcoholByVolume(beer.getAlcoholByVolume());
 		dbBeer.setBitterness(beer.getBitterness());
@@ -36,7 +91,7 @@ public class BeerDAOImpl implements BeerDAO {
 	}
 
 	@Override
-	public boolean remove(int id) {
+	public boolean removeBeer(int id) {
 		Beer beer = em.find(Beer.class, id);
 		em.remove(beer);
 		boolean successfulRemove; 
@@ -45,16 +100,15 @@ public class BeerDAOImpl implements BeerDAO {
 	}
 
 	@Override
-	public List<Beer> showAll() {
+	public List<Beer> showAllBeers() {
 		String jpql = "SELECT b FROM Beer b";
 		List<Beer> beers = em.createQuery(jpql, Beer.class).getResultList();
 		return beers;
 	}
 
 	@Override
-	public Beer find(int beerId) {
-
+	public Beer findBeerById(int beerId) {
 		return em.find(Beer.class, beerId);
-	}
+	} 
 
 }

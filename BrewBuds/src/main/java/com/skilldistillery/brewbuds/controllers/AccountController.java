@@ -62,7 +62,6 @@ public class AccountController {
 		if (session.getAttribute("user") != null) {
 			return "account";
 		}
-		
 		return "home";
 	}
 	

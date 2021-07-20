@@ -93,5 +93,15 @@ class UserTest {
 		assertTrue(user.getRatings().size() > 0);
 		assertEquals(5, user.getRatings().get(0).getRating());
 	}
+	
+	@Test
+	@DisplayName("TEST: favoriteBeers and addedBeers mapping")
+	void test4() throws Exception {
+		assertNotNull(user);
+		assertNotNull(user.getFavoriteBeers());
+		assertEquals(0,user.getFavoriteBeers().size());
+		assertNotNull(user.getAddedBeers());
+		assertEquals(0,user.getFavoriteBeers().size());
+	}
 
 }

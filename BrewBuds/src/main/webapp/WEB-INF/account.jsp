@@ -14,5 +14,7 @@
 		${user}
 	</div>
 	
+	<a class="btn btn-outline-dark" href="addBeerPage.do">Add a Beer</a>
+	
 </body>
 </html>
