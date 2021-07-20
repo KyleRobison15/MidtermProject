@@ -15,7 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.skilldistillery.brewbuds.data.BeerDAO;
 import com.skilldistillery.brewbuds.data.RatingDAO;
 import com.skilldistillery.brewbuds.data.SubCategoryDAO;
+import com.skilldistillery.brewbuds.data.UserDAO;
 import com.skilldistillery.brewbuds.entities.Beer;
+import com.skilldistillery.brewbuds.entities.Rating;
+import com.skilldistillery.brewbuds.entities.RatingId;
 import com.skilldistillery.brewbuds.entities.SubCategory;
 import com.skilldistillery.brewbuds.entities.User;
 
@@ -30,6 +33,9 @@ public class BeerController {
 	
 	@Autowired
 	private SubCategoryDAO subDao;
+	
+	@Autowired
+	private UserDAO userDao;
 	
 //	@RequestMapping(path = {"/", "home.do"})
 //	public String home(Model model) {
@@ -54,14 +60,52 @@ public class BeerController {
 		double average = ratingDao.findAverageBeerRating(Integer.valueOf(beerId));
 		mv.addObject("average", average);
 		
+		//Checks to see if user has already left a rating
+		RatingId ratingId = new RatingId();
+		ratingId.setBeerId(Integer.valueOf(beerId));
+		ratingId.setUserId(Integer.valueOf(userId));
+		
+		User user = userDao.findById(Integer.valueOf(userId));
+		boolean alreadyRated = false;
+		
+		Rating rating1 = new Rating();
+		rating1.setId(ratingId);
+		
+		if(user.getRatings().contains(rating1)) {
+			alreadyRated = true;
+		}
+		mv.addObject("alreadyRated", alreadyRated);
+		
+		
+		
 		mv.setViewName("beerProfile");
 		return mv;
 	}
 	
 	@RequestMapping(path = "beerProfile.do", method = RequestMethod.GET)
-	public String beerProfile(Model model, int id) {
-
+	public String beerProfile(Model model, int id, HttpSession session) {
+		
 		model.addAttribute("beer", dao.findBeerById(id));
+		
+		User loggedUser = (User) session.getAttribute("user");
+		
+		
+		//Checks to see if user has already left a rating
+				RatingId ratingId = new RatingId();
+				ratingId.setBeerId(Integer.valueOf(id));
+				ratingId.setUserId(Integer.valueOf(loggedUser.getId()));
+				
+				User user = userDao.findById(Integer.valueOf(loggedUser.getId()));
+				boolean alreadyRated = false;
+				
+				Rating rating1 = new Rating();
+				rating1.setId(ratingId);
+				
+				if(user.getRatings().contains(rating1)) {
+					alreadyRated = true;
+				}
+				model.addAttribute("alreadyRated", alreadyRated);
+		////////////////////////////////////////////////////////////
 
 		
 		Double average = ratingDao.findAverageBeerRating(id);
