@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class User {
@@ -50,6 +52,7 @@ public class User {
 	@JoinColumn(name="address_id")
 	private Address address;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="user")
 	private List<Beer> addedBeers;
 	
@@ -208,9 +211,9 @@ public class User {
 		}
 	}
 	
-	public void addBeer(Beer beer) { //Added this method to so we can easily add a film to the actor's list of films ON THE JAVA SIDE
+	public void addBeer(Beer beer) {
 		if (addedBeers == null) {
-			addedBeers = new ArrayList<>(); //If films is null - we need to instantiate a new ArrayList
+			addedBeers = new ArrayList<>(); 
 		}
 		if (!addedBeers.contains(beer)) {
 			addedBeers.add(beer);

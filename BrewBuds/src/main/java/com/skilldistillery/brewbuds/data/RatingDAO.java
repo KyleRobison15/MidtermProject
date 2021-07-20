@@ -11,4 +11,5 @@ public interface RatingDAO {
 	//void updateBeerRating();
 	double findAverageBeerRating(int beerId);
 	double findAverageUserRating(int userId);
+	double findAverageBreweryRating(int breweryId);
 }

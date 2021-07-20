@@ -1,5 +1,7 @@
 package com.skilldistillery.brewbuds.data;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -74,7 +76,14 @@ public class BeerDAOImpl implements BeerDAO {
 			beer.setBrewery(newBrewery);
 		}
 		
+		
+		//////////////// Persist the new Beer //////////////////
 		em.persist(beer); 
+		
+		
+		//////////////// Add beer to User's list of addedBeers //////////////////
+		
+		user.addBeer(beer);
 		return beer;
 	}
 
@@ -109,6 +118,17 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public Beer findBeerById(int beerId) {
 		return em.find(Beer.class, beerId);
+	}
+
+	//Make sure to switch to (-5) on Line 122 once DB is populated w/ more reviews
+	@Override
+	public List<Beer> showTopFive() {
+		
+		String jpql = "SELECT b FROM Beer b";
+		List<Beer> beers = em.createQuery(jpql, Beer.class).getResultList();
+		List<Beer> topFive = new ArrayList<Beer>(beers.subList(beers.size() -1, beers.size()));
+		
+		return topFive;
 	} 
 
 }
