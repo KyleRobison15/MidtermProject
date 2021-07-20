@@ -10,7 +10,6 @@
 <title>Beer Profile</title>
 </head>
 <body>
-<img src="${beer.imageURL}" alt="beer img" class="beer-img"/>
 <div class="container">
 
 <ul>
@@ -22,7 +21,16 @@
 <li>IBU: ${beer.bitterness} </li>
 <li>Brewery: ${beer.brewery.name}</li>
 <li>Category: ${beer.subCategory.name}</li>
-<li>Image: </li>
+
+<c:choose>
+    <c:when test="${not empty beer.imageURL}">
+        <li>Image: <img src="${beer.imageURL}" width="128" height="128" class="beer-img" alt="stockBeer"/> </li> 
+</c:when>
+
+<c:otherwise>
+    <li>Image: <img src="img/stockBeer.jpeg" width="128" height="128" class="beer-img" alt="stockBeer"/> </li>
+    </c:otherwise>
+</c:choose>
 </ul>
 
 

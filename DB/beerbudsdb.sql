@@ -83,8 +83,6 @@ CREATE UNIQUE INDEX `username_UNIQUE` ON `user` (`username` ASC);
 
 CREATE INDEX `fk_user_address1_idx` ON `user` (`address_id` ASC);
 
-CREATE UNIQUE INDEX `email_UNIQUE` ON `user` (`email` ASC);
-
 
 -- -----------------------------------------------------
 -- Table `main_category`
@@ -229,6 +227,13 @@ START TRANSACTION;
 USE `beer_budsdb`;
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (1, '1075 E 20th Street', '', 'Chico', 'CA', '95928', 'US', '5308933520');
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (2, '100 Main Street', NULL, 'Atlanta', 'GA', '50000', 'US', NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (6, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (7, '100 Paulaner Beer Road', NULL, 'Munich', 'Bavaria', '3000', 'GE', '12345678990');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (8, '200 Dogfish Head Lane', NULL, 'Milton', 'DE', '4000', 'US', '6666666666');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (9, '399 Barrel Brothers Street', NULL, 'Windsor', 'CA', '95492', 'US', '7076969487');
 
 COMMIT;
 
@@ -239,6 +244,9 @@ COMMIT;
 START TRANSACTION;
 USE `beer_budsdb`;
 INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (1, 'Sierra Nevada', 'It changed tastes, made hops famous, and brought an industry back from extinction. That’s a hard-working beer.', 1, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (2, 'Paulaner Brewery', 'Paulaner is a German brewery, established in 1634 in Munich by the Minim friars of the Neudeck ob der Au cloister. The mendicant order and the brewery are named after Francis of Paola, the founder of the order. Paulaner is one of the six breweries who provide beer for Oktoberfest.', 7, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (3, 'Dogfish Head Craft Brewery', 'Brews delicious brews in the US', 8, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (4, 'Barrel Brothers Brewing Company', 'Wickedly dark brewers.', 9, NULL);
 
 COMMIT;
 
@@ -249,7 +257,10 @@ COMMIT;
 START TRANSACTION;
 USE `beer_budsdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (1, 'KyleRobison', 'admin1', 'Kyle', 'Robison', 'admin1@example.com', '2017-07-16 12:00:00', 1, 'admin', 2);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Beer', 'Taster', 'beertaster@example.com', '2017-07-16 12:00:00', 1, 'user', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Bob', 'boblastname', 'beertaster@example.com', '2017-07-16 12:00:00', 1, 'user', 6);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (3, 'TomStagnaro', 'admin', 'Tom', 'Stagnaro', 'tomstagnaro@example.com', '2018-07-16 12:00:00', 1, 'admin', 3);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (4, 'ChrisRiddle', 'admin', 'Chris', 'Riddle', 'chrisriddle@example.com', '2019-07-16 12:00:00', 1, 'admin', 4);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (5, 'MattLee', 'admin', 'Matt', 'Lee', 'mattlee@example.com', '2020-07-16 12:00:00', 1, 'admin', 5);
 
 COMMIT;
 
@@ -373,6 +384,10 @@ COMMIT;
 START TRANSACTION;
 USE `beer_budsdb`;
 INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (1, 'Hazy Little Thing', 'Nice Hazy IPA', 6.7, 6, 35, 1, 1, 17, 'https://i5.walmartimages.com/asr/0d5e1929-6bc5-4de3-9b22-5bde01d552a2_1.ba1b2c9a02efcaa3605013344b7380bb.jpeg');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (2, 'Paulaner Hefe Weizen', 'Germany- Hefeweizen- A specially top-fermented yeast gives this beer its unmistakable character: tangy, light, fruity, and only a tad bitter. Its natural tastes remain due to the unfiltered method of brewing.', 5.5, 5, 30, 2, 3, 13, 'https://products1.imgix.drizly.com/mi_5057.jpg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (3, 'Dogfish Head SeaQuenchAle', 'Delaware- American Wild Ale- 4.9% ABV. We begin by brewing a Kolsch with wheat & Munich Malt, then a salty Gose with black limes, coriander & sea salt, followed up with a citrusy-tart Berlinerweiss made with lime juice & lime peel. All three beers are then blended together = SeaQuench!', 4.9, 4, 55, 3, 4, 27, 'https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/hba/hde/12567275012126.png');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (4, 'Dark Sarcasm Porter', 'Barrel Brothers Brewing\'s Dark Sarcasm Porter is a rich and smooth treat. This full-bodied ale has notes of cocoa, coffee, toffee, and hints of vanilla without being too sweet. Pair with chili or soy-glazed mushrooms.', 7, 9, 40, 4, 5, 45, 'https://goodeggs4.imgix.net/7b156e08-b202-45a6-9674-5bbd1c5333a4.jpg?w=840&h=525&fm=jpg&q=80&fit=crop');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (5, 'Mystery Beer', 'Mystery taste', 8, 5, 65, 4, 3, 1, NULL);
 
 COMMIT;
 
@@ -383,6 +398,10 @@ COMMIT;
 START TRANSACTION;
 USE `beer_budsdb`;
 INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 1, 2, 'One of my favorites', NULL);
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (4, 2, 1, 'Tastes hoppy.', NULL);
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (3, 3, 3, 'Would pair well with fish.', NULL);
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 4, 4, 'The bitterness to sweetness balanace is off.', NULL);
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 5, 5, 'Pretty good.', NULL);
 
 COMMIT;
 
