@@ -57,7 +57,7 @@ public class AccountController {
 		
 		if (u != null) {
 			session.setAttribute("user", u);
-			return "redirect:account.do";
+			return "redirect:showProfileAdd.do";
 		}
 		else {
 			return "login";
