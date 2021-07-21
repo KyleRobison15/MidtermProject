@@ -19,8 +19,8 @@
 		<h1 class="display-4">Your Beers:</h1>
 		<ul class="list-group">
 			<c:forEach items="${addedBeers }" var="addedBeer">
-				<li class="list-group-item"> <a href="BreweryInfo.do?id=${addedBeer.brewery.id }">${addedBeer.brewery.name}</a> 
-				&nbsp; <a href="beerProfile.do?id=${addedBeer.id}">${addedBeer.name}</a></li>
+				<li class="list-group-item"> <a href="BreweryInfo.do?id=${addedBeer.key.brewery.id }">${addedBeer.key.brewery.name}</a> 
+				&nbsp; <a href="beerProfile.do?id=${addedBeer.key.id}">${addedBeer.key.name}</a>Rating: ${addedBeer.value}</li>
 			</c:forEach>
 		</ul>
 	</div>

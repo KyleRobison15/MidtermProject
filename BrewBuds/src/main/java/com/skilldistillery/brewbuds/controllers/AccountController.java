@@ -1,6 +1,8 @@
 package com.skilldistillery.brewbuds.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -81,12 +83,21 @@ public class AccountController {
 	
 	@RequestMapping(path = "showProfileAdd.do", method = RequestMethod.GET)
 	public String showProfileAdd(Model model, HttpSession session) {
+		
 		if (session.getAttribute("user") != null) {
 			User loggedUser = (User) session.getAttribute("user");
 			Double rating = ratingDao.findAverageUserRating(loggedUser.getId());
 			model.addAttribute("rating", rating);
 			List<Beer> addedBeers = loggedUser.getAddedBeers();
-			model.addAttribute("addedBeers", addedBeers);
+			//model.addAttribute("addedBeers", addedBeers);
+			
+			//Make map of beers to their ratings
+			Map<Beer, Double> beerAndRating = new HashMap<>();
+			for(Beer beer : addedBeers) {
+				Double beerRating = ratingDao.findAverageBeerRating(beer.getId());
+				beerAndRating.put(beer, beerRating);
+			}
+			model.addAttribute("addedBeers", beerAndRating);
 			
 			return "userProfileAdd";
 		}

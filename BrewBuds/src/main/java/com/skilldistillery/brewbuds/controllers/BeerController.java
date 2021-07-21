@@ -53,14 +53,8 @@ public class BeerController {
 	public ModelAndView submitRating(String rating, String comment, String userId, String beerId) {
 		ModelAndView mv = new ModelAndView();
 		
-		ratingDao.addBeerRating(Integer.valueOf(beerId), Integer.valueOf(userId), Integer.valueOf(rating), comment);
-		
-		mv.addObject("beer", dao.findBeerById(Integer.valueOf(beerId)));
-		
-		double average = ratingDao.findAverageBeerRating(Integer.valueOf(beerId));
-		mv.addObject("average", average);
-		
 		//Checks to see if user has already left a rating
+		//Variables setup:
 		RatingId ratingId = new RatingId();
 		ratingId.setBeerId(Integer.valueOf(beerId));
 		ratingId.setUserId(Integer.valueOf(userId));
@@ -71,9 +65,29 @@ public class BeerController {
 		Rating rating1 = new Rating();
 		rating1.setId(ratingId);
 		
+		//Check if user owns a rating for this beer:
+			//if so, updates the beer rating and adds the updated beer rating to the model
 		if(user.getRatings().contains(rating1)) {
 			alreadyRated = true;
+			ratingDao.updateBeerRating(Integer.valueOf(beerId), Integer.valueOf(userId), Integer.valueOf(rating), comment);
+			rating1 = ratingDao.getRating(ratingId);
+			mv.addObject("userReview", rating1);
 		}
+		else {
+			
+			//Adds beer rating if one doesn't already exist
+			ratingDao.addBeerRating(Integer.valueOf(beerId), Integer.valueOf(userId), Integer.valueOf(rating), comment);
+		}
+		
+		
+		//Adds beer to model
+		mv.addObject("beer", dao.findBeerById(Integer.valueOf(beerId)));
+		
+		//Adds average rating of beer to model
+		double average = ratingDao.findAverageBeerRating(Integer.valueOf(beerId));
+		mv.addObject("average", average);
+		
+		//Adds already rated boolean to model
 		mv.addObject("alreadyRated", alreadyRated);
 		
 		
@@ -104,6 +118,8 @@ public class BeerController {
 				
 				if(user.getRatings().contains(rating1)) {
 					alreadyRated = true;
+					rating1 = ratingDao.getRating(ratingId);
+					model.addAttribute("userReview", rating1);
 				}
 				model.addAttribute("alreadyRated", alreadyRated);
 		////////////////////////////////////////////////////////////
@@ -152,6 +168,29 @@ public class BeerController {
 		model.addAttribute("beer", beer);
 		
 		return"beerProfile";
+	}
+	
+	@RequestMapping(path="deleteRating.do", method=RequestMethod.POST)
+	ModelAndView deleteRating(String beerId, String userId) {
+		ModelAndView mv = new ModelAndView();
+		
+		RatingId ratingId = new RatingId();
+		ratingId.setBeerId(Integer.valueOf(beerId));
+		ratingId.setUserId(Integer.valueOf(userId));
+		
+		System.out.println("Check1--------------------------------------------------------------");
+		ratingDao.deleteBeerRating(ratingId);
+		System.out.println("Check2--------------------------------------------------------------");
+		Beer beer = dao.findBeerById(Integer.valueOf(beerId));
+		//User user = userDao.findById(Integer.valueOf(userId));
+		mv.addObject("beer", beer);
+		//mv.addObject(beerId);
+		//mv.addObject(userId);
+		
+		
+		mv.setViewName("beerProfile");
+		
+		return mv;
 	}
 	
 }

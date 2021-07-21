@@ -1,5 +1,6 @@
 package com.skilldistillery.brewbuds.data;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -46,15 +47,31 @@ public class RatingDAOImpl implements RatingDAO {
 		
 	}
 
+	@Override
+	public void updateBeerRating(int beerId, int userId, int ratingVal, String comment) {
+
+		RatingId ratingId = new RatingId();
+		ratingId.setUserId(userId);
+		ratingId.setBeerId(beerId);
+		
+		Rating rating = em.find(Rating.class, ratingId);
+		
+		rating.setRating(ratingVal);
+		rating.setComment(comment);
+		rating.setRatingDate(null);
+		
+		//em.getTransaction().commit();
+		
+	}
 	
 	@Override
 	public void deleteBeerRating(RatingId ratingId) {
 		Rating rating = em.find(Rating.class, ratingId);
 		System.out.println("-----------------------------------------------------------------------------------------------------------");
 		System.out.println(rating);
+		
 		rating.getUser().removeRating(rating);
 		rating.getBeer().removeRating(rating);
-		
 		em.remove(rating);
 	}
 
@@ -70,6 +87,10 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		Beer beer = em.find(Beer.class, beerId);
 		
+		if(beer.getRatings().size() == 0) {
+			return 0;
+		}
+		
 		int total = 0;
 		
 		for (Rating rating : beer.getRatings()) {
@@ -79,6 +100,13 @@ public class RatingDAOImpl implements RatingDAO {
 		}
 		
 		average = (double) total / (double) beer.getRatings().size();
+		
+		System.out.println("---------------------------------------------------------------------------------------");
+		System.out.println(average);
+		System.out.println("---------------------------------------------------------------------------------------");
+		
+        DecimalFormat df = new DecimalFormat("#.##");
+        average = Double.valueOf(df.format(average));
 		
 		return average;
 	}
@@ -99,6 +127,12 @@ public class RatingDAOImpl implements RatingDAO {
 		}
 	
 		average = (double) total / (double) user.getAddedBeers().size();
+		
+		
+//		double d = 1.234567;
+        DecimalFormat df = new DecimalFormat("#.##");
+        average = Double.valueOf(df.format(average));
+		
 		
 		return average;
 		
@@ -123,8 +157,19 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		average = (double) total / (double) beers.size();
 		
+       // DecimalFormat df = new DecimalFormat("#.##");
+       // average = Double.valueOf(df.format(average));
+		
 		return average;
 	}
+
+	@Override
+	public Rating getRating(RatingId ratingId) {
+
+		return em.find(Rating.class, ratingId);
+	}
+
+
 	
 	
 	
