@@ -34,29 +34,26 @@
 <div class = "beerTable">
 <c:choose>
 <c:when test="${!empty beers}">
-		<table>
-			<thead> 
+		<table class="table">
+			<thead>
 				<tr>
-				<th>Beer</th>
-				<th>Description</th>
-				<th>Style</th>
+					<th scope="col">Name</th>
+					<th scope="col">Description</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
 				<c:forEach var="beer" items="${beers}">
-		 		<td><a href="BeerInfo.do?id=${beer.id}">${beer.name}</a></td>
-		 		<td>${beer.description}</td>
-		 		
-		 		<!--Beer Category Table Data here  -->
-		 		
+					<tr>
+						<td><a href="beerProfile.do?id=${beer.id}">${beer.name}</a></td>
+						<td>${beer.description}</td>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 </c:when>
 
 <c:otherwise>
-	<p>No Reviews Found</p>
+	<p>None Found!</p>
 </c:otherwise>
 
 </c:choose>
