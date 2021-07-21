@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>${user.username }Add</title>
+
 </head>
 <body>
 
@@ -34,9 +35,9 @@
 				</c:forEach>
 			</tbody>
 		</table>
+	<a class="btn btn-outline-dark" href="addBeerPage.do">Add a Beer</a>
 	</div>
 
-	<a class="btn btn-outline-dark" href="addBeerPage.do">Add a Beer</a>
 
 </body>
 </html>
