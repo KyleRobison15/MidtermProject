@@ -21,8 +21,9 @@ public class BreweryController {
 	@RequestMapping(path = "BreweryInfo.do", method = RequestMethod.GET)
 	public String showReviews(int id, Model model) {
 		model.addAttribute("brewery", dao.getBrewery(id));
-		model.addAttribute("average", ratingDao.findAverageBreweryRating(id));
-		model.addAttribute("beers", dao.showBeers());
+//		model.addAttribute("average", ratingDao.findAverageBreweryRating(id));
+//		model.addAttribute("beers", dao.showBeers());
+		model.addAttribute("beers", dao.getBrewery(id).getBeers());
 		return "info";
 	}
 	
