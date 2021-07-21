@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.brewbuds.data.RatingDAO;
@@ -101,6 +102,29 @@ public class AccountController {
 			return "userFavorites";
 		}
 		return "home";
+	}
+	
+	@RequestMapping(path = "AddFavorite.do", method = RequestMethod.POST)
+	public String addFavorites(@RequestParam("beerId") int beerId, Model model, HttpSession session, RedirectAttributes redir) {
+		
+		User user = (User) session.getAttribute("user"); 
+		userDao.addToFavorite(beerId, user.getId());
+		
+		redir.addFlashAttribute("user", user);
+		
+		return "redirect:ShowFavorites.do";
+	}
+	
+	@RequestMapping(path = "ShowFavorites.do", method = RequestMethod.GET)
+	public String showFavorites(Model model, User user) {
+		model.addAttribute("beers", userDao.getFavoriteList(user.getId()));
+		return "userProfileFind";
+	}
+	
+	@RequestMapping(path = "ShowFavoritesAlt.do", method = RequestMethod.GET)
+	public String showFavoritesAlt(Model model, @RequestParam("userId") int userId) {
+		model.addAttribute("beers", userDao.getFavoriteList(userId));
+		return "userProfileFind";
 	}
 
 }

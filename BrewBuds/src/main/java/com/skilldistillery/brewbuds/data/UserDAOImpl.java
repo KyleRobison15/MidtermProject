@@ -74,4 +74,21 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 
+	@Override
+	public List<Beer> addToFavorite(int beerId, int userId) {
+		
+		User user = em.find(User.class, userId);
+		Beer beer = em.find(Beer.class, beerId);
+		
+		user.addFavoriteBeer(beer);
+		
+		return user.getFavoriteBeers();
+	}
+
+	@Override
+	public List<Beer> getFavoriteList(int userId) {
+		User user = em.find(User.class, userId);
+		return user.getFavoriteBeers();
+	}
+
 }

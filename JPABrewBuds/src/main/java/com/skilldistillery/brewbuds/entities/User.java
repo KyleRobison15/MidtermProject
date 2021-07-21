@@ -229,6 +229,17 @@ public class User {
 		}
 	}
 	
+	public void addFavoriteBeer(Beer beer) {
+		if(favoriteBeers == null) {
+			favoriteBeers = new ArrayList<>();
+		}
+		if(!favoriteBeers.contains(beer)) {
+			favoriteBeers.add(beer);
+			beer.addUser(this);
+		}
+	}
+	
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
