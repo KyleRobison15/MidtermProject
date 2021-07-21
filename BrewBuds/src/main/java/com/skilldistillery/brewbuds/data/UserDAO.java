@@ -13,4 +13,5 @@ public interface UserDAO {
 	public User updateUser(int userId, User user);
 	public List<Beer> addToFavorite(int beerId, int userId); 
 	public List<Beer> getFavoriteList(int userId); 
+	public boolean removeFromFavoriteList(int beerId, int userId);
 }

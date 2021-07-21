@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.brewbuds.data.BeerDAO;
 import com.skilldistillery.brewbuds.data.RatingDAO;
 import com.skilldistillery.brewbuds.data.UserDAO;
 import com.skilldistillery.brewbuds.entities.Beer;
@@ -26,7 +27,8 @@ public class AccountController {
 	private UserDAO userDao;
 	@Autowired
 	private RatingDAO ratingDao;
-	
+	@Autowired
+	private BeerDAO beerDao;
 	
 	
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
@@ -115,6 +117,7 @@ public class AccountController {
 		return "home";
 	}
 	
+	//Add a Favorite
 	@RequestMapping(path = "AddFavorite.do", method = RequestMethod.POST)
 	public String addFavorites(@RequestParam("beerId") int beerId, Model model, HttpSession session, RedirectAttributes redir) {
 		
@@ -126,16 +129,34 @@ public class AccountController {
 		return "redirect:ShowFavorites.do";
 	}
 	
+	//Remove a Favorite
+	@RequestMapping(path = "RemoveFavorite.do", method = RequestMethod.POST)
+	public String removeFavorite(@RequestParam("beerId") int beerId, Model model, HttpSession session, RedirectAttributes redir) {
+		
+		User user = (User) session.getAttribute("user"); 
+		userDao.removeFromFavoriteList(beerId, user.getId());
+		
+		redir.addFlashAttribute("user", user);
+		
+		return "redirect:ShowFavorites.do"; 
+	}
+	
 	@RequestMapping(path = "ShowFavorites.do", method = RequestMethod.GET)
 	public String showFavorites(Model model, User user) {
-		model.addAttribute("beers", userDao.getFavoriteList(user.getId()));
+		
+		List<Beer> favorites = userDao.getFavoriteList(user.getId());
+		model.addAttribute("beers", favorites);
+
 		return "userFavorites";
 	}
 	
 	@RequestMapping(path = "ShowFavoritesAlt.do", method = RequestMethod.GET)
 	public String showFavoritesAlt(Model model, @RequestParam("userId") int userId) {
-		model.addAttribute("beers", userDao.getFavoriteList(userId));
+		
+		List<Beer> favorites = userDao.getFavoriteList(userId);
+		model.addAttribute("beers", favorites);
+		
 		return "userFavorites";
 	}
-
-}
+	
+ }
