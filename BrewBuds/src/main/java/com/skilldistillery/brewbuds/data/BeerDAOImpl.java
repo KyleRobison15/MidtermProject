@@ -1,7 +1,6 @@
 package com.skilldistillery.brewbuds.data;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -126,7 +125,7 @@ public class BeerDAOImpl implements BeerDAO {
 		
 		String jpql = "SELECT b FROM Beer b";
 		List<Beer> beers = em.createQuery(jpql, Beer.class).getResultList();
-		List<Beer> topFive = new ArrayList<Beer>(beers.subList(beers.size() -1, beers.size()));
+		List<Beer> topFive = new ArrayList<Beer>(beers.subList(beers.size() -5, beers.size()));
 		
 		return topFive;
 	} 

@@ -98,7 +98,9 @@
 </c:forEach>
 
 
-
+<form action="AddFavorite.do?beerId=${beer.id}" method="post">
+<input type="submit" value="Add to Favorites"/>
+</form>
 
 
 <a href=""></a>
