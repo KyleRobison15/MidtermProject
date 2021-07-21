@@ -1,10 +1,6 @@
 package com.skilldistillery.brewbuds.controllers;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +13,8 @@ import com.skilldistillery.brewbuds.data.BreweryDAO;
 import com.skilldistillery.brewbuds.data.RatingDAO;
 import com.skilldistillery.brewbuds.data.UserDAO;
 import com.skilldistillery.brewbuds.entities.Beer;
+import com.skilldistillery.brewbuds.entities.Brewery;
+import com.skilldistillery.brewbuds.entities.User;
 
 @Controller
 public class HomeController {
@@ -40,18 +38,17 @@ public class HomeController {
 //		model.addAttribute("breweries", breweryDAO.showTopFive());
 //		Double average = ratingDao.findAverageBeerRating(id);
 //		model.addAttribute("average", average);
+//		List<Beer> beers = beerDAO.showTopFive();
 		
-		Map<Beer, Double> beerAndRating = new HashMap<>(); 
-		List<Beer> beers = beerDAO.showTopFive();
+		//Get sorted Beers, Breweries, and Users
+		Map<Double, Beer> ratingAndBeer = ratingDao.getBeersAndRatingsSortedByRating(); 
+		Map<Double, Brewery> ratingAndBrewery = ratingDao.getBreweriesSortedByRating(); 
+		Map<Double, User> ratingAndUser = ratingDao.getUsersSortedByRating(); 
 		
-		for(Beer beer : beers) {
-			Double beerRating = ratingDao.findAverageBeerRating(beer.getId()); 
-			beerAndRating.put(beer, beerRating); 
-		}
-		
-		model.addAttribute("beers", beerAndRating); 
-		
-		
+		//Pass the sorted maps to home.jsp
+		model.addAttribute("beers", ratingAndBeer);
+		model.addAttribute("breweries", ratingAndBrewery); 
+		model.addAttribute("users", ratingAndUser); 
 
 		return "home";
 	}
