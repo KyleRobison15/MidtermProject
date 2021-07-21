@@ -118,13 +118,13 @@ public class AccountController {
 	@RequestMapping(path = "ShowFavorites.do", method = RequestMethod.GET)
 	public String showFavorites(Model model, User user) {
 		model.addAttribute("beers", userDao.getFavoriteList(user.getId()));
-		return "userProfileFind";
+		return "userFavorites";
 	}
 	
 	@RequestMapping(path = "ShowFavoritesAlt.do", method = RequestMethod.GET)
 	public String showFavoritesAlt(Model model, @RequestParam("userId") int userId) {
 		model.addAttribute("beers", userDao.getFavoriteList(userId));
-		return "userProfileFind";
+		return "userFavorites";
 	}
 
 }
