@@ -154,4 +154,10 @@ public class BeerController {
 		return"beerProfile";
 	}
 	
+	@RequestMapping(path = "findBeers.do", params = "keyword")
+	public String findBeers(String keyword, Model model) {		
+		model.addAttribute("beers", dao.findBeerByKeyword(keyword));
+		return"reviews";
+	}
+	
 }

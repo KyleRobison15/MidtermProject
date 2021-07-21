@@ -11,5 +11,6 @@ public interface BeerDAO {
 	public boolean removeBeer(int id); 
 	public List<Beer> showAllBeers();
 	public Beer findBeerById(int beerId);
+	public List<Beer> findBeerByKeyword(String keyword);
 	public List<Beer> showTopFive(); 
 }

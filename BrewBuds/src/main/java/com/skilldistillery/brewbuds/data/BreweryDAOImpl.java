@@ -17,7 +17,8 @@ import com.skilldistillery.brewbuds.entities.Brewery;
 public class BreweryDAOImpl implements BreweryDAO {
 
 	@PersistenceContext
-	private EntityManager em; 
+	private EntityManager em;
+	private String jpql;
 	
 	@Override
 	public Brewery getBrewery(int id) {
@@ -66,5 +67,18 @@ public class BreweryDAOImpl implements BreweryDAO {
 		return topFive;
 	} 
 	
+	@Override
+	public List<Brewery> findBreweryByKeyword(String keyword) {
+		
+		jpql = "SELECT b FROM Brewery b"
+				+ " WHERE b.name LIKE :keyword"
+				+ " OR b.description LIKE :keyword";
+		
+		List<Brewery> breweries = em.createQuery(jpql, Brewery.class)
+				.setParameter("keyword", "%" + keyword + "%")
+				.getResultList();
+				
+		return breweries;
+	}
 	
 }

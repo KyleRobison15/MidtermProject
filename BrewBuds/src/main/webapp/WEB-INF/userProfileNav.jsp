@@ -32,6 +32,26 @@
 							<li class="nav-item"><a class="nav-link active" href="showProfileFind.do"> Find Beers </a></li>
 							<li class="nav-item"><a class="nav-link active" href="account.do"> My Account </a></li>
 							<li class="nav-item"><a class="nav-link active" href="logout.do"> Logout </a></li>
+								<div class="row align-items-end">
+									<div class="col">
+										<div class="container">
+											<form class="d-flex" action="findBeers.do" method="GET">
+												<input class="form-control me-2" type="search"
+												placeholder="Search Beers" name="keyword" aria-label="Search">
+												<button class="btn btn-outline-success" type="submit">Search</button>
+											</form>
+										</div>
+									</div>
+									<div class="col">
+										<div class="container">
+											<form class="d-flex" action="findBreweries.do" method="GET">
+												<input class="form-control me-2" type="search"
+												placeholder="Search Breweries" name="keyword" aria-label="Search">
+												<button class="btn btn-outline-success" type="submit">Search</button>
+											</form>
+										</div>
+									</div>
+								</div>
 						</c:otherwise>
 					</c:choose>
 				</ul>

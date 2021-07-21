@@ -26,4 +26,10 @@ public class BreweryController {
 		return "info";
 	}
 	
+	@RequestMapping(path = "findBreweries.do", params = "keyword")
+	public String findBeers(String keyword, Model model) {		
+		model.addAttribute("breweries", dao.findBreweryByKeyword(keyword));
+		return"showBreweries";
+	}
+	
 }

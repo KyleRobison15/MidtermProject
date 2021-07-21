@@ -47,8 +47,9 @@ public class AccountController {
 	}
 		
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public String login(User user, HttpSession session) {
-	
+	public String login(User user, HttpSession session, Model model) {
+		String message = null;
+		
 		if (session.getAttribute("user") != null) {
 			return "redirect:home.do";
 		}
@@ -60,6 +61,8 @@ public class AccountController {
 			return "redirect:showProfileAdd.do";
 		}
 		else {
+			message = "Incorrect Password";
+			model.addAttribute("message", message);
 			return "login";
 		}	
 	}
@@ -88,14 +91,14 @@ public class AccountController {
 			List<Beer> addedBeers = loggedUser.getAddedBeers();
 			model.addAttribute("addedBeers", addedBeers);
 			
-			return "userProfileAdd";
+			return "userProfile";
 		}
 		return "home";
 	}
 	@RequestMapping(path = "showProfileFind.do", method = RequestMethod.GET)
 	public String showProfileFind(HttpSession session) {
 		if (session.getAttribute("user") != null) {
-			return "userProfileFind";
+			return "userFavorites";
 		}
 		return "home";
 	}
