@@ -51,7 +51,7 @@
 <c:choose>
 <c:when test="${!empty sessionScope.user }">
 	<c:choose>
-	<c:when test="${!alreadyRated}">
+	<c:when test="true">
 		<form action="submitRating.do" method="POST">
 		
 		<input class="form-check-input" type="radio" name="rating" id="rating1" value="1">

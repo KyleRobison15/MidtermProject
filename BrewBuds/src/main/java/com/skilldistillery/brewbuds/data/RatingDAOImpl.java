@@ -92,14 +92,13 @@ public class RatingDAOImpl implements RatingDAO {
 		User user = em.find(User.class, userId);
 		
 		int total = 0;
-		
-		for (Rating rating : user.getRatings()) {
+		for(Beer beer : user.getAddedBeers()) {
 			
-			total += rating.getRating();
+			total += findAverageBeerRating(beer.getId());
 			
 		}
-		
-		average = (double) total / (double) user.getRatings().size();
+	
+		average = (double) total / (double) user.getAddedBeers().size();
 		
 		return average;
 		
@@ -118,6 +117,7 @@ public class RatingDAOImpl implements RatingDAO {
 		int total = 0;
 		
 		for(Beer beer : beers) {
+			
 			total += findAverageBeerRating(beer.getId());
 		}
 		
