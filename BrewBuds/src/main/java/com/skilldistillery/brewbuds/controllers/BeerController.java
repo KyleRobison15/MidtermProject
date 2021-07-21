@@ -61,22 +61,37 @@ public class BeerController {
 		
 		User user = userDao.findById(Integer.valueOf(userId));
 		boolean alreadyRated = false;
+		System.out.println("----------------------------------------------------------------------");
+		System.out.println("In submit.do already rated = false");
+		System.out.println("----------------------------------------------------------------------");
 		
 		Rating rating1 = new Rating();
 		rating1.setId(ratingId);
 		
+		//these were moved up from the if statement...
+		rating1 = ratingDao.getRating(ratingId);
+		mv.addObject("userReview", rating1);
+		
 		//Check if user owns a rating for this beer:
 			//if so, updates the beer rating and adds the updated beer rating to the model
 		if(user.getRatings().contains(rating1)) {
-			alreadyRated = true;
 			ratingDao.updateBeerRating(Integer.valueOf(beerId), Integer.valueOf(userId), Integer.valueOf(rating), comment);
-			rating1 = ratingDao.getRating(ratingId);
-			mv.addObject("userReview", rating1);
+			alreadyRated = true;
+			System.out.println("----------------------------------------------------------------------");
+			System.out.println("In submit.do already rated = true");
+			System.out.println("----------------------------------------------------------------------");
+			//moved up to line 68...
+			//ratingDao.updateBeerRating(Integer.valueOf(beerId), Integer.valueOf(userId), Integer.valueOf(rating), comment);
+			//rating1 = ratingDao.getRating(ratingId);
+			//mv.addObject("userReview", rating1);
 		}
 		else {
 			
 			//Adds beer rating if one doesn't already exist
 			ratingDao.addBeerRating(Integer.valueOf(beerId), Integer.valueOf(userId), Integer.valueOf(rating), comment);
+			alreadyRated = true;
+			rating1 = ratingDao.getRating(ratingId);
+			mv.addObject("userReview", rating1);
 		}
 		
 		
@@ -112,14 +127,22 @@ public class BeerController {
 				
 				User user = userDao.findById(Integer.valueOf(loggedUser.getId()));
 				boolean alreadyRated = false;
+				System.out.println("----------------------------------------------------------------------");
+				System.out.println("In beerProfile.do already rated = false");
+				System.out.println("----------------------------------------------------------------------");
 				
 				Rating rating1 = new Rating();
 				rating1.setId(ratingId);
 				
+				//Moved up from if statement
+				rating1 = ratingDao.getRating(ratingId);
+				model.addAttribute("userReview", rating1);
+				
 				if(user.getRatings().contains(rating1)) {
 					alreadyRated = true;
-					rating1 = ratingDao.getRating(ratingId);
-					model.addAttribute("userReview", rating1);
+					System.out.println("----------------------------------------------------------------------");
+					System.out.println("In beerProfile.do already rated = true");
+					System.out.println("----------------------------------------------------------------------");
 				}
 				model.addAttribute("alreadyRated", alreadyRated);
 		////////////////////////////////////////////////////////////
@@ -130,7 +153,8 @@ public class BeerController {
 		model.addAttribute("average", average);
 		
 //		model.addAttribute("beer", dao.find(id));
-
+		
+		
 		return "beerProfile";
 	}
 	
@@ -144,7 +168,7 @@ public class BeerController {
 	
 	@RequestMapping(path = "addBeer.do", method = RequestMethod.POST)
 	public String addBeer(Beer beer, User user, HttpSession session, String breweryName, String subCatName,
-								RedirectAttributes redir, Model model) {
+								RedirectAttributes redir, Model model, String rating, String comment) {
 		
 		
 		user = (User)session.getAttribute("user");
@@ -154,6 +178,10 @@ public class BeerController {
 				
 		if (newBeer != null) {
 //			redir.addFlashAttribute("id", newBeer.getId());
+			
+			//TODO: add beers rating here
+			ratingDao.addBeerRating(newBeer.getId(), user.getId(), Integer.valueOf(rating), comment);
+			
 			redir.addFlashAttribute("beer",newBeer);
 			return "redirect:beerAdded.do";
 		}
@@ -162,9 +190,20 @@ public class BeerController {
 	}
 	
 	@RequestMapping(path="beerAdded.do", method=RequestMethod.GET)
-	public String beerAdded(Model model) {
+	public String beerAdded(Model model, HttpSession session) {
 		
+		User user = (User) session.getAttribute("user");
+		boolean alreadyRated = true;
+		RatingId ratingId = new RatingId();
 		Beer beer = (Beer) model.getAttribute("beer");
+		ratingId.setBeerId(beer.getId());
+		ratingId.setUserId(user.getId());
+		Rating userReview = ratingDao.getRating(ratingId);
+		double average = ratingDao.findAverageBeerRating(beer.getId());
+		model.addAttribute("average", average);
+		model.addAttribute("alreadyRated", alreadyRated);
+		model.addAttribute("userReview", userReview);
+		beer = dao.findBeerById(beer.getId());
 		model.addAttribute("beer", beer);
 		
 		return"beerProfile";
@@ -179,16 +218,16 @@ public class BeerController {
 		ratingId.setBeerId(Integer.valueOf(beerId));
 		ratingId.setUserId(Integer.valueOf(userId));
 		
-		System.out.println("Check1--------------------------------------------------------------");
 		ratingDao.deleteBeerRating(ratingId);
-		System.out.println("Check2--------------------------------------------------------------");
 		Beer beer = dao.findBeerById(Integer.valueOf(beerId));
 		//User user = userDao.findById(Integer.valueOf(userId));
 		mv.addObject("beer", beer);
 		//mv.addObject(beerId);
 		//mv.addObject(userId);
 		
+		double average = ratingDao.findAverageBeerRating(Integer.valueOf(beerId));
 		
+		mv.addObject("average", average);
 		mv.setViewName("beerProfile");
 		
 		return mv;

@@ -76,7 +76,32 @@
 		<label for="imageURL" class="col-sm-2 col-form-label">ImageURL</label>
 		<input type="url" pattern="https://.*" placeholder="https://beerimage.jpeg" class="form-control" id="imageURL" name="imageURL">
 
+		
+<!-- ///////////////////////////////////////////// INITIAL BEER RATING FORM ////////////////////////////////////////////////////////////// -->
+		
+		
+		<input class="form-check-input" type="radio" name="rating" id="rating1" value="1">
+		<label for="rating1">1</label>
+		<input class="form-check-input" type="radio" name="rating" id="rating2" value="2"> 
+		<label for="rating2">2</label>
+		<input class="form-check-input" type="radio" name="rating" id="rating3" value="3"> 
+		<label for="rating3">3</label>
+		<input class="form-check-input" type="radio" name="rating" id="rating4" value="4"> 
+		<label for="rating4">4</label>
+		<input class="form-check-input" type="radio" name="rating" id="rating5" value="5" checked> 
+		<label for="rating5">5</label>
+		<label class="form-check-label" for="ticked"> Rating </label>
+		
+		Comment:
+		<input type="text" name="comment"/>
+		<!--  <input type="hidden" name="beerId" value="${beer.id}"/> -->
+		<!--  <input type="hidden" name="userId" value="${sessionScope.user.id}"/> -->
+		
+		
+<!-- ///////////////////////////////////////////// SUBMIT FORM ////////////////////////////////////////////////////////////// -->		
+		
 		<br/><button type="submit" class="btn btn-outline-dark">Add Beer!</button>
+		
 		
 			</form>
 		</div>

@@ -11,7 +11,8 @@
 </head>
 <body>
 
-	<div class="container"><h1 class="display-3">${rating }</h1></div>
+	<div class="container"><h1 class="display-3">Rating: ${rating }</h1></div>
+	<div class="container"><h1 class="display-3">Merit: ${merit }</h1></div>
 
 	<div class="container">
 		<h1 class="display-4">Your Beers</h1>

@@ -103,6 +103,9 @@ public class AccountController {
 			}
 			model.addAttribute("addedBeers", beerAndRating);
 			
+			//Adds merit to user profile
+			model.addAttribute("merit", ratingDao.getMerit(loggedUser.getId()));
+			
 			return "userProfile";
 		}
 		return "home";

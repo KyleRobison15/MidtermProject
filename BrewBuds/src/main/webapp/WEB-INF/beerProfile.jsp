@@ -161,6 +161,7 @@
 <li>User: ${rating.user.username}</li>
 <li>Rating: ${rating.rating}</li>
 <li>Comment: ${rating.comment}</li>
+<li> Date Added: ${rating.ratingDate} </li>
 </ul>
 
 </c:forEach>

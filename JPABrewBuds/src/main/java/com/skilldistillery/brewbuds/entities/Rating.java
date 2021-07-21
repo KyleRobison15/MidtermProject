@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 public class Rating {
 
@@ -23,6 +25,7 @@ public class Rating {
 	private String comment;
 	
 	@Column(name = "rating_date")
+	@CreationTimestamp
 	LocalDateTime ratingDate;
 	
 	@ManyToOne

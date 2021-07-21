@@ -14,4 +14,5 @@ public interface RatingDAO {
 	double findAverageBreweryRating(int breweryId);
 	void updateBeerRating(int beerId, int userId, int ratingVal, String comment);
 	Rating getRating(RatingId ratingId);
+	int getMerit(int userId);
 }

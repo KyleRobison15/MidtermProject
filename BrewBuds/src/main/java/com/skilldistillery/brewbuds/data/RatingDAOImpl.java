@@ -40,7 +40,8 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		rating.setRating(ratingVal);
 		rating.setComment(comment);
-		rating.setRatingDate(null);
+		
+		//rating.setRatingDate(null);
 
 		em.persist(rating);
 		System.out.println("Success");
@@ -58,7 +59,7 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		rating.setRating(ratingVal);
 		rating.setComment(comment);
-		rating.setRatingDate(null);
+		//rating.setRatingDate(null);
 		
 		//em.getTransaction().commit();
 		
@@ -169,6 +170,22 @@ public class RatingDAOImpl implements RatingDAO {
 		return em.find(Rating.class, ratingId);
 	}
 
+	
+	public int getMerit(int userId) {
+		
+		User user = em.find(User.class, userId);
+		
+		List<Beer> addedBeers = user.getAddedBeers();
+		
+		int merit = 0;
+		
+		for (Beer beer : addedBeers) {
+			merit += beer.getRatings().size();
+		}
+		
+		return merit;
+		
+	}
 
 	
 	
