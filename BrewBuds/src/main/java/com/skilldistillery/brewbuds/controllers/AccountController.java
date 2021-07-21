@@ -50,8 +50,9 @@ public class AccountController {
 	}
 		
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public String login(User user, HttpSession session) {
-	
+	public String login(User user, HttpSession session, Model model) {
+		String message = null;
+		
 		if (session.getAttribute("user") != null) {
 			return "redirect:home.do";
 		}
@@ -63,6 +64,8 @@ public class AccountController {
 			return "redirect:showProfileAdd.do";
 		}
 		else {
+			message = "Incorrect Password";
+			model.addAttribute("message", message);
 			return "login";
 		}	
 	}
@@ -100,14 +103,14 @@ public class AccountController {
 			}
 			model.addAttribute("addedBeers", beerAndRating);
 			
-			return "userProfileAdd";
+			return "userProfile";
 		}
 		return "home";
 	}
 	@RequestMapping(path = "showProfileFind.do", method = RequestMethod.GET)
 	public String showProfileFind(HttpSession session) {
 		if (session.getAttribute("user") != null) {
-			return "userProfileFind";
+			return "userFavorites";
 		}
 		return "home";
 	}
@@ -126,13 +129,13 @@ public class AccountController {
 	@RequestMapping(path = "ShowFavorites.do", method = RequestMethod.GET)
 	public String showFavorites(Model model, User user) {
 		model.addAttribute("beers", userDao.getFavoriteList(user.getId()));
-		return "userProfileFind";
+		return "userFavorites";
 	}
 	
 	@RequestMapping(path = "ShowFavoritesAlt.do", method = RequestMethod.GET)
 	public String showFavoritesAlt(Model model, @RequestParam("userId") int userId) {
 		model.addAttribute("beers", userDao.getFavoriteList(userId));
-		return "userProfileFind";
+		return "userFavorites";
 	}
 
 }

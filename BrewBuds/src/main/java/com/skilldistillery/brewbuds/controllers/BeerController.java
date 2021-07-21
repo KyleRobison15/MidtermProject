@@ -170,6 +170,7 @@ public class BeerController {
 		return"beerProfile";
 	}
 	
+
 	@RequestMapping(path="deleteRating.do", method=RequestMethod.POST)
 	ModelAndView deleteRating(String beerId, String userId) {
 		ModelAndView mv = new ModelAndView();
@@ -191,6 +192,13 @@ public class BeerController {
 		mv.setViewName("beerProfile");
 		
 		return mv;
+	}
+
+	@RequestMapping(path = "findBeers.do", params = "keyword")
+	public String findBeers(String keyword, Model model) {		
+		model.addAttribute("beers", dao.findBeerByKeyword(keyword));
+		return"reviews";
+
 	}
 	
 }

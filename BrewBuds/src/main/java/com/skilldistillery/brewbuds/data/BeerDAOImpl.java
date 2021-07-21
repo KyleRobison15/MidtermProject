@@ -128,6 +128,21 @@ public class BeerDAOImpl implements BeerDAO {
 		List<Beer> topFive = new ArrayList<Beer>(beers.subList(beers.size() -5, beers.size()));
 		
 		return topFive;
+	}
+
+	@Override
+	public List<Beer> findBeerByKeyword(String keyword) {
+		
+		jpql = "SELECT b FROM Beer b"
+				+ " WHERE b.name LIKE :keyword"
+				+ " OR b.description LIKE :keyword"
+				+ " OR b.brewery.name LIKE :keyword";
+		
+		List<Beer> beers = em.createQuery(jpql, Beer.class)
+				.setParameter("keyword", "%" + keyword + "%")
+				.getResultList();
+				
+		return beers;
 	} 
 
 }
