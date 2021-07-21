@@ -11,4 +11,6 @@ public interface UserDAO {
 	public boolean createUserAccount(User newUser, String confirmPassword);
 	public User getUserByLoginCredentials(String username, String password);
 	public User updateUser(int userId, User user);
+	public List<Beer> addToFavorite(int beerId, int userId); 
+	public List<Beer> getFavoriteList(int userId); 
 }

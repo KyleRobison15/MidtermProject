@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.brewbuds.entities.Beer;
 import com.skilldistillery.brewbuds.entities.Brewery;
 
 @Service
@@ -61,7 +60,7 @@ public class BreweryDAOImpl implements BreweryDAO {
 		
 		String jpql = "SELECT b FROM Brewery b";
 		List<Brewery> breweries = em.createQuery(jpql, Brewery.class).getResultList();
-		List<Brewery> topFive = new ArrayList<Brewery>(breweries.subList(breweries.size() -1, breweries.size()));
+		List<Brewery> topFive = new ArrayList<Brewery>(breweries.subList(breweries.size() -5, breweries.size()));
 		
 		return topFive;
 	} 

@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -47,10 +46,7 @@ public class Beer {
 	@JoinColumn(name="user_id") 
 	private User user;  					// User who added this beer
 	
-	@ManyToMany
-	@JoinTable(name="favorite_beer", 
-	joinColumns=@JoinColumn(name= "beer_id"), 
-	inverseJoinColumns=@JoinColumn(name="user_id"))
+	@ManyToMany(mappedBy="favoriteBeers")
 	private List<User> users;				// Users who have this beer in their favorites list
 	
 	@OneToMany(mappedBy = "beer")
