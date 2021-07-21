@@ -91,4 +91,19 @@ public class UserDAOImpl implements UserDAO {
 		return user.getFavoriteBeers();
 	}
 
+	@Override
+	public boolean removeFromFavoriteList(int beerId, int userId) {
+		
+		User user = em.find(User.class, userId);
+		Beer beer = em.find(Beer.class, beerId);
+		
+		user.removeFavoriteBeer(beer);
+		
+		boolean successfulRemove; 
+		
+		successfulRemove = !user.getFavoriteBeers().contains(beer);
+			
+		return successfulRemove;
+	}
+
 }

@@ -239,6 +239,13 @@ public class User {
 		}
 	}
 	
+	public void removeFavoriteBeer(Beer beer) {
+		if(favoriteBeers != null && favoriteBeers.contains(beer)) {
+			favoriteBeers.remove(beer);
+			beer.removeUser(null);
+		}
+	}
+	
 	
 	@Override
 	public String toString() {

@@ -45,7 +45,7 @@
 							<th>Brewery</th>
 							<th>Style</th>
 							<th>User</th>
-							<th>Rating</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -55,14 +55,16 @@
 								<td><a href="BreweryInfo.do?id=${beer.brewery.id}">${beer.brewery.name}</a></td>
 								<td>${beer.subCategory.name}</td>
 								<td>${beer.user.username}</td>
-
-								<c:forEach var="rating" items="${ratings}">
-									<td>${beer.rating.rating}
-								</c:forEach>
+								<td>
+									<form action="RemoveFavorite.do?beerId=${beer.id}" method="post">
+									<input type="submit" value="remove"/>
+									</form>
+								</td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				<p>${beers.size()}on your list. Cheers to that!</p>
+				<p>${beers.size()} on your list. Cheers to that!</p>
 			</c:when>
 
 			<c:otherwise>

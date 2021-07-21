@@ -1,7 +1,11 @@
 package com.skilldistillery.brewbuds.data;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +25,7 @@ public class RatingDAOImpl implements RatingDAO {
 	
 	@PersistenceContext
 	EntityManager em;
+	String jpql;
 	
 	@Override
 	public void addBeerRating(int beerId, int userId, int ratingVal, String comment) {
@@ -102,9 +107,6 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		average = (double) total / (double) beer.getRatings().size();
 		
-		System.out.println("---------------------------------------------------------------------------------------");
-		System.out.println(average);
-		System.out.println("---------------------------------------------------------------------------------------");
 		
         DecimalFormat df = new DecimalFormat("#.##");
         average = Double.valueOf(df.format(average));
@@ -120,6 +122,11 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		User user = em.find(User.class, userId);
 		
+		
+		if(user.getAddedBeers().size() == 0) {
+			return 0;
+		}
+		
 		int total = 0;
 		for(Beer beer : user.getAddedBeers()) {
 			
@@ -129,11 +136,9 @@ public class RatingDAOImpl implements RatingDAO {
 	
 		average = (double) total / (double) user.getAddedBeers().size();
 		
-		
 //		double d = 1.234567;
         DecimalFormat df = new DecimalFormat("#.##");
         average = Double.valueOf(df.format(average));
-		
 		
 		return average;
 		
@@ -170,6 +175,7 @@ public class RatingDAOImpl implements RatingDAO {
 		return em.find(Rating.class, ratingId);
 	}
 
+
 	
 	public int getMerit(int userId) {
 		
@@ -188,8 +194,85 @@ public class RatingDAOImpl implements RatingDAO {
 	}
 
 	
+
+	@Override
+	public Map<Double, Beer> getBeersAndRatingsSortedByRating() {
+		
+//		jpql = "SELECT r.beer FROM Rating r GROUP BY r.beer ORDER BY AVG(r.rating) DESC";
+		jpql = "SELECT r.beer, AVG(r.rating) FROM Rating r GROUP BY r.beer ORDER BY AVG(r.rating) DESC, r.beer.name";
+		
+		List<Object[]> results = em.createQuery(jpql, Object[].class).getResultList();
 	
+		Map<Double, Beer> ratingAndBeer = new TreeMap<>((d1,d2)-> (int)(100*(d2-d1)));
+		
+		for (Object[] o : results) {
+			ratingAndBeer.put((Double)o[1], (Beer)o[0]);
+		}
+		
+		return ratingAndBeer;
+	}
+
 	
+	@Override
+	public List<Beer> getBeersSortedByRating() {
+		
+		List<Beer> beersSortedByRating = null;
+		
+		jpql = "SELECT r.beer FROM Rating r GROUP BY r.beer ORDER BY AVG(r.rating) DESC";
+//		jpql = "SELECT r.beer, AVG(r.rating) FROM Rating r GROUP BY r.beer ORDER BY AVG(r.rating) DESC";
+		
+		beersSortedByRating = em.createQuery(jpql, Beer.class).getResultList();
+
+		return beersSortedByRating;
+	}
 	
+	@Override
+	public Map<Double, Brewery> getBreweriesSortedByRating() {
+		
+		jpql = "SELECT b FROM Brewery b";
+		List<Brewery> breweries = em.createQuery(jpql,Brewery.class).getResultList();
+		
+		Map<Brewery, Double> breweryAndRating = new HashMap<>();
+		
+		for(Brewery brewery : breweries) {
+			Double breweryRating = findAverageBreweryRating(brewery.getId()); 
+			breweryAndRating.put(brewery, breweryRating); 
+		}
+		
+		Map<Double, Brewery> ratingAndBrewery = new TreeMap<>((d1,d2)-> (int)(100*(d2-d1)));
+		
+		Set<Brewery> keySet = breweryAndRating.keySet();
+		for (Brewery brewery : keySet) {
+			ratingAndBrewery.put(breweryAndRating.get(brewery), brewery);
+		}
+		
+		return ratingAndBrewery;
+	}
+
+	@Override
+	public Map<Double, User> getUsersSortedByRating() {
+		
+		jpql = "SELECT u FROM User u";
+		List<User> users = em.createQuery(jpql,User.class).getResultList();
+		
+		Map<User, Double> userAndRating = new HashMap<>();
+		
+		int counter = 0; 
+		for(User user : users) {
+			System.out.println(counter);
+			counter++;
+			Double userRating = findAverageUserRating(user.getId()); 
+			userAndRating.put(user, userRating); 
+		}
+		
+		Map<Double, User> ratingAndUser = new TreeMap<>((d1,d2)-> (int)(100*(d2-d1)));
+		
+		Set<User> keySet = userAndRating.keySet();
+		for (User user : keySet) {
+			ratingAndUser.put(userAndRating.get(user), user);
+		}
+		
+		return ratingAndUser;
+	}
 	
 }
