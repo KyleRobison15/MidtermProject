@@ -36,6 +36,9 @@ public class User {
 	
 	private String role;
 	
+	@Column(name="profile_image_url")
+	private String imageURL;
+	
 	@Column(name="first_name")
 	private String firstName;
 	
@@ -247,6 +250,14 @@ public class User {
 	}
 	
 	
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
