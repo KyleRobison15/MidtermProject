@@ -37,6 +37,11 @@
 			
 		<label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
 		<input type="text" class="form-control" id="lastName" name="lastName" required>
+
+<!-- ///////////////////////////////////////////// PROFILE IMAGE ////////////////////////////////////////////////////////////// -->
+			
+		<label for="url" class="col-sm-2 col-form-label">Profile Photo</label>
+		<input type="url" pattern="https://.*" class="form-control" id="url" name="imageURL">
 		
 <!-- ///////////////////////////////////////////// PASSWORD ////////////////////////////////////////////////////////////// -->
 

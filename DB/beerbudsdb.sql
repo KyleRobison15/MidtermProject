@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `enabled` TINYINT NOT NULL,
   `role` VARCHAR(45) NULL,
   `address_id` INT NOT NULL,
+  `profile_image_url` VARCHAR(5000) NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_user_address1`
     FOREIGN KEY (`address_id`)
@@ -256,11 +257,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (1, 'KyleRobison', 'admin1', 'Kyle', 'Robison', 'admin1@example.com', '2017-07-16 12:00:00', 1, 'admin', 2);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (2, 'BeerTaster25', 'beer', 'Bob', 'boblastname', 'beertaster@example.com', '2017-07-16 12:00:00', 1, 'user', 6);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (3, 'TomStagnaro', 'admin', 'Tom', 'Stagnaro', 'tomstagnaro@example.com', '2018-07-16 12:00:00', 1, 'admin', 3);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (4, 'ChrisRiddle', 'admin', 'Chris', 'Riddle', 'chrisriddle@example.com', '2019-07-16 12:00:00', 1, 'admin', 4);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`) VALUES (5, 'MattLee', 'admin', 'Matt', 'Lee', 'mattlee@example.com', '2020-07-16 12:00:00', 1, 'admin', 5);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (1, 'KyleRobison', 'admin1', 'Kyle', 'Robison', 'admin1@example.com', '2017-07-16 12:00:00', 1, 'admin', 2, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (2, 'BeerTaster25', 'beer', 'Bob', 'boblastname', 'beertaster@example.com', '2017-07-16 12:00:00', 1, 'user', 6, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (3, 'TomStagnaro', 'admin', 'Tom', 'Stagnaro', 'tomstagnaro@example.com', '2018-07-16 12:00:00', 1, 'admin', 3, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (4, 'ChrisRiddle', 'admin', 'Chris', 'Riddle', 'chrisriddle@example.com', '2019-07-16 12:00:00', 1, 'admin', 4, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (5, 'MattLee', 'admin', 'Matt', 'Lee', 'mattlee@example.com', '2020-07-16 12:00:00', 1, 'admin', 5, NULL);
 
 COMMIT;
 
@@ -397,11 +398,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 1, 2, 'One of my favorites', NULL);
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (4, 2, 1, 'Tastes hoppy.', NULL);
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (3, 3, 3, 'Would pair well with fish.', NULL);
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 4, 4, 'The bitterness to sweetness balanace is off.', NULL);
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 5, 5, 'Pretty good.', NULL);
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 1, 2, 'One of my favorites', '2021-01-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (4, 2, 1, 'Tastes hoppy.', '2021-02-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (3, 3, 3, 'Would pair well with fish.', '2021-03-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 4, 4, 'The bitterness to sweetness balanace is off.', '2021-04-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 5, 5, 'Pretty good.', '2021-05-01 12:05:32');
 
 COMMIT;
 

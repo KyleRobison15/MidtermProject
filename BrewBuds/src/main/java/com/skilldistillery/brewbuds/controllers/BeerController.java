@@ -1,5 +1,6 @@
 package com.skilldistillery.brewbuds.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,9 +46,16 @@ public class BeerController {
 //	}
 	
 	@RequestMapping(path = "ShowAll.do", method = RequestMethod.GET)
-	public String showReviews(Model model) {
+	public String showReviews(Model model, HttpSession session) {
 
-		Map<Double, Beer> ratingAndBeer = ratingDao.getBeersAndRatingsSortedByRating(); 
+		List<Beer> beers = dao.showAllBeers();
+		Map<Double, Beer> ratingAndBeer = new HashMap<>();
+		
+		for(Beer beer : beers) {
+			Double ratings = ratingDao.findAverageBeerRating(beer.getId());
+			ratingAndBeer.put(ratings, beer);
+		}
+		
 		model.addAttribute("beers", ratingAndBeer);
 		
 		return "reviews";

@@ -42,6 +42,7 @@ public class AccountController {
 			return "redirect:accountCreated.do";
 		}
 			model.addAttribute("newUser",newUser);
+			
 		return "creationFailed";
 	}
 	
@@ -121,16 +122,51 @@ public class AccountController {
 	}
 	
 	//Add a Favorite
-	@RequestMapping(path = "AddFavorite.do", method = RequestMethod.POST)
-	public String addFavorites(@RequestParam("beerId") int beerId, Model model, HttpSession session, RedirectAttributes redir) {
+	@RequestMapping(path = "AddFavoriteReviewsPage.do", method = RequestMethod.POST)
+	public String addFavoritesReviewsPage(int beerId, Model model, HttpSession session, RedirectAttributes redir) {
 		
 		User user = (User) session.getAttribute("user"); 
-		userDao.addToFavorite(beerId, user.getId());
 		
-		redir.addFlashAttribute("user", user);
 		
-		return "redirect:ShowFavorites.do";
+		//Alert Message if User selects "Add to Favorite"
+		//and selected Beer is already in User's Favorite List
+		String message = null; 
+		
+		if(user.getFavoriteBeers().contains(beerDao.findBeerById(beerId))) {
+			message = "Beer is already in your Favorites!";
+			redir.addFlashAttribute("message", message);
+			return "redirect:ShowAll.do";
+		} else {
+			userDao.addToFavorite(beerId, user.getId());
+			redir.addFlashAttribute("user", user);
+			return "redirect:ShowFavorites.do";
+		}
+		
 	}
+	
+	//Add a Favorite
+//	@RequestMapping(path = "AddFavoriteBeerProfilePage.do", method = RequestMethod.POST)
+//	public String addFavoritesBeerPofilePage(int id, Model model, HttpSession session, RedirectAttributes redir) {
+//		
+//		User user = (User) session.getAttribute("user"); 
+//		
+//		
+//		//Alert Message if User selects "Add to Favorite"
+//		//and selected Beer is already in User's Favorite List
+//		String message = null; 
+//		
+//		if(user.getFavoriteBeers().contains(beerDao.findBeerById(id))) {
+//			message = "Beer is already in your Favorites!";
+//			redir.addFlashAttribute("message", message);
+//			model.addAttribute("id", id);
+//			return "redirect:beerProfile.do";
+//		} else {
+//			userDao.addToFavorite(id, user.getId());
+//			redir.addFlashAttribute("user", user);
+//			return "redirect:ShowFavorites.do";
+//		}
+//		
+//	}
 	
 	//Remove a Favorite
 	@RequestMapping(path = "RemoveFavorite.do", method = RequestMethod.POST)

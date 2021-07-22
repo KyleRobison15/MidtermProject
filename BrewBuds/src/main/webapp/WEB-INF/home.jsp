@@ -20,7 +20,7 @@
 	<div class="topUsers">
 		<div class="container-fluid">
 			<h1 class="display-6">Top 5 Users</h1>
-			<table class="table">
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th scope="col">Username</th>
