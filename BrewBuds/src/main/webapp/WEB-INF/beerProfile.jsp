@@ -167,9 +167,16 @@
 </c:forEach>
 
 
-<form action="AddFavorite.do?beerId=${beer.id}" method="post">
-<input type="submit" value="Add to Favorites"/>
-</form>
+<c:choose>
+	<c:when test="${!empty sessionScope.user }">
+		<form action="AddFavorite.do?beerId=${beer.id}" method="post">
+		<input type="submit" value="Add to Favorites"/>
+		</form>
+	</c:when>	
+</c:choose>
+
+
+
 
 
 <a href=""></a>
