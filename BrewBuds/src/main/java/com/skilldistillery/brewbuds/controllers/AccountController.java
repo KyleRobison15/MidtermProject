@@ -42,6 +42,7 @@ public class AccountController {
 			return "redirect:accountCreated.do";
 		}
 			model.addAttribute("newUser",newUser);
+			
 		return "creationFailed";
 	}
 	
