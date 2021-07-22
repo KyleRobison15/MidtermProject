@@ -64,6 +64,22 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public boolean updateUser(User user, String confirmPassword) {
+				
+		User managedUser = em.find(User.class, user.getId());
+		managedUser.setFirstName(user.getFirstName());
+		managedUser.setLastName(user.getLastName());
+		managedUser.setImageURL(user.getImageURL());
+		
+		if (user.getPassword().equals(confirmPassword)) {
+			managedUser.setPassword(user.getPassword());
+			return true;
+		}
+		
+		return false;
+	}
+
+	@Override
 	public User getUserByLoginCredentials(String username, String password) {
 
 		jpql = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
@@ -76,12 +92,6 @@ public class UserDAOImpl implements UserDAO {
 		if (users.size() > 0 && users.size() <= 1) {
 			return users.get(0);
 		}
-		return null;
-	}
-	
-	@Override
-	public User updateUser(int userId, User user) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

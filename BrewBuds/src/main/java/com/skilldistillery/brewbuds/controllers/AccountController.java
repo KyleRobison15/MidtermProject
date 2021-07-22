@@ -51,7 +51,24 @@ public class AccountController {
 		model.addAttribute("newUser", newUser);
 		return"accountCreated";
 	}
+	
+	
+	@RequestMapping(path = "updateAccount.do", method = RequestMethod.POST)
+	public String updateAccount(User user, String confirmPassword, RedirectAttributes redir, Model model) {
 		
+		boolean isUpdated = userDao.updateUser(user, confirmPassword);
+		
+		
+		if (isUpdated) {
+			redir.addFlashAttribute("user", user);
+			return "redirect:accountUpdated.do";
+		}
+			model.addAttribute("user",user);
+			
+		return "creationFailed";
+	}
+	
+	
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String login(User user, HttpSession session, Model model) {
 		String message = null;
