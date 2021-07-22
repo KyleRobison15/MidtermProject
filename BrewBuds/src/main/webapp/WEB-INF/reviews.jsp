@@ -29,16 +29,12 @@
 			<tbody>
 				<c:forEach var="beer" items="${beers}">
 				<tr>
-		 		<td><a href="beerProfile.do?id=${beer.id}">${beer.name}</a></td>
-		 		<td><a href="BreweryInfo.do?id=${beer.brewery.id}">${beer.brewery.name}</a></td>
-		 		<td>${beer.description}</td>
-				<td>${beer.subCategory.name}</td>
-				<td>${beer.user.username}</td>
-				
-					<c:forEach var="rating" items="${ratings}">
-					<td>${beer.rating.rating}</td>
-					</c:forEach>
-					
+		 		<td><a href="beerProfile.do?id=${beer.value.id}">${beer.value.name}</a></td>
+		 		<td><a href="BreweryInfo.do?id=${beer.value.brewery.id}">${beer.value.brewery.name}</a></td>
+		 		<td>${beer.value.description}</td>
+				<td>${beer.value.subCategory.name}</td>
+				<td>${beer.value.user.username}</td>
+				<td>${beer.key}</td>
 				</c:forEach>
 			</tbody>
 		</table>

@@ -31,7 +31,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${beers }" var="beer" begin="0" end="5">
+							<c:forEach items="${beers}" var="beer" begin="0" end="5">
 								<tr>
 									<td>${beer.key}</td>
 									<td>${beer.value.user.username}</td>

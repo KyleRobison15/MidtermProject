@@ -1,6 +1,7 @@
 package com.skilldistillery.brewbuds.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -44,7 +45,10 @@ public class BeerController {
 	
 	@RequestMapping(path = "ShowAll.do", method = RequestMethod.GET)
 	public String showReviews(Model model) {
-		model.addAttribute("beers", dao.showAllBeers());
+
+		Map<Double, Beer> ratingAndBeer = ratingDao.getBeersAndRatingsSortedByRating(); 
+		model.addAttribute("beers", ratingAndBeer);
+		
 		return "reviews";
 	}
 	
