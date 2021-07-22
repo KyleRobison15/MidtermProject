@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="styles.jsp"%> 
 <%@ include file="nav.jsp"%> 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +8,7 @@
 <title>Brewery Info</title>
 </head>
 <body>
-
 <h2>${brewery.name}</h2>
-
 <div class = "breweryInfo">
 	<ul>
 		<li>Brewery ID: ${brewery.id}</li>
@@ -26,11 +23,9 @@
 			</ul>
 	</ul>
 </div>
-
 <br>
 <h3>Beers in this Brewery's Icebox</h3>
 <br>
-
 <div class = "beerTable">
 <c:choose>
 <c:when test="${!empty beers}">
@@ -51,13 +46,10 @@
 			</tbody>
 		</table>
 </c:when>
-
 <c:otherwise>
 	<p>None Found!</p>
 </c:otherwise>
-
 </c:choose>
 </div>
-
 </body>
 </html>
