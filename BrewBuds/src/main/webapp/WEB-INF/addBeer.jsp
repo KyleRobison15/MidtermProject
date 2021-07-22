@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="styles.jsp"%> 
-<%@ include file="nav.jsp"%> 
+<%@ include file="nav.jsp"%>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Add a Beer</title>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+<link rel="stylesheet" href="/css/starRating.css"> -->
 </head>
 <body>
 
@@ -75,28 +78,40 @@
 
 		<label for="imageURL" class="col-sm-2 col-form-label">ImageURL</label>
 		<input type="url" pattern="https://.*" placeholder="https://beerimage.jpeg" class="form-control" id="imageURL" name="imageURL">
-
+		<br>
 		
 <!-- ///////////////////////////////////////////// INITIAL BEER RATING FORM ////////////////////////////////////////////////////////////// -->
 		
-		
-		<input class="form-check-input" type="radio" name="rating" id="rating1" value="1">
-		<label for="rating1">1</label>
-		<input class="form-check-input" type="radio" name="rating" id="rating2" value="2"> 
-		<label for="rating2">2</label>
-		<input class="form-check-input" type="radio" name="rating" id="rating3" value="3"> 
-		<label for="rating3">3</label>
-		<input class="form-check-input" type="radio" name="rating" id="rating4" value="4"> 
-		<label for="rating4">4</label>
-		<input class="form-check-input" type="radio" name="rating" id="rating5" value="5" checked> 
-		<label for="rating5">5</label>
-		<label class="form-check-label" for="ticked"> Rating </label>
-		
-		Comment:
-		<input type="text" name="comment"/>
+		<div class="row g-3">
+			<div class="col">
+				<label for="ticked" class="col-sm-2 col-form-label">Rating</label>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="rating" id="rating1" value="1">
+					<label class="form-check-label" for="rating1">1</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="rating" id="rating2" value="2"> 
+					<label class="form-check-label" for="rating2">2</label>
+				</div>
+				<div class="form-check form-check-inline">	
+					<input class="form-check-input" type="radio" name="rating" id="rating3" value="3"> 
+					<label class="form-check-label" for="rating3">3</label>
+				</div>	
+				<div class="form-check form-check-inline">	
+					<input class="form-check-input" type="radio" name="rating" id="rating4" value="4"> 
+					<label class="form-check-label" for="rating4">4</label>
+				</div>	
+				<div class="form-check form-check-inline">	
+					<input class="form-check-input" type="radio" name="rating" id="rating5" value="5" checked> 
+					<label class="form-check-label" for="rating5">5</label>
+				</div>
+			</div>
+			<div class="col">
+				<input placeholder="Comment" type="text" class="form-control" id="comment" name="comment">
+			</div>
+		</div>
 		<!--  <input type="hidden" name="beerId" value="${beer.id}"/> -->
 		<!--  <input type="hidden" name="userId" value="${sessionScope.user.id}"/> -->
-		
 		
 <!-- ///////////////////////////////////////////// SUBMIT FORM ////////////////////////////////////////////////////////////// -->		
 		
