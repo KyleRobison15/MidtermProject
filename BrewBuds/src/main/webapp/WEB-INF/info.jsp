@@ -29,7 +29,7 @@
 <div class = "container">
 <c:choose>
 <c:when test="${!empty beers}">
-		<table class="table">
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th scope="col">Name</th>
