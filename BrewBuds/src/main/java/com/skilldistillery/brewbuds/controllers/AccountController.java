@@ -55,19 +55,23 @@ public class AccountController {
 	
 	@RequestMapping(path = "updateAccount.do", method = RequestMethod.POST)
 	public String updateAccount(User user, String confirmPassword, RedirectAttributes redir, Model model) {
-		
 		boolean isUpdated = userDao.updateUser(user, confirmPassword);
-		
+		String message = "Success! Your account has been updated. Login again to see changes.";
 		
 		if (isUpdated) {
-			redir.addFlashAttribute("user", user);
-			return "redirect:accountUpdated.do";
+			model.addAttribute("message", message);
+			return "redirect:logout.do?message=" + message;
 		}
 			model.addAttribute("user",user);
 			
 		return "updateFailed";
 	}
 	
+	@RequestMapping(path = "accountUpdated.do", method = RequestMethod.GET)
+	public String confirmUpdateAccount(User user, Model model) {
+		model.addAttribute("user", user);
+		return"redirect:logout.do";
+	}
 	
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String login(User user, HttpSession session, Model model) {
@@ -99,10 +103,15 @@ public class AccountController {
 	}
 	
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
-	public String logOut(HttpSession session) {
+	public String logOut(String message, HttpSession session, Model model) {
+		if (message != null) {
+			model.addAttribute("message", message);
+			session.removeAttribute("user");
+			return "redirect:home.do?message=" + message;
+		}
 		session.removeAttribute("user");
-		
 		return "redirect:home.do";
+		
 	}
 	
 	@RequestMapping(path = "showProfileAdd.do", method = RequestMethod.GET)

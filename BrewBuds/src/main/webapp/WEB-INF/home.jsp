@@ -17,6 +17,19 @@
 			<h1 class="display-3" align="center">Cheers! Welcome to BrewBuds</h1>
 		</div>
 		
+ 		<c:choose>
+			<c:when test="${not empty message }">
+				<div class="container">
+					<div class="alert alert-success" role="alert">
+  						${message }
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+			
+			</c:otherwise>
+		</c:choose> 
+		
 	<div class="topUsers">
 		<div class="container-fluid">
 			<h1 class="display-6">Top 5 Users</h1>

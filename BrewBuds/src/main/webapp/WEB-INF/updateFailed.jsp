@@ -11,9 +11,10 @@
 <body>
 
 	<div class="container">
-		<h1 class="display-3">Update Account</h1>
+		<h1 class="display-3">Oops! Let's try that again.</h1>
+		<h1 class="display-6">You failed to confirm your password.</h1>
 	</div>
-	
+
 	<div class="container">
 		<div class="form">
 			<form action="updateAccount.do?id=${user.id }" method="POST">
@@ -51,6 +52,6 @@
 			</form>
 		</div>
 	</div>
-	
+
 </body>
 </html>
