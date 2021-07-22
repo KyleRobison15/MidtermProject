@@ -24,6 +24,7 @@ public interface RatingDAO {
 	Map<User, Integer> getUserAndMerit(List<User> users);
 	public Map<Double, Brewery> getBreweriesSortedByRating();
 	public Map<Double, Beer> getBeersAndRatingsSortedByRating();
+	public Map<Double, Beer> getBeersAndRatingsByKeyword(String keyword);
 	public Map<Double, User> getUsersSortedByRating();
 	public List<Beer> getBeersSortedByRating();
 	

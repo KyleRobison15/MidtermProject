@@ -239,9 +239,9 @@ public class BeerController {
 
 	@RequestMapping(path = "findBeers.do", params = "keyword")
 	public String findBeers(String keyword, Model model) {		
-		model.addAttribute("beers", dao.findBeerByKeyword(keyword));
+		Map<Double, Beer> ratingAndBeer = ratingDao.getBeersAndRatingsByKeyword(keyword); 
+		model.addAttribute("beers", ratingAndBeer);
 		return"reviews";
-
 	}
 	
 }

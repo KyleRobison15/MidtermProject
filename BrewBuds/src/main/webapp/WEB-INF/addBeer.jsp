@@ -15,7 +15,7 @@
 
 	<div class="container">
 		<div class="form">
-			<form action="addBeer.do" method="POST">
+			<form action="addBeer.do" method="POST"></form>
 
 
 <!-- ///////////////////////////////////////////// BREWERY ////////////////////////////////////////////////////////////// -->

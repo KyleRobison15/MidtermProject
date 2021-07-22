@@ -283,5 +283,28 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		return ratingAndUser;
 	}
+
+	@Override
+	public Map<Double, Beer> getBeersAndRatingsByKeyword(String keyword) {
+		
+//		jpql = "SELECT r.beer FROM Rating r GROUP BY r.beer ORDER BY AVG(r.rating) DESC";
+		jpql = "SELECT r.beer, AVG(r.rating) FROM Rating r"
+				+ " WHERE r.beer.name LIKE :keyword"
+				+ " OR r.beer.description LIKE :keyword"
+				+ " OR r.beer.brewery.name LIKE :keyword"
+				+ " GROUP BY r.beer ORDER BY AVG(r.rating) DESC, r.beer.name";
+				
+		List<Object[]> results = em.createQuery(jpql, Object[].class)
+				.setParameter("keyword", "%" + keyword + "%")
+				.getResultList();
+	
+		Map<Double, Beer> ratingAndBeer = new TreeMap<>((d1,d2)-> (int)(100*(d2-d1)));
+		
+		for (Object[] o : results) {
+			ratingAndBeer.put((Double)o[1], (Beer)o[0]);
+		}
+		
+		return ratingAndBeer;
+	}
 	
 }

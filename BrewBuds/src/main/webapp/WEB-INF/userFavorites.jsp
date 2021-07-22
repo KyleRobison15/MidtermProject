@@ -10,7 +10,7 @@
 <title>${user.username} Find</title>
 </head>
 <body>
-	<div class="container">
+<!-- 	<div class="container">
 		<div class="row align-items-end">
 			<div class="col">
 				<div class="container">
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 
 	<div class="container">
