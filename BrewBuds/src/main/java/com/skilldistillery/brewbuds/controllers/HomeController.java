@@ -1,5 +1,6 @@
 package com.skilldistillery.brewbuds.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +45,13 @@ public class HomeController {
 		Map<Double, Beer> ratingAndBeer = ratingDao.getBeersAndRatingsSortedByRating(); 
 		Map<Double, Brewery> ratingAndBrewery = ratingDao.getBreweriesSortedByRating(); 
 		Map<Double, User> ratingAndUser = ratingDao.getUsersSortedByRating(); 
-		
+		List<User> allUsers = userDao.getAllUsers();
+		Map<User, Integer> usersAndMerit = ratingDao.getUserAndMerit(allUsers);
 		//Pass the sorted maps to home.jsp
 		model.addAttribute("beers", ratingAndBeer);
 		model.addAttribute("breweries", ratingAndBrewery); 
 		model.addAttribute("users", ratingAndUser); 
-
+		model.addAttribute("usersAndMerit", usersAndMerit);
 		return "home";
 	}
 	

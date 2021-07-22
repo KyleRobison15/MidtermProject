@@ -8,17 +8,59 @@
 <head>
 <meta charset="UTF-8">
 <title>BrewBuds</title>
+<link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
 	<div class="container-fluid">
 		<div class="container-fluid">
-			<h1>Cheers! Welcome to BrewBuds</h1>
+			<h1 class="display-3" align="center">Cheers! Welcome to BrewBuds</h1>
 		</div>
-
+		
+	<div class="topUsers">
+		<div class="container-fluid">
+			<h1 class="display-6">Top 5 Users</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Username</th>
+						<th scope="col">Rating</th>
+						<th scope="col">Merit</th>
+						<th scope="col">Beers Posted</th>
+						<th scope="col">Badge</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${users }" var="user" begin="0" end="5">
+						<tr>
+							<td>${user.value.username }</td>
+							<td>${user.key }</td>
+							<c:forEach items="${usersAndMerit }" var="userAndMerit">
+								<c:choose>
+									<c:when test="${userAndMerit.key.id == user.value.id}">
+										<td>${userAndMerit.value }</td>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<td>${fn:length(user.value.addedBeers) }</td>
+							<td>
+								<c:choose>
+									<c:when test="${user.key < 1}"><img src="/img/apprentice.jpg" width="70" Height="70" class="img-fluid" alt=""></c:when>
+									<c:when test="${user.key >= 1 && user.key < 2}"><img src="/img/shiftBrewer.jpg" width="70" Height="70" class="img-fluid" alt=""></c:when>
+									<c:when test="${user.key >= 2 && user.key < 3}"><img src="/img/productionBrewer.jpg" width="70" Height="70" class="img-fluid" alt=""></c:when>
+									<c:when test="${user.key >= 3 && user.key < 4}"><img src="/img/headBrewer.jpg" width="75" Height="75" class="img-fluid" alt=""></c:when>
+									<c:when test="${user.key >= 4}"><img src="/img/brewMaster.jpg" width="75" Height="75" class="img-fluid" alt=""></c:when>
+								</c:choose>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
 			<c:choose>
 				<c:when test="${!empty beers}">
-
+					<h1 class="display-6">Top 5 Beers</h1>
 					<table class="table">
 						<thead>
 							<tr>
@@ -73,35 +115,6 @@
 				</tbody>
 			</table>
 		</div>
-
-		<div class="container-fluid">
-			<h1 class="display-6">Top 5 Users</h1>
-			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">Username</th>
-						<th scope="col">Rating</th>
-						<th scope="col">Merit</th>
-						<th scope="col">Beers Posted</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${users }" var="user" begin="0" end="5">
-						<tr>
-							<td>${user.value.username }</td>
-							<td>${user.key }</td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-
-
-		<form action="ShowAll.do" method="get">
-			<input type="submit" value="Show all Reviews">
-		</form>
 </div>
 </body>
 </html>
