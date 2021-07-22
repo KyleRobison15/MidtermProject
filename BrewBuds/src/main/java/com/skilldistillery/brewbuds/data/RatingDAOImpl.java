@@ -176,7 +176,7 @@ public class RatingDAOImpl implements RatingDAO {
 	}
 
 
-	
+	@Override
 	public int getMerit(int userId) {
 		
 		User user = em.find(User.class, userId);
@@ -192,8 +192,17 @@ public class RatingDAOImpl implements RatingDAO {
 		return merit;
 		
 	}
-
 	
+	@Override
+	public Map<User, Integer> getUserAndMerit(List<User> users) {
+		Map<User, Integer> userAndMerit = new HashMap<>();
+		
+		for (User user : users) {
+			int merit = getMerit(user.getId());
+			userAndMerit.put(user, merit);
+		}
+		return userAndMerit;
+	}
 
 	@Override
 	public Map<Double, Beer> getBeersAndRatingsSortedByRating() {

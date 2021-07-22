@@ -1,5 +1,6 @@
 package com.skilldistillery.brewbuds.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -25,6 +26,16 @@ public class UserDAOImpl implements UserDAO {
 		return em.find(User.class, id);
 	}
 
+	@Override
+	public List<User> getAllUsers() {
+		List<User> allUsers = new ArrayList<>();
+		
+		jpql = "SELECT u FROM User u";
+		allUsers = em.createQuery(jpql, User.class).getResultList();
+		
+		return allUsers;
+	}
+	
 	@Override
 	public boolean createUserAccount(User newUser, String confirmPassword) {
 		Address address = new Address(); 	// Instantiate a new Address (make it a managed entity)

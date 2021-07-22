@@ -21,6 +21,7 @@ public interface RatingDAO {
 	void updateBeerRating(int beerId, int userId, int ratingVal, String comment);
 	Rating getRating(RatingId ratingId);
 	int getMerit(int userId);
+	Map<User, Integer> getUserAndMerit(List<User> users);
 	public Map<Double, Brewery> getBreweriesSortedByRating();
 	public Map<Double, Beer> getBeersAndRatingsSortedByRating();
 	public Map<Double, User> getUsersSortedByRating();
