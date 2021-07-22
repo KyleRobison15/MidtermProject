@@ -123,7 +123,7 @@ public class AccountController {
 	
 	//Add a Favorite
 	@RequestMapping(path = "AddFavoriteReviewsPage.do", method = RequestMethod.POST)
-	public String addFavoritesReviewsPage(int beerId, Model model, HttpSession session, RedirectAttributes redir) {
+	public String addFavoritesReviewsPage(Integer id, Model model, HttpSession session, RedirectAttributes redir) {
 		
 		User user = (User) session.getAttribute("user"); 
 		
@@ -132,12 +132,13 @@ public class AccountController {
 		//and selected Beer is already in User's Favorite List
 		String message = null; 
 		
-		if(user.getFavoriteBeers().contains(beerDao.findBeerById(beerId))) {
+		if(user.getFavoriteBeers().contains(beerDao.findBeerById(id))) {
 			message = "Beer is already in your Favorites!";
 			redir.addFlashAttribute("message", message);
 			return "redirect:ShowAll.do";
 		} else {
-			userDao.addToFavorite(beerId, user.getId());
+			userDao.addToFavorite(id, user);
+			session.setAttribute("user", user);
 			redir.addFlashAttribute("user", user);
 			return "redirect:ShowFavorites.do";
 		}
@@ -145,35 +146,40 @@ public class AccountController {
 	}
 	
 	//Add a Favorite
-//	@RequestMapping(path = "AddFavoriteBeerProfilePage.do", method = RequestMethod.POST)
-//	public String addFavoritesBeerPofilePage(int id, Model model, HttpSession session, RedirectAttributes redir) {
-//		
-//		User user = (User) session.getAttribute("user"); 
-//		
-//		
-//		//Alert Message if User selects "Add to Favorite"
-//		//and selected Beer is already in User's Favorite List
-//		String message = null; 
-//		
-//		if(user.getFavoriteBeers().contains(beerDao.findBeerById(id))) {
-//			message = "Beer is already in your Favorites!";
-//			redir.addFlashAttribute("message", message);
-//			model.addAttribute("id", id);
-//			return "redirect:beerProfile.do";
-//		} else {
-//			userDao.addToFavorite(id, user.getId());
-//			redir.addFlashAttribute("user", user);
-//			return "redirect:ShowFavorites.do";
-//		}
-//		
-//	}
+	@RequestMapping(path = "AddFavoriteBeerProfilePage.do", method = RequestMethod.POST)
+	public String addFavoritesBeerPofilePage(Integer id, Model model, HttpSession session, RedirectAttributes redir) {
+		
+		User user = (User) session.getAttribute("user"); 
+		
+		
+		//Alert Message if User selects "Add to Favorite"
+		//and selected Beer is already in User's Favorite List
+		String message = null; 
+		
+		if(user.getFavoriteBeers().contains(beerDao.findBeerById(id))) {
+			message = "Beer is already in your Favorites!";
+			redir.addFlashAttribute("message", message);
+			redir.addFlashAttribute("id", id);
+			return "redirect:beerProfile.do?id=" + id;
+		} else {
+			userDao.addToFavorite(id, user);
+			session.setAttribute("user", user);
+			redir.addFlashAttribute("user", user);
+			return "redirect:ShowFavorites.do";
+		}
+		
+	}
 	
 	//Remove a Favorite
 	@RequestMapping(path = "RemoveFavorite.do", method = RequestMethod.POST)
 	public String removeFavorite(@RequestParam("beerId") int beerId, Model model, HttpSession session, RedirectAttributes redir) {
 		
 		User user = (User) session.getAttribute("user"); 
-		userDao.removeFromFavoriteList(beerId, user.getId());
+		
+//		userDao.removeFromFavoriteList(beerId, user.getId());
+		userDao.removeFromFavoriteList(beerId, user);
+		
+		session.setAttribute("user", user);
 		
 		redir.addFlashAttribute("user", user);
 		
