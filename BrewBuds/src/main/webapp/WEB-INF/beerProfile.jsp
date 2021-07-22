@@ -19,7 +19,7 @@
 <li>ABV: ${beer.alcoholByVolume}</li>
 <li>SRM: ${beer.color}</li>
 <li>IBU: ${beer.bitterness} </li>
-<li>Brewery: ${beer.brewery.name}</li>
+<li>Brewery: <a href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></li>
 <li>Category: ${beer.subCategory.name}</li>
 
 <c:choose>
