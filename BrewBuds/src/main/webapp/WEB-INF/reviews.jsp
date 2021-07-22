@@ -5,17 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="css/reviewsPage.css" rel="stylesheet" />
 <meta charset="UTF-8">
 <title>Beer Reviews</title>
 </head>
 <body>
-
 <h2>Beer Reviews:</h2>
 
-<div>
+<div class="container">
 <c:choose>
 <c:when test="${!empty beers}">
-		<table>
+		<table class="table">
 			<thead> 
 				<tr>
 				<th>Beer</th>
@@ -36,7 +36,7 @@
 				<td>${beer.user.username}</td>
 				
 					<c:forEach var="rating" items="${ratings}">
-					<td>${beer.rating.rating}
+					<td>${beer.rating.rating}</td>
 					</c:forEach>
 					
 				</c:forEach>
@@ -54,7 +54,7 @@
 <p>${beers.size()} Reviews Found</p>
 
 <br>
-<form action="home.do" method="get"><input type="submit" value="Go to Home"></form>
+<form action="home.do" method="get"><input class="input-button" type="submit" value="Go to Home"></form>
 	
 
 
