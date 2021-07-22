@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.username }Find</title>
+<title>${user.username} Find</title>
 </head>
 <body>
 	<div class="container">
@@ -34,11 +34,11 @@
 	</div>
 
 
-	<div class="favorites_list">
+	<div class="container">
 
 		<c:choose>
 			<c:when test="${!empty beers}">
-				<table>
+				<table class="table">
 					<thead>
 						<tr>
 							<th>Beer</th>
@@ -68,7 +68,10 @@
 			</c:when>
 
 			<c:otherwise>
-				<p>0 on your list. Consider adding some!</p>
+				<br>
+				<br>
+				<br>
+				<p>0 on your list. <a href="ShowAll.do">Consider adding some!</a></p>
 			</c:otherwise>
 
 		</c:choose>
