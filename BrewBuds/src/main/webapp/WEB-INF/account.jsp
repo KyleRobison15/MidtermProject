@@ -32,7 +32,7 @@
 			<li class="list-group-item"><h5>Country</h5> ${user.address.countryCode } </li>
 		</ul>
 		
-		<br/><a class="btn btn-outline-dark" href="#">Update Account Information</a>
+		<br/><a class="btn btn-outline-dark" href="updateAccountPage.do?id=${user.id }">Update Account Information</a>
 	</div>
 	
 	
