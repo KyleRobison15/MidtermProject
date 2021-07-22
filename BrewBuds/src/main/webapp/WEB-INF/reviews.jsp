@@ -10,9 +10,9 @@
 <title>Beer Reviews</title>
 </head>
 <body>
-<h2>Beer Reviews:</h2>
 
 <div class="container">
+<h2>Beer Reviews:</h2>
  		<c:choose>
 			<c:when test="${!empty message }">
 				<div class="container">
@@ -22,6 +22,7 @@
 				</div>
 			</c:when>
 		</c:choose> 
+		
 <c:choose>
 <c:when test="${!empty beers}">
 		<table class="table table-striped">
@@ -46,7 +47,7 @@
 				<td>${beer.value.user.username}</td>
 				<td>${beer.key}</td>
 				<td>
-					<form action="AddFavoriteReviewsPage.do?beerId=${beer.value.id}" method="post">
+					<form action="AddFavoriteReviewsPage.do?id=${beer.value.id}" method="post">
 					<input type="submit" value="Add to Favorites"/>
 					</form>
 				</td>
