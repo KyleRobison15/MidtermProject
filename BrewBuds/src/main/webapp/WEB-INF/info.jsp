@@ -45,7 +45,7 @@
 			<tbody>
 				<tr>
 				<c:forEach var="beer" items="${beers}">
-		 		<td><a href="BeerInfo.do?id=${beer.id}">${beer.name}</a></td>
+		 		<td><a href="beerProfile.do?id=${beer.id}">${beer.name}</a></td>
 		 		<td>${beer.description}</td>
 		 		
 		 		<!--Beer Category Table Data here  -->
