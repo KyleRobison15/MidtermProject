@@ -10,10 +10,9 @@ public interface UserDAO {
 	public User findById(int id);
 	public List<User> getAllUsers();
 	public boolean createUserAccount(User newUser, String confirmPassword);
-	public boolean updateUserAccount(User user);
 	public User getUserByLoginCredentials(String username, String password);
-	public User updateUser(int userId, User user);
-	public List<Beer> addToFavorite(int beerId, int userId); 
+	public boolean updateUser(User user, String confirmPassword);
 	public List<Beer> getFavoriteList(int userId); 
-	public boolean removeFromFavoriteList(int beerId, int userId);
+	public boolean removeFromFavoriteList(int beerId, User user);
+	public List<Beer> addToFavorite(Integer id, User user);
 }

@@ -125,7 +125,7 @@ public class BeerController {
 	}
 	
 	@RequestMapping(path = "beerProfile.do", method = RequestMethod.GET)
-	public String beerProfile(Model model, int id, HttpSession session) {
+	public String beerProfile(Model model, Integer id, HttpSession session) {
 		
 		model.addAttribute("beer", dao.findBeerById(id));
 		

@@ -33,7 +33,7 @@ public class HomeController {
 	private RatingDAO ratingDao;
 	
 	@RequestMapping(path = {"/", "home.do"}, method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(Model model, String message) {
 		
 //		model.addAttribute("beers", beerDAO.showTopFive());
 //		model.addAttribute("breweries", breweryDAO.showTopFive());
@@ -52,12 +52,19 @@ public class HomeController {
 		model.addAttribute("breweries", ratingAndBrewery); 
 		model.addAttribute("users", ratingAndUser); 
 		model.addAttribute("usersAndMerit", usersAndMerit);
+		model.addAttribute("message", message);
 		return "home";
 	}
 	
 	@RequestMapping(path = "createAccountPage.do")
 	public String showCreateAccountPage(Model model) {
 		return "createAccount";
+	}
+	
+	@RequestMapping(path = "updateAccountPage.do")
+	public String showUpdateAccountPage(Model model, int id) {
+		model.addAttribute("user",userDao.findById(id));
+		return "updateAccount";
 	}
 
 	@RequestMapping(path = "loginPage.do")

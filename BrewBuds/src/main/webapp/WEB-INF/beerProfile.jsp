@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-
+<h2>${beer.name}</h2>
  		<c:choose>
 			<c:when test="${!empty message }">
 				<div class="container">
@@ -21,10 +21,7 @@
 				</div>
 			</c:when>
 		</c:choose> 
-<ul>
 
-
-<h2>${beer.name}</h2>
 <c:choose>
     <c:when test="${not empty beer.imageURL}">
         <img src="${beer.imageURL}" width="128" height="128" class="beer-img" alt="stockBeer"/> 

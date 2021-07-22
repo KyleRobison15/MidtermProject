@@ -64,8 +64,18 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean updateUserAccount(User user) {
+	public boolean updateUser(User user, String confirmPassword) {
+				
 		User managedUser = em.find(User.class, user.getId());
+		managedUser.setFirstName(user.getFirstName());
+		managedUser.setLastName(user.getLastName());
+		managedUser.setImageURL(user.getImageURL());
+		
+		if (user.getPassword().equals(confirmPassword)) {
+			managedUser.setPassword(user.getPassword());
+			return true;
+		}
+		
 		return false;
 	}
 	
@@ -84,23 +94,6 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return null;
 	}
-	
-	@Override
-	public User updateUser(int userId, User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Beer> addToFavorite(int beerId, int userId) {
-		
-		User user = em.find(User.class, userId);
-		Beer beer = em.find(Beer.class, beerId);
-		
-		user.addFavoriteBeer(beer);
-		
-		return user.getFavoriteBeers();
-	}
 
 	@Override
 	public List<Beer> getFavoriteList(int userId) {
@@ -109,18 +102,33 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean removeFromFavoriteList(int beerId, int userId) {
+	public boolean removeFromFavoriteList(int beerId, User user) {
 		
-		User user = em.find(User.class, userId);
 		Beer beer = em.find(Beer.class, beerId);
 		
 		user.removeFavoriteBeer(beer);
 		
+		em.merge(user); 
+		
 		boolean successfulRemove; 
 		
 		successfulRemove = !user.getFavoriteBeers().contains(beer);
-			
+		
 		return successfulRemove;
+
+		
 	}
 
+	@Override
+	public List<Beer> addToFavorite(Integer beerId, User user) {
+		
+		Beer beer = em.find(Beer.class, beerId);
+		
+		user.addFavoriteBeer(beer);
+		
+		em.merge(user);
+		
+		return user.getFavoriteBeers();
+	}
+	
 }
