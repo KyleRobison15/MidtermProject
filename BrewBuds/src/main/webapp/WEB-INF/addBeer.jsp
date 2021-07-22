@@ -42,7 +42,7 @@
 		
 <!-- ///////////////////////////////////////////// COLOR ////////////////////////////////////////////////////////////// -->
 
-		<label for="color" class="col-sm-2 col-form-label">Color (SRM)</label>
+<!-- 		<label for="color" class="col-sm-2 col-form-label">Color (SRM)</label>
 				<select class="form-select" name="color" id="color" aria-label="Default select example" required>
 					<option selected>Select a Color</option>
 					
@@ -59,8 +59,15 @@
 					<option value="30">30 - Deep Brown</option>
 					<option value="40">40 - Black</option>
 
-				</select>
+				</select> -->
+				
+				<label for="color" class="col-sm-2 col-form-label">Color (SRM)</label>
+				<input type="range" class="custom-range" min="0" max="50" step="1" name="color" id="color"/>
 		
+				
+				</div>
+			
+				
 <!-- ///////////////////////////////////////////// BITTERNESS ////////////////////////////////////////////////////////////// -->
 
 		<label for="bitterness" class="col-sm-2 col-form-label">Bitterness (IBU)</label>

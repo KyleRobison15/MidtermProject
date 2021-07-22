@@ -25,4 +25,5 @@ public interface RatingDAO {
 	public Map<Double, Beer> getBeersAndRatingsSortedByRating();
 	public Map<Double, User> getUsersSortedByRating();
 	public List<Beer> getBeersSortedByRating();
+	
 }
