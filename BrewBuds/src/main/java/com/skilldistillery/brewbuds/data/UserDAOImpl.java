@@ -64,6 +64,12 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public boolean updateUserAccount(User user) {
+		User managedUser = em.find(User.class, user.getId());
+		return false;
+	}
+	
+	@Override
 	public User getUserByLoginCredentials(String username, String password) {
 
 		jpql = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
