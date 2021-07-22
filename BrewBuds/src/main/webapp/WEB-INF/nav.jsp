@@ -10,7 +10,10 @@
 	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="home.do">Navbar</a>
+			<a class="navbar-brand" href="home.do"> <img
+				src="img/navbarLogo.jpg"
+				alt="" width="70" height="70">
+			</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
