@@ -65,7 +65,7 @@ public class AccountController {
 		}
 			model.addAttribute("user",user);
 			
-		return "creationFailed";
+		return "updateFailed";
 	}
 	
 	
