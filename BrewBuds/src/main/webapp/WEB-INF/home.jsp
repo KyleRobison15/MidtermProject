@@ -10,6 +10,7 @@
 <title>BrewBuds</title>
 </head>
 <body>
+<div class="container-fluid">
 	<div class="container-fluid">
 		<div class="container-fluid">
 			<h1>Cheers! Welcome to BrewBuds</h1>
@@ -101,5 +102,6 @@
 		<form action="ShowAll.do" method="get">
 			<input type="submit" value="Show all Reviews">
 		</form>
+</div>
 </body>
 </html>
