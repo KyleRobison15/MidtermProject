@@ -12,7 +12,51 @@
 <body>
 <div class="container">
 
-<ul>
+<h2>${beer.name}</h2>
+<c:choose>
+    <c:when test="${not empty beer.imageURL}">
+        <img src="${beer.imageURL}" width="128" height="128" class="beer-img" alt="stockBeer"/> 
+</c:when>
+
+<c:otherwise>
+    <img src="img/stockBeer.jpeg" width="128" height="128" class="beer-img" alt="stockBeer"/>
+    </c:otherwise>
+</c:choose>
+
+<table class="table">
+<tbody>
+<tr>
+<th scope="row">Rating</th>
+<td>${average}</td>
+</tr>
+<tr>
+<th scope="row">Description</th>
+<td>${beer.description}</td>
+</tr>
+<tr>
+<th scope="row">ABV</th>
+<td>${beer.alcoholByVolume}</td>
+</tr>
+<tr>
+<th scope="row">Color</th>
+<td>${beer.color}</td>
+</tr>
+<tr>
+<th scope="row">Bitterness (IBU)</th>
+<td>${beer.bitterness}</td>
+</tr>
+<tr>
+<th scope="row">Brewery</th>
+<td><a href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></td>
+</tr>
+<tr>
+<th>Category</th>
+<td>${beer.subCategory.name}</td>
+</tr>
+</tbody>
+</table>
+
+<%-- <ul>
 <li>Rating:  ${average}</li>
 <li>Name: ${beer.name}</li>
 <li>Description: ${beer.description}</li>
@@ -31,7 +75,7 @@
     <li>Image: <img src="img/stockBeer.jpeg" width="128" height="128" class="beer-img" alt="stockBeer"/> </li>
     </c:otherwise>
 </c:choose>
-</ul>
+</ul> --%>
 
 
 </div>
@@ -155,17 +199,34 @@
 <hr>
 <h1>Reviews:</h1>
 
+<table class="table">
+<thead>
+<tr>
+<th scope="col">User</th>
+<th scope="col">Rating</th>
+<th scope="col">Comment</th>
+<th scope="col">Date</th>
+</tr>
+</thead>
+<tbody>
 <c:forEach items="${beer.ratings}" var="rating">
-<hr>
+<tr>
+<td>${rating.user.username}</td>
+<td>${rating.rating}</td>
+<td>${rating.comment}</td>
+<td>${rating.ratingDate}</td>
+</tr>
+<%-- <hr>
 <ul>
 <li>User: ${rating.user.username}</li>
 <li>Rating: ${rating.rating}</li>
 <li>Comment: ${rating.comment}</li>
 <li> Date Added: ${rating.ratingDate} </li>
-</ul>
+</ul> --%>
 
 </c:forEach>
-
+</tbody>
+</table>
 
 <c:choose>
 	<c:when test="${!empty sessionScope.user }">
