@@ -11,7 +11,15 @@
 </head>
 <body>
 <div class="container">
-
+ 		<c:choose>
+			<c:when test="${!empty message }">
+				<div class="container">
+					<div class="alert alert-primary" role="alert">
+  						${message }
+					</div>
+				</div>
+			</c:when>
+		</c:choose> 
 <ul>
 <li>Rating:  ${average}</li>
 <li>Name: ${beer.name}</li>
@@ -169,7 +177,7 @@
 
 <c:choose>
 	<c:when test="${!empty sessionScope.user }">
-		<form action="AddFavorite.do?beerId=${beer.id}" method="post">
+		<form action="AddFavoriteBeerProfilePage.do?id=${beer.id}" method="post">
 		<input type="submit" value="Add to Favorites"/>
 		</form>
 	</c:when>	

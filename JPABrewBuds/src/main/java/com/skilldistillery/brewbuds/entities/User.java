@@ -56,6 +56,7 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<Beer> addedBeers;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name="favorite_beer", 
 	joinColumns=@JoinColumn(name= "user_id"), 

@@ -13,6 +13,15 @@
 <h2>Beer Reviews:</h2>
 
 <div class="container">
+ 		<c:choose>
+			<c:when test="${!empty message }">
+				<div class="container">
+					<div class="alert alert-primary" role="alert">
+  						${message }
+					</div>
+				</div>
+			</c:when>
+		</c:choose> 
 <c:choose>
 <c:when test="${!empty beers}">
 		<table class="table">
@@ -24,6 +33,7 @@
 				<th>Style</th>
 				<th>User</th>
 				<th>Rating</th>
+				<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,6 +45,11 @@
 				<td>${beer.value.subCategory.name}</td>
 				<td>${beer.value.user.username}</td>
 				<td>${beer.key}</td>
+				<td>
+					<form action="AddFavoriteReviewsPage.do?beerId=${beer.value.id}" method="post">
+					<input type="submit" value="Add to Favorites"/>
+					</form>
+				</td>
 				</c:forEach>
 			</tbody>
 		</table>

@@ -26,7 +26,7 @@
 <br>
 <h3>Beers in this Brewery's Icebox</h3>
 <br>
-<div class = "beerTable">
+<div class = "container">
 <c:choose>
 <c:when test="${!empty beers}">
 		<table class="table">
