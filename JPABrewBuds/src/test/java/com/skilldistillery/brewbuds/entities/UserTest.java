@@ -84,8 +84,8 @@ class UserTest {
 	@DisplayName("testing bi-directional ratings mappings")
 	void test3() {
 		//First Test
-		assertNotNull(user);
-		assertTrue(user.getRatings().size() == 0);
+//		assertNotNull(user);
+//		assertTrue(user.getRatings().size() == 0);
 		
 		//Second Test - used b/c user w/ id #1 has no associated ratings so far...
 		user = em.find(User.class, 2);
