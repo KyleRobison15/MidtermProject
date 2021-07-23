@@ -12,7 +12,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="home.do"> <img
-				src="img/navbarLogo.jpg" alt="" width="70" height="70">
+				src="img/navbarLogo.jpg" alt="" width="70" height="70" >
 			</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -61,13 +61,13 @@
 						<c:choose>
 							<c:when test="${!empty sessionScope.user.imageURL}">
 								<a href="showProfileAdd.do"> <img
-									src="${sessionScope.user.imageURL}" width="70" height="70">
+									src="${sessionScope.user.imageURL}" class="rounded" height="70" width="70">
 								</a>
 							</c:when>
 							<c:otherwise>
 								<a href="showProfileAdd.do"> <img width="70" height="70"
-									alt="${sessionScope.user.username} }"
-									src="img/defaultProfileImage.png">
+									alt="${sessionScope.user.username}"
+									src="img/defaultProfileImage.png" class="rounded">
 								</a>
 							</c:otherwise>
 						</c:choose>
