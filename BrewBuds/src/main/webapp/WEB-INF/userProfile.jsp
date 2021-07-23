@@ -114,7 +114,7 @@
 								<img src="/img/headBrewer.jpg" class="img-fluid" alt="">
 							</c:when>
 							<c:when test="${rating >= 4}">
-								<img src="/img/brewMaster.jpg" class="img-fluid" alt="">
+								<img src="/img/brewMaster.jpeg" class="img-fluid" alt="">
 							</c:when>
 						</c:choose>
 					</div>

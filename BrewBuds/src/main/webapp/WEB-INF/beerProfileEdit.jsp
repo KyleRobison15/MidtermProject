@@ -10,11 +10,9 @@
 <title>Beer Profile</title>
 </head>
 <body>
-
-<div class="container">
-<h1 class="display-3">${beer.name}</h1>
- 		<c:choose>
-
+	<div>
+		<h2>${beer.name}</h2>
+		<c:choose>
 			<c:when test="${!empty message }">
 				<div class="container">
 					<div class="alert alert-primary" role="alert">${message }</div>
@@ -33,7 +31,6 @@
 					class="beer-img" alt="stockBeer" />
 			</c:otherwise>
 		</c:choose>
-
 
 		<table class="table">
 			<tbody>
@@ -59,7 +56,7 @@
 				</tr>
 				<tr>
 					<th scope="row">Brewery</th>
-					<td><a class="link-dark"  href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></td>
+					<td><a href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></td>
 				</tr>
 				<tr>
 					<th>Category</th>
@@ -67,7 +64,6 @@
 				</tr>
 			</tbody>
 		</table>
-
 
 		<%-- <ul>
 >>>>>>> d0f8d5eb153662f426500c013730fc41ccf3296f
@@ -105,7 +101,7 @@
 | sub_category_id   | int(11)       | NO   | MUL | NULL    |                |
 | beer_image_url    | va -->
 
-<div class="container">
+
 	<c:choose>
 		<c:when test="${!empty sessionScope.user }">
 			<c:choose>
@@ -133,84 +129,84 @@
 				<c:otherwise>
 					<hr>
 					<h6>Your review:</h6>
-					<form action="editRating.do" method="POST">
+					<form action="submitRating.do" method="POST">
 						<c:choose>
 							<c:when test="${userReview.rating == 1}">
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating1" value="1" checked   readonly>
+									id="rating1" value="1" checked>
 								<label for="rating1">1</label>
 							</c:when>
 							<c:otherwise>
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating1" value="1"   readonly>
+									id="rating1" value="1">
 								<label for="rating1">1</label>
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
 							<c:when test="${userReview.rating == 2}">
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating2" value="2" checked   readonly>
+									id="rating2" value="2" checked>
 								<label for="rating2">2</label>
 							</c:when>
 							<c:otherwise>
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating2" value="2"   readonly>
+									id="rating2" value="2">
 								<label for="rating2">2</label>
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
 							<c:when test="${userReview.rating == 3}">
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating3" value="3" checked   readonly>
+									id="rating3" value="3" checked>
 								<label for="rating3">3</label>
 							</c:when>
 							<c:otherwise>
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating3" value="3"   readonly>
+									id="rating3" value="3">
 								<label for="rating3">3</label>
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
 							<c:when test="${userReview.rating == 4}">
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating4" value="4" checked   readonly>
+									id="rating4" value="4" checked>
 								<label for="rating4">4</label>
 							</c:when>
 							<c:otherwise>
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating4" value="4"   readonly>
+									id="rating4" value="4">
 								<label for="rating4">4</label>
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
 							<c:when test="${userReview.rating == 5}">
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating5" value="5" checked   readonly>
+									id="rating5" value="5" checked>
 								<label for="rating5">5</label>
 							</c:when>
 							<c:otherwise>
 								<input class="form-check-input" type="radio" name="rating"
-									id="rating5" value="5" readonly>
+									id="rating5" value="5">
 								<label for="rating5">5</label>
 							</c:otherwise>
 						</c:choose>
 						<label class="form-check-label" for="ticked"> Rating </label>
 
 						Comment: <input type="text" name="comment"
-							value="${userReview.comment }" readonly/> 
+							value="${userReview.comment }"/> 
 							<input type="hidden"
 							name="beerId" value="${beer.id}" /> 
 							<input type="hidden"
 							name="userId" value="${sessionScope.user.id}" /> 
 							<input
-							type="submit" value="edit" />
+							type="submit" value="update" />
 
 					</form>
-					<%-- <form action="deleteRating.do" method="POST">
+					<form action="deleteRating.do" method="POST">
 						<input type="hidden" name="beerId" value="${beer.id}" /> <input
 							type="hidden" name="userId" value="${sessionScope.user.id}" /> <input
 							type="submit" value="delete" />
-					</form> --%>
+					</form>
 				</c:otherwise>
 			</c:choose>
 		</c:when>
@@ -266,7 +262,8 @@
 
 
 
-<a href=""></a>
-</div>
+
+	<a href=""></a>
+
 </body>
 </html>
