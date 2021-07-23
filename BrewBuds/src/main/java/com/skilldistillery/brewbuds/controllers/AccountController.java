@@ -139,6 +139,38 @@ public class AccountController {
 		}
 		return "home";
 	}
+	
+	@RequestMapping(path="showNonUserProfile.do", method = RequestMethod.GET)
+	public String showNonUserProfile(Model model, String id) {
+		
+			User user = userDao.findById(Integer.valueOf(id));
+		
+			System.out.println("---------------------------------USER----------------------------");
+			System.out.println(user);
+			System.out.println("-------------------------------------------------------------");
+			
+		
+			Double rating = ratingDao.findAverageUserRating(user.getId());
+			model.addAttribute("rating", rating);
+			List<Beer> addedBeers = user.getAddedBeers();
+			//model.addAttribute("addedBeers", addedBeers);
+			
+			//Make map of beers to their ratings
+			Map<Beer, Double> beerAndRating = new HashMap<>();
+			for(Beer beer : addedBeers) {
+				Double beerRating = ratingDao.findAverageBeerRating(beer.getId());
+				beerAndRating.put(beer, beerRating);
+			}
+			model.addAttribute("addedBeers", beerAndRating);
+			
+			//Adds merit to user profile
+			model.addAttribute("merit", ratingDao.getMerit(user.getId()));
+		
+			model.addAttribute("user", user);
+		return "nonUserProfile";
+	}
+	
+	
 	@RequestMapping(path = "showProfileFind.do", method = RequestMethod.GET)
 	public String showProfileFind(HttpSession session) {
 		if (session.getAttribute("user") != null) {

@@ -46,7 +46,7 @@
 				<tbody>
 					<c:forEach items="${users }" var="user" begin="0" end="5">
 						<tr>
-							<td>${user.value.username }</td>
+							<td><a href="showNonUserProfile.do?id=${user.value.id}">${user.value.username }</a></td>
 							<td>${user.key }</td>
 							<c:forEach items="${usersAndMerit }" var="userAndMerit">
 								<c:choose>
