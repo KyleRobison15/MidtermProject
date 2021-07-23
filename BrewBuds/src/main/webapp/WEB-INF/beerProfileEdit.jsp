@@ -73,29 +73,6 @@
 			</tbody>
 		</table>
 
-		<%-- <ul>
->>>>>>> d0f8d5eb153662f426500c013730fc41ccf3296f
-<li>Rating:  ${average}</li>
-<li>Name: ${beer.name}</li>
-<li>Description: ${beer.description}</li>
-<li>ABV: ${beer.alcoholByVolume}</li>
-<li>SRM: ${beer.color}</li>
-<li>IBU: ${beer.bitterness} </li>
-<li>Brewery: <a href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></li>
-<li>Category: ${beer.subCategory.name}</li>
-
-<c:choose>
-    <c:when test="${not empty beer.imageURL}">
-        <li>Image: <img src="${beer.imageURL}" width="128" height="128" class="beer-img" alt="stockBeer"/> </li> 
-</c:when>
-
-<c:otherwise>
-    <li>Image: <img src="img/stockBeer.jpeg" width="128" height="128" class="beer-img" alt="stockBeer"/> </li>
-    </c:otherwise>
-</c:choose>
-</ul> --%>
-
-
 	</div>
 
 	<!-- id                | int(11)       | NO   | PRI | NULL    | auto_increment |
@@ -276,6 +253,7 @@
 				</p>
 			</c:otherwise>
 		</c:choose>
+
 
 		<hr>
 		
