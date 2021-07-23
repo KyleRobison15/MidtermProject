@@ -90,7 +90,7 @@
 	</div>
 
 	<div class="container-fluid">
-		<h1 class="display-4">Your Beers</h1>
+		<h1 class="display-4">${user.username}'s Beers</h1>
 		<table class="table">
 			<thead>
 				<tr>
