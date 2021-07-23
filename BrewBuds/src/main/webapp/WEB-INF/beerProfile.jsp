@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-<h2>${beer.name}</h2>
+<h1 class="display-3">${beer.name}</h1>
  		<c:choose>
 			<c:when test="${!empty message }">
 				<div class="container">
@@ -56,7 +56,7 @@
 </tr>
 <tr>
 <th scope="row">Brewery</th>
-<td><a href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></td>
+<td><a class="link-dark" href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></td>
 </tr>
 <tr>
 <th>Category</th>
@@ -101,7 +101,7 @@
 | sub_category_id   | int(11)       | NO   | MUL | NULL    |                |
 | beer_image_url    | va -->
 
-
+<div class="container">
 <c:choose>
 <c:when test="${!empty sessionScope.user }">
 	<c:choose>
@@ -251,6 +251,6 @@
 
 
 <a href=""></a>
-
+</div>
 </body>
 </html>

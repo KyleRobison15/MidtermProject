@@ -12,8 +12,8 @@
 </head>
 <body>
 
-	<h2>${user.username}</h2>
 	<div class="container-fluid">
+	<h1 class="display-3" align="center">${user.username}</h1>
 		<div class="container-fluid">
 			<div class="row d-flex align-items-center">
 				<div class="col" align="center">
