@@ -139,7 +139,11 @@
 								class="link-dark">${addedBeer.key.brewery.name}</a></td>
 							<td><a href="beerProfile.do?id=${addedBeer.key.id}"
 								class="link-dark">${addedBeer.key.name}</a></td>
-							<td>${addedBeer.value}</td>
+								<c:choose>
+								<c:when test="${addedBeer.value > 3.9 }"><td><span class="badge badge-success">${addedBeer.value}</span></td></c:when>
+								<c:when test="${addedBeer.value < 3.9 && addedBeer.value > 2.5}"><td><span class="badge badge-warning">${addedBeer.value}</span></td></c:when>
+								<c:when test="${addedBeer.value < 2.5}"><td><span class="badge badge-danger">${addedBeer.value}</span></td></c:when>
+								</c:choose>
 						</tr>
 					</c:forEach>
 				</tbody>

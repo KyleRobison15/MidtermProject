@@ -3,6 +3,8 @@
 <%@ include file="styles.jsp"%>
 <%@ include file="nav.jsp"%>
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,6 @@
 <div class="container">
 <h1 class="display-3">${beer.name}</h1>
  		<c:choose>
-
 			<c:when test="${!empty message }">
 				<div class="container">
 					<div class="alert alert-primary" role="alert">${message }</div>
@@ -39,7 +40,11 @@
 			<tbody>
 				<tr>
 					<th scope="row">Rating</th>
-					<td>${average}</td>
+						<c:choose>
+						<c:when test="${average > 3.9 }"><td><span class="badge badge-success">${average}</span></td></c:when>
+						<c:when test="${average < 3.9 && average > 2.5}"><td><span class="badge badge-warning">${average}</span></td></c:when>
+						<c:when test="${average < 2.5}"><td><span class="badge badge-danger">${average}</span></td></c:when>
+						</c:choose>
 				</tr>
 				<tr>
 					<th scope="row">Description</th>
@@ -231,17 +236,23 @@
 				<th scope="col">User</th>
 				<th scope="col">Rating</th>
 				<th scope="col">Comment</th>
-				<th scope="col">Date</th>
+				<th scope="col">Posted On</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${beer.ratings}" var="rating">
 				<tr>
 					<td>${rating.user.username}</td>
-					<td>${rating.rating}</td>
+						<c:choose>
+						<c:when test="${rating.rating > 3.9 }"><td><span class="badge badge-success">${rating.rating}</span></td></c:when>
+						<c:when test="${rating.rating < 3.9 && rating.rating > 2.5}"><td><span class="badge badge-warning">${rating.rating}</span></td></c:when>
+						<c:when test="${rating.rating < 2.5}"><td><span class="badge badge-danger">${rating.rating}</span></td></c:when>
+						</c:choose>
 					<td>${rating.comment}</td>
-					<td>${rating.ratingDate}</td>
+					<td>${rating.ratingDate.getMonth()} ${rating.ratingDate.getDayOfMonth()}, 
+								${rating.ratingDate.getYear() }  </td>
 				</tr>
+				
 				<%-- <hr>
 <ul>
 <li>User: ${rating.user.username}</li>
@@ -249,6 +260,7 @@
 <li>Comment: ${rating.comment}</li>
 <li> Date Added: ${rating.ratingDate} </li>
 </ul> --%>
+
 
 			</c:forEach>
 		</tbody>

@@ -57,7 +57,7 @@
 								<td>${beer.user.username}</td>
 								<td>
 									<form action="RemoveFavorite.do?beerId=${beer.id}" method="post">
-									<input class="btn btn-outline-dark" type="submit" value="remove"/>
+									<input class="btn btn-outline-danger" type="submit" value="remove"/>
 									</form>
 								</td>
 							</tr>

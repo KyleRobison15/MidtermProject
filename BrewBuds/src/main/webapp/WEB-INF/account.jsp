@@ -19,7 +19,7 @@
 			<li class="list-group-item"><h5>Last Name</h5> ${user.lastName } </li>
 			<li class="list-group-item"><h5>Email</h5> ${user.email } </li>
 			<li class="list-group-item"><h5>Phone</h5> ${user.address.phone } </li>
-			<li class="list-group-item"><h5>User Since</h5> ${user.createDate} </li>
+			<li class="list-group-item"><h5>User Since</h5>${user.createDate.getMonth()} ${user.createDate.getDayOfMonth()}, ${user.createDate.getYear() }</li>
 			<li class="list-group-item"><h5>Address</h5> ${user.address.address } </li>
 				<c:choose>
 					<c:when test="${!empty user.address.address2 }">
