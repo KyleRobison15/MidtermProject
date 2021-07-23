@@ -50,7 +50,7 @@
 							<td><a class="link-dark" href="showNonUserProfile.do?id=${user.value.id}">${user.value.username }</a></td>
 								<c:choose>
 								<c:when test="${user.key > 3.9 }"><td><span class="badge badge-success">${user.key}</span></td></c:when>
-								<c:when test="${user.key < 3.9 && user.key > 2.5}"><td><span class="badge badge-warning">${user.key}</span></td></c:when>
+								<c:when test="${user.key <= 3.9 && user.key >= 2.5}"><td><span class="badge badge-warning">${user.key}</span></td></c:when>
 								<c:when test="${user.key < 2.5}"><td><span class="badge badge-danger">${user.key}</span></td></c:when>
 								</c:choose>
 
@@ -96,7 +96,7 @@
 								<tr>
 									<c:choose>
 									<c:when test="${beer.key > 3.9 }"><td><span class="badge badge-success">${beer.key}</span></td></c:when>
-									<c:when test="${beer.key < 3.9 && beer.key > 2.5}"><td><span class="badge badge-warning">${beer.key}</span></td></c:when>
+									<c:when test="${beer.key <= 3.9 && beer.key >= 2.5}"><td><span class="badge badge-warning">${beer.key}</span></td></c:when>
 									<c:when test="${beer.key < 2.5}"><td><span class="badge badge-danger">${beer.key}</span></td></c:when>
 									</c:choose>
 									<%-- <td>${beer.value.user.username}</td> --%>
@@ -132,7 +132,7 @@
 
 								<c:choose>
 								<c:when test="${brewery.key > 3.9 }"><td><span class="badge badge-success">${brewery.key}</span></td></c:when>
-								<c:when test="${brewery.key < 3.9 && beer.key > 2.5}"><td><span class="badge badge-warning">${brewery.key}</span></td></c:when>
+								<c:when test="${brewery.key <= 3.9 && beer.key >= 2.5}"><td><span class="badge badge-warning">${brewery.key}</span></td></c:when>
 								<c:when test="${brewery.key < 2.5}"><td><span class="badge badge-danger">${brewery.key}</span></td></c:when>
 								</c:choose>
 							<td><a class="link-dark" href="BreweryInfo.do?id=${brewery.value.id }">${brewery.value.name }</a></td>

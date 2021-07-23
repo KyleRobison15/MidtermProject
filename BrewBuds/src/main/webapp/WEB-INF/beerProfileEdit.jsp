@@ -39,7 +39,11 @@
 			<tbody>
 				<tr>
 					<th scope="row">Rating</th>
-					<td>${average}</td>
+					<c:choose>
+						<c:when test="${average > 3.9 }"><td><span class="badge badge-success">${average}</span></td></c:when>
+						<c:when test="${average <= 3.9 && average >= 2.5}"><td><span class="badge badge-warning">${average}</span></td></c:when>
+						<c:when test="${average < 2.5}"><td><span class="badge badge-danger">${average}</span></td></c:when>
+						</c:choose>
 				</tr>
 				<tr>
 					<th scope="row">User</th>
@@ -283,7 +287,11 @@
 				<c:forEach items="${beer.ratings}" var="rating">
 					<tr>
 						<td>${rating.user.username}</td>
-						<td>${rating.rating}</td>
+						<c:choose>
+						<c:when test="${rating.rating > 3.9 }"><td><span class="badge badge-success">${rating.rating}</span></td></c:when>
+						<c:when test="${rating.rating <= 3.9 && rating.rating >= 2.5}"><td><span class="badge badge-warning">${rating.rating}</span></td></c:when>
+						<c:when test="${rating.rating < 2.5}"><td><span class="badge badge-danger">${rating.rating}</span></td></c:when>
+						</c:choose>
 						<td>${rating.comment}</td>
 						<td>${rating.ratingDate}</td>
 					</tr>

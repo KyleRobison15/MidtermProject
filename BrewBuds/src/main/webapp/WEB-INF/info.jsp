@@ -11,7 +11,14 @@
 <body>
 <div class="container">
 	<h2>${brewery.name}</h2>
-	<h3>Rating: ${average}</h3>
+<%-- 	<h3>Rating: ${average}</h3> --%>
+	<h3>
+							<c:choose>
+						<c:when test="${average > 3.9 }"><td><span class="badge badge-success">${average}</span></td></c:when>
+						<c:when test="${average <= 3.9 && average >= 2.5}"><td><span class="badge badge-warning">${average}</span></td></c:when>
+						<c:when test="${average < 2.5}"><td><span class="badge badge-danger">${average}</span></td></c:when>
+						</c:choose>
+	</h3>
 	<div class="breweryInfo">
 		<%-- 		<li>Brewery ID: ${brewery.id}</li> --%>
 

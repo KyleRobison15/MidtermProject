@@ -48,7 +48,7 @@
 				<td>${beer.value.user.username}</td>
 					<c:choose>
 					<c:when test="${beer.key > 3.9 }"><td><span class="badge badge-success">${beer.key}</span></td></c:when>
-					<c:when test="${beer.key < 3.9 && beer.key > 2.5}"><td><span class="badge badge-warning">${beer.key}</span></td></c:when>
+					<c:when test="${beer.key <= 3.9 && beer.key >= 2.5}"><td><span class="badge badge-warning">${beer.key}</span></td></c:when>
 					<c:when test="${beer.key < 2.5}"><td><span class="badge badge-danger">${beer.key}</span></td></c:when>
 					</c:choose>
 				<td>	

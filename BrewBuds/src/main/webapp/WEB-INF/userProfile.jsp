@@ -141,7 +141,7 @@
 								class="link-dark">${addedBeer.key.name}</a></td>
 								<c:choose>
 								<c:when test="${addedBeer.value > 3.9 }"><td><span class="badge badge-success">${addedBeer.value}</span></td></c:when>
-								<c:when test="${addedBeer.value < 3.9 && addedBeer.value > 2.5}"><td><span class="badge badge-warning">${addedBeer.value}</span></td></c:when>
+								<c:when test="${addedBeer.value <= 3.9 && addedBeer.value >= 2.5}"><td><span class="badge badge-warning">${addedBeer.value}</span></td></c:when>
 								<c:when test="${addedBeer.value < 2.5}"><td><span class="badge badge-danger">${addedBeer.value}</span></td></c:when>
 								</c:choose>
 						</tr>

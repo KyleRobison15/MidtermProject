@@ -159,7 +159,7 @@ public class RatingDAOImpl implements RatingDAO {
 			return 0;
 		}
 		
-		int total = 0;
+		double total = 0;
 		for(Beer beer : user.getAddedBeers()) {
 			
 			total += findAverageBeerRating(beer.getId());
