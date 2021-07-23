@@ -66,9 +66,6 @@
 <p>${beers.size()} Reviews Found</p>
 
 <br>
-<form action="home.do" method="get"><input class="input-button" type="submit" value="Go to Home"></form>
-	
-
 
 </body>
 </html>

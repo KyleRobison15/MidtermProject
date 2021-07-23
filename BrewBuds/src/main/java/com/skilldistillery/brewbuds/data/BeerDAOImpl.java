@@ -111,6 +111,9 @@ public class BeerDAOImpl implements BeerDAO {
 	public List<Beer> showAllBeers() {
 		String jpql = "SELECT b FROM Beer b";
 		List<Beer> beers = em.createQuery(jpql, Beer.class).getResultList();
+//		System.out.println("=========================================================================================");
+//		System.out.println(beers.size());
+//		System.out.println("=========================================================================================");
 		return beers;
 	}
 
