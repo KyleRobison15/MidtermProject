@@ -484,6 +484,14 @@ INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) 
 INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 8, 5, 'Excellent', '2021-05-01 12:05:32');
 INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 8, 6, 'Bad', '2021-05-01 12:05:32');
 INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 8, 7, 'Not Good', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 10, 1, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 10, 2, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 12, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 12, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 12, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 12, 4, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 12, 5, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (3, 12, 6, 'Okay', '2021-05-01 12:05:32');
 
 COMMIT;
 
