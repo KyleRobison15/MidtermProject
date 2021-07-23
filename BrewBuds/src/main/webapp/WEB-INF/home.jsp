@@ -46,7 +46,7 @@
 				<tbody>
 					<c:forEach items="${users }" var="user" begin="0" end="5">
 						<tr>
-							<td>${user.value.username }</td>
+							<td><a href="showNonUserProfile.do?id=${user.value.id}">${user.value.username }</a></td>
 							<td>${user.key }</td>
 							<c:forEach items="${usersAndMerit }" var="userAndMerit">
 								<c:choose>
@@ -89,7 +89,8 @@
 							<c:forEach items="${beers}" var="beer" begin="0" end="5">
 								<tr>
 									<td>${beer.key}</td>
-									<td>${beer.value.user.username}</td>
+									<%-- <td>${beer.value.user.username}</td> --%>
+									<td><a href="showNonUserProfile.do?id=${beer.value.user.id}">${beer.value.user.username }</a></td>
 									<td><a href="BreweryInfo.do?id=${beer.value.brewery.id }">${beer.value.brewery.name}</a></td>
 									<td><a href="beerProfile.do?id=${beer.value.id }">${beer.value.name}</a></td>
 									<td>${beer.value.description}</td>

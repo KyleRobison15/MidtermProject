@@ -7,11 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.username }Add</title>
+<title>${user.username}Add</title>
 
 </head>
 <body>
 
+	<h2>${user.username}</h2>
 	<div class="container-fluid">
 		<div class="container-fluid">
 			<div class="row d-flex align-items-center">
@@ -89,7 +90,7 @@
 	</div>
 
 	<div class="container-fluid">
-		<h1 class="display-4">Your Beers</h1>
+		<h1 class="display-4">${user.username}'s Beers</h1>
 		<table class="table">
 			<thead>
 				<tr>
@@ -110,7 +111,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<a class="btn btn-outline-dark" href="addBeerPage.do">Add a Beer</a>
+	</div>
 	</div>
 </body>
 </html>
