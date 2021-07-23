@@ -112,6 +112,5 @@
 		</table>
 		<a class="btn btn-outline-dark" href="addBeerPage.do">Add a Beer</a>
 	</div>
-	</div>
 </body>
 </html>

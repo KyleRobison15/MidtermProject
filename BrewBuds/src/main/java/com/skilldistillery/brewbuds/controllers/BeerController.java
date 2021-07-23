@@ -55,7 +55,6 @@ public class BeerController {
 			Double ratings = ratingDao.findAverageBeerRating(beer.getId());
 			ratingAndBeer.put(ratings, beer);
 		}
-		
 		model.addAttribute("beers", ratingAndBeer);
 		
 		return "reviews";
