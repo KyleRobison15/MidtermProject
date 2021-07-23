@@ -10,9 +10,11 @@
 <title>Beer Profile</title>
 </head>
 <body>
-	<div>
-		<h2>${beer.name}</h2>
-		<c:choose>
+
+<div class="container">
+<h1 class="display-3">${beer.name}</h1>
+ 		<c:choose>
+
 			<c:when test="${!empty message }">
 				<div class="container">
 					<div class="alert alert-primary" role="alert">${message }</div>
@@ -31,6 +33,7 @@
 					class="beer-img" alt="stockBeer" />
 			</c:otherwise>
 		</c:choose>
+
 
 		<table class="table">
 			<tbody>
@@ -56,7 +59,7 @@
 				</tr>
 				<tr>
 					<th scope="row">Brewery</th>
-					<td><a href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></td>
+					<td><a class="link-dark"  href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></td>
 				</tr>
 				<tr>
 					<th>Category</th>
@@ -64,6 +67,7 @@
 				</tr>
 			</tbody>
 		</table>
+
 
 		<%-- <ul>
 >>>>>>> d0f8d5eb153662f426500c013730fc41ccf3296f
@@ -101,7 +105,7 @@
 | sub_category_id   | int(11)       | NO   | MUL | NULL    |                |
 | beer_image_url    | va -->
 
-
+<div class="container">
 	<c:choose>
 		<c:when test="${!empty sessionScope.user }">
 			<c:choose>
@@ -262,8 +266,7 @@
 
 
 
-
-	<a href=""></a>
-
+<a href=""></a>
+</div>
 </body>
 </html>

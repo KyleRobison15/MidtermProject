@@ -14,7 +14,7 @@
 <div class="container">
 	<div class="container-fluid">
 		<div class="container-fluid">
-			<h1 class="display-3" align="center">Cheers! Welcome to BrewBuds</h1>
+			<h1 class="display-3" align="center">Cheers! Welcome to brewBuds</h1>
 		</div>
 		
  		<c:choose>
@@ -36,7 +36,7 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th scope="col">Username</th>
+						<th scope="col">User</th>
 						<th scope="col">Rating</th>
 						<th scope="col">Merit</th>
 						<th scope="col">Beers Posted</th>
@@ -46,8 +46,14 @@
 				<tbody>
 					<c:forEach items="${users }" var="user" begin="0" end="5">
 						<tr>
-							<td><a href="showNonUserProfile.do?id=${user.value.id}">${user.value.username }</a></td>
-							<td>${user.key }</td>
+
+							<td><a class="link-dark" href="showNonUserProfile.do?id=${user.value.id}">${user.value.username }</a></td>
+								<c:choose>
+								<c:when test="${user.key > 3.9 }"><td><span class="badge badge-success">${user.key}</span></td></c:when>
+								<c:when test="${user.key < 3.9 && user.key > 2.5}"><td><span class="badge badge-warning">${user.key}</span></td></c:when>
+								<c:when test="${user.key < 2.5}"><td><span class="badge badge-danger">${user.key}</span></td></c:when>
+								</c:choose>
+
 							<c:forEach items="${usersAndMerit }" var="userAndMerit">
 								<c:choose>
 									<c:when test="${userAndMerit.key.id == user.value.id}">
@@ -61,8 +67,8 @@
 									<c:when test="${user.key < 1}"><img src="img/apprentice.jpg" width="70" Height="70" class="img-fluid" alt=""></c:when>
 									<c:when test="${user.key >= 1 && user.key < 2}"><img src="img/shiftBrewer.jpg" width="70" Height="70" class="img-fluid" alt=""></c:when>
 									<c:when test="${user.key >= 2 && user.key < 3}"><img src="img/productionBrewer.jpg" width="70" Height="70" class="img-fluid" alt=""></c:when>
-									<c:when test="${user.key >= 3 && user.key < 4}"><img src="img/headBrewer.jpg" width="75" Height="75" class="img-fluid" alt=""></c:when>
-									<c:when test="${user.key >= 4}"><img src="img/brewMaster.jpg" width="75" Height="75" class="img-fluid" alt=""></c:when>
+									<c:when test="${user.key >= 3 && user.key < 4}"><img src="img/headBrewer.jpg" width="85" Height="85" class="img-fluid" alt=""></c:when>
+									<c:when test="${user.key >= 4}"><img src="img/brewMaster.jpeg" width="87" Height="87" class="img-fluid" alt=""></c:when>
 								</c:choose>
 							</td>
 						</tr>
@@ -74,7 +80,7 @@
 			<c:choose>
 				<c:when test="${!empty beers}">
 					<h1 class="display-6">Top 5 Beers</h1>
-					<table class="table">
+					<table class="table table-striped">
 						<thead>
 							<tr>
 								<th scope="col">Rating</th>
@@ -88,11 +94,15 @@
 						<tbody>
 							<c:forEach items="${beers}" var="beer" begin="0" end="5">
 								<tr>
-									<td>${beer.key}</td>
+									<c:choose>
+									<c:when test="${beer.key > 3.9 }"><td><span class="badge badge-success">${beer.key}</span></td></c:when>
+									<c:when test="${beer.key < 3.9 && beer.key > 2.5}"><td><span class="badge badge-warning">${beer.key}</span></td></c:when>
+									<c:when test="${beer.key < 2.5}"><td><span class="badge badge-danger">${beer.key}</span></td></c:when>
+									</c:choose>
 									<%-- <td>${beer.value.user.username}</td> --%>
-									<td><a href="showNonUserProfile.do?id=${beer.value.user.id}">${beer.value.user.username }</a></td>
-									<td><a href="BreweryInfo.do?id=${beer.value.brewery.id }">${beer.value.brewery.name}</a></td>
-									<td><a href="beerProfile.do?id=${beer.value.id }">${beer.value.name}</a></td>
+									<td><a class="link-dark" href="showNonUserProfile.do?id=${beer.value.user.id}">${beer.value.user.username }</a></td>
+									<td><a class="link-dark" href="BreweryInfo.do?id=${beer.value.brewery.id }">${beer.value.brewery.name}</a></td>
+									<td><a class="link-dark" href="beerProfile.do?id=${beer.value.id }">${beer.value.name}</a></td>
 									<td>${beer.value.description}</td>
 									<td>${beer.value.subCategory.name}</td>
 								</tr>
@@ -106,7 +116,7 @@
 
 		<div class="container-fluid">
 			<h1 class="display-6">Top 5 Breweries</h1>
-			<table class="table">
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th scope="col">Rating</th>
@@ -119,8 +129,14 @@
 				<tbody>
 					<c:forEach items="${breweries }" var="brewery" begin="0" end="5">
 						<tr>
-							<td>${brewery.key }</td>
-							<td><a href="BreweryInfo.do?id=${brewery.value.id }">${brewery.value.name }</a></td>
+
+								<c:choose>
+								<c:when test="${brewery.key > 3.9 }"><td><span class="badge badge-success">${brewery.key}</span></td></c:when>
+								<c:when test="${brewery.key < 3.9 && beer.key > 2.5}"><td><span class="badge badge-warning">${brewery.key}</span></td></c:when>
+								<c:when test="${brewery.key < 2.5}"><td><span class="badge badge-danger">${brewery.key}</span></td></c:when>
+								</c:choose>
+							<td><a class="link-dark" href="BreweryInfo.do?id=${brewery.value.id }">${brewery.value.name }</a></td>
+
 							<td>${brewery.value.address.city }</td>
 							<td>${brewery.value.address.stateProvince }</td>
 							<td>${brewery.value.address.countryCode }</td>
