@@ -38,7 +38,7 @@
 			</div>
 		</form>
 	
-			<br/><p>New to BeerBuds? <a href="createAccountPage.do">Create Account</a></p>
+			<br/><p>New to brewBuds? <a href="createAccountPage.do">Create Account</a></p>
 			
 		
 	</div>	
