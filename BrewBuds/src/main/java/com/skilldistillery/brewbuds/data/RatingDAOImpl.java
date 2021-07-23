@@ -186,17 +186,20 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		List<Beer> beers = brewery.getBeers();
 		
-		int total = 0;
+		double total = 0;
 		
 		for(Beer beer : beers) {
 			
 			total += findAverageBeerRating(beer.getId(),true);
+
 		}
+		
 		
 		average = (double) total / (double) beers.size();
 		
         DecimalFormat df = new DecimalFormat("#.##");
         average = Double.valueOf(df.format(average));
+        
 		
 		return average;
 	}

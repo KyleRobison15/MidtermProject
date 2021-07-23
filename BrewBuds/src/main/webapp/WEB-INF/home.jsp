@@ -44,7 +44,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${users }" var="user" begin="0" end="5">
+					<c:forEach items="${users }" var="user" begin="0" end="4">
 						<tr>
 
 							<td><a class="link-dark" href="showNonUserProfile.do?id=${user.value.id}">${user.value.username }</a></td>
@@ -92,7 +92,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${beers}" var="beer" begin="0" end="5">
+							<c:forEach items="${beers}" var="beer" begin="0" end="4">
 								<tr>
 									<c:choose>
 									<c:when test="${beer.key > 3.9 }"><td><span class="badge badge-success">${beer.key}</span></td></c:when>
@@ -127,7 +127,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${breweries }" var="brewery" begin="0" end="5">
+					<c:forEach items="${breweries }" var="brewery" begin="0" end="4">
 						<tr>
 
 								<c:choose>
