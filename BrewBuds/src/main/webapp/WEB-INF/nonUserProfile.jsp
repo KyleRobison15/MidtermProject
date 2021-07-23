@@ -21,7 +21,7 @@
 						<c:choose>
 							<c:when test="${not empty user.imageURL}">
 								<img src="${user.imageURL}" width="128" height="128"
-									class="beer-img" alt="stockBeer" />
+									class="beer-img rounded" alt="stockBeer" />
 							</c:when>
 
 							<c:otherwise>
