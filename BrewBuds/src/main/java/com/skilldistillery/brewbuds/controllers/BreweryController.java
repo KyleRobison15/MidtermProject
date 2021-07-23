@@ -23,6 +23,7 @@ public class BreweryController {
 		model.addAttribute("brewery", dao.getBrewery(id));
 //		model.addAttribute("average", ratingDao.findAverageBreweryRating(id));
 //		model.addAttribute("beers", dao.showBeers());
+		model.addAttribute("average", ratingDao.findAverageBreweryRating(id));
 		model.addAttribute("beers", dao.getBrewery(id).getBeers());
 		return "info";
 	}
