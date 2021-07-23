@@ -36,7 +36,7 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th scope="col">Username</th>
+						<th scope="col">User</th>
 						<th scope="col">Rating</th>
 						<th scope="col">Merit</th>
 						<th scope="col">Beers Posted</th>
@@ -47,7 +47,11 @@
 					<c:forEach items="${users }" var="user" begin="0" end="5">
 						<tr>
 							<td><a href="showNonUserProfile.do?id=${user.value.id}">${user.value.username }</a></td>
-							<td>${user.key }</td>
+								<c:choose>
+								<c:when test="${user.key > 3.9 }"><td><span class="badge badge-success">${user.key}</span></td></c:when>
+								<c:when test="${user.key < 3.9 && user.key > 2.5}"><td><span class="badge badge-warning">${user.key}</span></td></c:when>
+								<c:when test="${user.key < 2.5}"><td><span class="badge badge-danger">${user.key}</span></td></c:when>
+								</c:choose>
 							<c:forEach items="${usersAndMerit }" var="userAndMerit">
 								<c:choose>
 									<c:when test="${userAndMerit.key.id == user.value.id}">
@@ -88,7 +92,11 @@
 						<tbody>
 							<c:forEach items="${beers}" var="beer" begin="0" end="5">
 								<tr>
-									<td>${beer.key}</td>
+									<c:choose>
+									<c:when test="${beer.key > 3.9 }"><td><span class="badge badge-success">${beer.key}</span></td></c:when>
+									<c:when test="${beer.key < 3.9 && beer.key > 2.5}"><td><span class="badge badge-warning">${beer.key}</span></td></c:when>
+									<c:when test="${beer.key < 2.5}"><td><span class="badge badge-danger">${beer.key}</span></td></c:when>
+									</c:choose>
 									<%-- <td>${beer.value.user.username}</td> --%>
 									<td><a href="showNonUserProfile.do?id=${beer.value.user.id}">${beer.value.user.username }</a></td>
 									<td><a href="BreweryInfo.do?id=${beer.value.brewery.id }">${beer.value.brewery.name}</a></td>
@@ -119,7 +127,11 @@
 				<tbody>
 					<c:forEach items="${breweries }" var="brewery" begin="0" end="5">
 						<tr>
-							<td>${brewery.key }</td>
+								<c:choose>
+								<c:when test="${brewery.key > 3.9 }"><td><span class="badge badge-success">${brewery.key}</span></td></c:when>
+								<c:when test="${brewery.key < 3.9 && beer.key > 2.5}"><td><span class="badge badge-warning">${brewery.key}</span></td></c:when>
+								<c:when test="${brewery.key < 2.5}"><td><span class="badge badge-danger">${brewery.key}</span></td></c:when>
+								</c:choose>
 							<td><a href="BreweryInfo.do?id=${brewery.value.id }">${brewery.value.name }</a></td>
 							<td>${brewery.value.address.city }</td>
 							<td>${brewery.value.address.stateProvince }</td>
