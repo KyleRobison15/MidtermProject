@@ -61,13 +61,13 @@
 						<c:choose>
 							<c:when test="${!empty sessionScope.user.imageURL}">
 								<a href="showProfileAdd.do"> <img
-									src="${sessionScope.user.imageURL}" class="rounded" height="70" width="70">
+									src="${sessionScope.user.imageURL}" class="rounded-circle" height="70" width="70">
 								</a>
 							</c:when>
 							<c:otherwise>
 								<a href="showProfileAdd.do"> <img width="70" height="70"
 									alt="${sessionScope.user.username}"
-									src="img/defaultProfileImage.png" class="rounded">
+									src="img/defaultProfileImage.png" class="rounded-circle">
 								</a>
 							</c:otherwise>
 						</c:choose>
