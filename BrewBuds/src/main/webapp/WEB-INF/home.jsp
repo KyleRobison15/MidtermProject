@@ -68,7 +68,7 @@
 									<c:when test="${user.key >= 1 && user.key < 2}"><img src="img/shiftBrewer.jpg" width="70" Height="70" class="img-fluid" alt=""></c:when>
 									<c:when test="${user.key >= 2 && user.key < 3}"><img src="img/productionBrewer.jpg" width="70" Height="70" class="img-fluid" alt=""></c:when>
 									<c:when test="${user.key >= 3 && user.key < 4}"><img src="img/headBrewer.jpg" width="85" Height="85" class="img-fluid" alt=""></c:when>
-									<c:when test="${user.key >= 4}"><img src="img/brewMaster.jpg" width="87" Height="87" class="img-fluid" alt=""></c:when>
+									<c:when test="${user.key >= 4}"><img src="img/brewMaster.jpeg" width="87" Height="87" class="img-fluid" alt=""></c:when>
 								</c:choose>
 							</td>
 						</tr>
