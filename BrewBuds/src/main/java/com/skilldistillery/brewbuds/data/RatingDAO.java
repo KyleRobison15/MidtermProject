@@ -16,6 +16,7 @@ public interface RatingDAO {
 	void deleteBeerRating(RatingId ratingId);
 	//void updateBeerRating();
 	double findAverageBeerRating(int beerId);
+	double findAverageBeerRating(int beerId, boolean isBreweryRating);
 	double findAverageUserRating(int userId);
 	double findAverageBreweryRating(int breweryId);
 	void updateBeerRating(int beerId, int userId, int ratingVal, String comment);
