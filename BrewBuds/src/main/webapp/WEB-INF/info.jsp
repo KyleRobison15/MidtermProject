@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="styles.jsp"%> 
-<%@ include file="nav.jsp"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="styles.jsp"%>
+<%@ include file="nav.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +9,40 @@
 <title>Brewery Info</title>
 </head>
 <body>
-<h2>${brewery.name}</h2>
-<div class = "breweryInfo">
-	<ul>
-		<li>Brewery ID: ${brewery.id}</li>
+<div class="container">
+	<h2>${brewery.name}</h2>
+	<h3>Rating: ${average}</h3>
+	<div class="breweryInfo">
+		<%-- 		<li>Brewery ID: ${brewery.id}</li> --%>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Description</th>
+					<td>${brewery.description}</td>
+				</tr>
+				<tr>
+					<th scope="row">Address</th>
+				</tr>
+				<tr>
+					<th scope="row">Street</th>
+					<td>${brewery.address.address}</td>
+				</tr>
+				<tr>
+					<th>City</th>
+					<td>${brewery.address.city}</td>
+				</tr>
+				<tr>
+					<th>State</th>
+					<td>${brewery.address.stateProvince}</td>
+				</tr>
+				<tr>
+					<th>Postal Code</th>
+					<td>${brewery.address.postalCode}</td>
+				</tr>
+			</tbody>
+		</table>
+		<%-- <ul>
 		<li>Rating: ${average}</li>
 		<li>Description: ${brewery.description}</li>
 		<li>Address:</li>	
@@ -21,35 +52,36 @@
 					${brewery.address.stateProvince} 
 					${brewery.address.postalCode}</li>
 			</ul>
-	</ul>
+	</ul> --%>
+	</div>
 </div>
-<br>
-<h3>Beers in this Brewery's Icebox</h3>
-<br>
-<div class = "container">
-<c:choose>
-<c:when test="${!empty beers}">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="beer" items="${beers}">
-					<tr>
-						<td><a href="beerProfile.do?id=${beer.id}">${beer.name}</a></td>
-						<td>${beer.description}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-</c:when>
-<c:otherwise>
-	<p>None Found!</p>
-</c:otherwise>
-</c:choose>
-</div>
+	<div class="container">
+	<br>
+	<h3>Beers in this Brewery's Icebox</h3>
+	<br>
+		<c:choose>
+			<c:when test="${!empty beers}">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="beer" items="${beers}">
+							<tr>
+								<td><a href="beerProfile.do?id=${beer.id}">${beer.name}</a></td>
+								<td>${beer.description}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:when>
+			<c:otherwise>
+				<p>None Found!</p>
+			</c:otherwise>
+		</c:choose>
+	</div>
 </body>
 </html>
