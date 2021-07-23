@@ -15,8 +15,7 @@
 
 	<div class="container">
 		<div class="form">
-			<form action="addBeer.do" method="POST"></form>
-
+			<form action="addBeer.do" method="POST">
 
 <!-- ///////////////////////////////////////////// BREWERY ////////////////////////////////////////////////////////////// -->
 
@@ -67,10 +66,6 @@
 				<label for="color" class="col-sm-2 col-form-label">Color (SRM)</label>
 				<input type="range" class="custom-range" min="0" max="50" step="1" name="color" id="color"/>
 		
-				
-				</div>
-			
-				
 <!-- ///////////////////////////////////////////// BITTERNESS ////////////////////////////////////////////////////////////// -->
 
 		<label for="bitterness" class="col-sm-2 col-form-label">Bitterness (IBU)</label>
@@ -124,10 +119,8 @@
 		
 		<br/><button type="submit" class="btn btn-outline-dark">Add Beer!</button>
 		
-		
 			</form>
 		</div>
 	</div>
-
 </body>
 </html>
