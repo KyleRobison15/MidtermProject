@@ -33,9 +33,9 @@
 		</div>
 	</div> -->
 
-
+	<h1 class="display-3" align="center">Your Favorites</h1>
 	<div class="container">
-
+		
 		<c:choose>
 			<c:when test="${!empty beers}">
 				<table class="table table-striped">
@@ -51,13 +51,13 @@
 					<tbody>
 						<c:forEach var="beer" items="${beers}">
 							<tr>
-								<td><a href="beerProfile.do?id=${beer.id}">${beer.name}</a></td>
-								<td><a href="BreweryInfo.do?id=${beer.brewery.id}">${beer.brewery.name}</a></td>
+								<td><a class="link-dark" href="beerProfile.do?id=${beer.id}">${beer.name}</a></td>
+								<td><a class="link-dark" href="BreweryInfo.do?id=${beer.brewery.id}">${beer.brewery.name}</a></td>
 								<td>${beer.subCategory.name}</td>
 								<td>${beer.user.username}</td>
 								<td>
 									<form action="RemoveFavorite.do?beerId=${beer.id}" method="post">
-									<input type="submit" value="remove"/>
+									<input class="btn btn-outline-dark" type="submit" value="remove"/>
 									</form>
 								</td>
 							</tr>
