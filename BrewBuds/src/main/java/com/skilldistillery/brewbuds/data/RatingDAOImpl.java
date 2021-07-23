@@ -114,6 +114,38 @@ public class RatingDAOImpl implements RatingDAO {
 		return average;
 	}
 	
+	@Override
+	public double findAverageBeerRating(int beerId, boolean isBreweryRating) {
+		
+		//String jpql = "SELECT AVG(r.rating) FROM Rating r WHERE r.beer_id= :beerId";
+		
+		//Double average = em.createQuery(jpql, Double.class).setParameter("beerId", beerId).getSingleResult();
+		
+		double average;
+		
+		Beer beer = em.find(Beer.class, beerId);
+		
+		if(beer.getRatings().size() == 0) {
+			return 0;
+		}
+		
+		int total = 0;
+		
+		for (Rating rating : beer.getRatings()) {
+			
+			total += rating.getRating();
+			
+		}
+		
+		average = (double) total / (double) beer.getRatings().size();
+		
+		
+//		DecimalFormat df = new DecimalFormat("#.##");
+//		average = Double.valueOf(df.format(average));
+		
+		return average;
+	}
+	
 	
 	@Override
 	public double findAverageUserRating(int userId) {
@@ -158,13 +190,13 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		for(Beer beer : beers) {
 			
-			total += findAverageBeerRating(beer.getId());
+			total += findAverageBeerRating(beer.getId(),true);
 		}
 		
 		average = (double) total / (double) beers.size();
 		
-       // DecimalFormat df = new DecimalFormat("#.##");
-       // average = Double.valueOf(df.format(average));
+        DecimalFormat df = new DecimalFormat("#.##");
+        average = Double.valueOf(df.format(average));
 		
 		return average;
 	}

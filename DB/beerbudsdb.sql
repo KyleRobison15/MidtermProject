@@ -235,6 +235,19 @@ INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `p
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (7, '100 Paulaner Beer Road', NULL, 'Munich', 'Bavaria', '3000', 'GE', '12345678990');
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (8, '200 Dogfish Head Lane', NULL, 'Milton', 'DE', '4000', 'US', '6666666666');
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (9, '399 Barrel Brothers Street', NULL, 'Windsor', 'CA', '95492', 'US', '7076969487');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (10, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (11, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (12, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (13, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (14, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (15, '800 East Lincoln Ave', NULL, 'Fort Collins', 'CO', '80524', 'US', '9704989070');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (16, '1 Busch Pl', NULL, 'St Louis', 'MO', '63118', 'US', '3145772693');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (17, '3750 Chestnut Place', NULL, 'Denver', 'CO', '80216', 'US', NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (18, '500 Linden Street', NULL, 'Fort Collins', 'CO', '80524', 'US', '9702210524');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (19, 'St. James\'s Gate', NULL, 'Dublin', NULL, NULL, 'IR', '35314084800');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (20, 'Aarschotsesteenweg 20', NULL, 'Leuven', NULL, '3000', 'BE', NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (21, '123 Default Address', NULL, 'Default City', 'VA', '20147', 'US', '1234567890');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (22, '123 Default Address', NULL, 'Default City', 'VA', '20147', 'US', '1234567890');
 
 COMMIT;
 
@@ -248,6 +261,14 @@ INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_ur
 INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (2, 'Paulaner Brewery', 'Paulaner is a German brewery, established in 1634 in Munich by the Minim friars of the Neudeck ob der Au cloister. The mendicant order and the brewery are named after Francis of Paola, the founder of the order. Paulaner is one of the six breweries who provide beer for Oktoberfest.', 7, NULL);
 INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (3, 'Dogfish Head Craft Brewery', 'Brews delicious brews in the US', 8, NULL);
 INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (4, 'Barrel Brothers Brewing Company', 'Wickedly dark brewers.', 9, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (5, 'Odelle', 'Founded in 1989, Odell Brewing was started by Doug Odell, his wife Wynne, and his sister Corkie. Over thirty years later, the culture of family and collaboration still thrives, fostering a brewery full of beer-centric people. It is this passion for beer that inspires Odell Brewing to create quality, hand-crafted, innovative brews.', 15, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (6, 'ShockTop', 'Shock top sure is a cool company. Try our beers!', 16, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (7, 'Blue Moon', 'Blue Moon has gained recognition, winning over drinkers and inspiring brewers across the country. In doing so, Blue Moon catapulted the craft movement forward, helping to shape the modern American beer scene. Now, over 20 years later, Blue Moon is still the #1 craft in the US* and is now also delighting consumers in 25+ countries globally.', 17, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (8, 'New Belgium', 'From the beginning, we’ve had the audacious goal of making world-class beer. But more than that, we’re committed to democratizing craft beer, so that more people and communities can enjoy it.', 18, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (9, 'Guiness', 'It takes adventurous spirit and irrepressible ingenuity to do things the Guinness way. From our humble beginnings in 1759 to the present day, we’ve gone to extraordinary lengths to bring you exceptional beer. But, while many milestones mark the way on our long and illustrious path, we’re not ones to rest on our laurels. As we like to put it: our greatest work is yet to come.', 19, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (10, 'Stella Artois', 'Stella Artois is the result of hundreds of years of brewing expertise so it’s worth just a few extra steps to ensure the best possible tasting experience for connoisseurs such as you. Before being poured, we always recommend it has been chilled to between 3-5°C and of course you should savour Stella Artois in its unique Chalice, the curves of which are designed to enhance the tempting taste and aroma. Take a sip. A malty middle and crisp finish should reveal the full, pleasantly bitter flavour that Stella Artois is known for and what makes it an in ideal accompaniment for a variety of cuisines from around the world.\n\n', 20, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (11, 'Victory Beer', 'Default Description', 21, NULL);
+INSERT INTO `brewery` (`id`, `name`, `description`, `address_id`, `logo_image_url`) VALUES (12, 'Budweiser', 'Default Description', 22, NULL);
 
 COMMIT;
 
@@ -258,10 +279,15 @@ COMMIT;
 START TRANSACTION;
 USE `beer_budsdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (1, 'KyleRobison', 'admin1', 'Kyle', 'Robison', 'admin1@example.com', '2017-07-16 12:00:00', 1, 'admin', 2, NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (2, 'BeerTaster25', 'beer', 'Bob', 'boblastname', 'beertaster@example.com', '2017-07-16 12:00:00', 1, 'user', 6, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (2, 'BeerTaster25', 'beer', 'Bob', 'boblastname', 'beertaster@example.com', '2017-07-16 12:00:00', 1, 'user', 6, 'https://thumbs.dreamstime.com/b/closeup-man-drinking-beer-taster-glass-outdoor-restaurant-closeup-man-drinking-beer-taster-glass-120071957.jpg');
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (3, 'TomStagnaro', 'admin', 'Tom', 'Stagnaro', 'tomstagnaro@example.com', '2018-07-16 12:00:00', 1, 'admin', 3, NULL);
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (4, 'ChrisRiddle', 'admin', 'Chris', 'Riddle', 'chrisriddle@example.com', '2019-07-16 12:00:00', 1, 'admin', 4, NULL);
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (5, 'MattLee', 'admin', 'Matt', 'Lee', 'mattlee@example.com', '2020-07-16 12:00:00', 1, 'admin', 5, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (6, 'BeerBlaster9000', 'beer', 'Mitchel', 'Wellington', 'mitchelwellington@example.com', '2020-07-16 12:00:00', 1, 'user', 10, 'https://drinksfeed.com/wp-content/blogs.dir/1/files/2020/01/can-cannon-xproducts-640x533-1.jpg');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (7, 'HopAndSkip96', 'beer', 'Brady', 'Ross', 'bradyross@example.com', '2020-07-16 12:00:00', 1, 'user', 11, 'https://c8.alamy.com/comp/C7H24N/senior-man-playing-hopscotch-in-the-park-C7H24N.jpg');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (8, 'WhinerTheDiner', 'beer', 'Samuel', 'Smith', 'samuelsmith@example.com', '2020-07-16 12:00:00', 1, 'user', 12, '2wCEAAoHCBYSFRgVFRUYGBgYGBgYHBwYGhoYGBoaHBwZHBwYHBocIS4lHh4tIBocJkYmKy81NUM1GiQ7QDszPy40NTEBDAwMEA8QHxISHz0rJCg0PT82OjgxNDQ0PzQ9MTQ0MTQ0NjQ0NzU0NDE2NDQ0NjQ2NDQ9NDQxNDE2NDQ0PTQxNP');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (9, 'SurferDude89', 'beer', 'Caitlin', 'Kipps', 'caitlinkipps@example.com', '2020-07-16 12:00:00', 1, 'user', 13, 'https://static.wikia.nocookie.net/characterprofile/images/5/5c/Silver_The_Hedgehog_Sirfer.png/revision/latest/scale-to-width-down/250?cb=20161105175410');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (10, 'PinkyDestroyerOfFoam', 'beer', 'Jordan', 'Darnell', 'jordandarnell@example.com', '2020-07-16 12:00:00', 1, 'user', 14, 'https://1.bp.blogspot.com/_QnWMzNoOKj0/TP7mSBocGDI/AAAAAAAABu0/10VpIaFuTIg/s1600/nose+shot+cropped.jpg');
 
 COMMIT;
 
@@ -388,7 +414,15 @@ INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm
 INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (2, 'Paulaner Hefe Weizen', 'Germany- Hefeweizen- A specially top-fermented yeast gives this beer its unmistakable character: tangy, light, fruity, and only a tad bitter. Its natural tastes remain due to the unfiltered method of brewing.', 5.5, 5, 30, 2, 3, 13, 'https://products1.imgix.drizly.com/mi_5057.jpg?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20');
 INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (3, 'Dogfish Head SeaQuenchAle', 'Delaware- American Wild Ale- 4.9% ABV. We begin by brewing a Kolsch with wheat & Munich Malt, then a salty Gose with black limes, coriander & sea salt, followed up with a citrusy-tart Berlinerweiss made with lime juice & lime peel. All three beers are then blended together = SeaQuench!', 4.9, 4, 55, 3, 4, 27, 'https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/hba/hde/12567275012126.png');
 INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (4, 'Dark Sarcasm Porter', 'Barrel Brothers Brewing\'s Dark Sarcasm Porter is a rich and smooth treat. This full-bodied ale has notes of cocoa, coffee, toffee, and hints of vanilla without being too sweet. Pair with chili or soy-glazed mushrooms.', 7, 9, 40, 4, 5, 45, 'https://goodeggs4.imgix.net/7b156e08-b202-45a6-9674-5bbd1c5333a4.jpg?w=840&h=525&fm=jpg&q=80&fit=crop');
-INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (5, 'Mystery Beer', 'Mystery taste', 8, 5, 65, 4, 3, 1, NULL);
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (5, 'Mystery Beer', 'Mystery taste', 8, 5, 65, 4, 3, 1, 'https://cdn.shopify.com/s/files/1/0359/0750/2124/products/mysterybeer_2464x.jpg?v=1605550900');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (6, '90 Shilling', '90 Shilling is our smooth and complex flagship beer. A medium-bodied amber ale with a distinct burnished copper color and a deeply pleasant aroma. The name 90 Shilling comes from the Scottish method of taxing beer. Only the highest quality beers were taxed 90 Shillings. We think you’ll find this original ale brilliantly refreshing, and worth every Shilling.', 5.3, 0, 32, 5, 1, 1, 'https://www.odellbrewing.com/wp-content/uploads/2020/04/90-Shilling-ProductCrops-e1588041326994.png');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (7, 'Sour Monkey', 'Fruity notes from imported Belgian yeast swirl through a precise souring. Pucker up to a bite of citrus laden tang ending with a delectable experience.', 9.5, 0, 10, 11, 2, 1, 'https://www.biagiowineandspirits.com/wp-content/uploads/2019/05/img5590.png');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (8, 'ShockTop Belgian White', 'This spiced Belgian-style wheat ale is the pinnacle of refreshment brewed with real orange, lemon and lime peels for a smooth, citrusy finish. The beer that’s always down to chill — and be chilled.', 4.0, 0, 10, 6, 3, 1, 'https://d2aam04nmhpdf8.cloudfront.net/images/images/000/025/168/xlarge/shock-top.jpg?1546530943');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (9, 'Blue Moon Belgian White', 'A wheat beer brewed with Valencia orange peel for a subtle sweetness and bright, citrus aroma.', 5.4, 0, 9, 7, 4, 1, 'https://www.bluemoonbrewingcompany.com/sites/bluemoon/files/styles/beers/public/beers/2018-06/BlueMoon-BelgianWhite.png?itok=AonO8W6_');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (10, 'Bud Light', 'Bud Light is brewed using a blend of premium aroma hop varieties, both American-grown and imported, and a combination of barley malts and rice. Its superior drinkability and refreshing flavor makes it the world’s favorite light beer.', 4.2, 0, 6, 12, 1, 1, 'https://thumbor.thedailymeal.com/sPcrDgOkMkucI3QSPNrK3VNePek=/870x565/filters:focal(829x460:830x461)/https://www.thedailymeal.com/sites/default/files/story/2017/budlight-shutterstock.JPG');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (11, 'Stella Artois', 'Stella Artois is a classic Belgian lager, golden in color with a floral, hop aroma, well-balanced fruity malty sweetness, crisp hop bitterness and a soft dry finish. All natural ingredients give Stella Artois a clean, crisp palate. The fresh, pale malt aromas offer a sweet herbal note and a lingering hoppy finish.Stella is made with traditional malted barley and the finest European hops to provide superior quality and its full characteristic flavor.', 5.2, 0, 24, 10, 2, 1, 'https://bierstation.com/wp-content/uploads/2020/09/a61c8d33-b10e-40dd-9fff-21bafeff2d6b-4.png');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (12, 'Fat Tire', 'Fat Tire delivers drinkers everywhere a flavorful, balanced beer with a fresh herbal hop profile, fine malt presence and a touch of fruity yeast, making it a timeless beer with broad appeal.', 5.2, 0, 22, 8, 3, 1, 'https://www.newbelgium.com/siteassets/beer/fat-tire/beer-fat-tire-amber-ale-desktop.png');
+INSERT INTO `beer` (`id`, `name`, `description`, `alcohol_by_volume`, `color_srm`, `bitterness_ibu`, `brewery_id`, `user_id`, `sub_category_id`, `beer_image_url`) VALUES (13, 'Guiness Draught', 'Rich and creamy. Distinctively black. Velvety in its finish. This iconic beer is defined by harmony. Sip after sip, sweet counters bitter as the malt arrives on cue to compliment a base of roasted barley. Just as the unmistakable white head sits flush atop the dark beer, so do the flavors counter and combine perfectly. This is our greatest innovation. Truly unique. Perfectly balanced. Made of More', 4.2, 0, 0, 9, 4, 1, 'https://2fdltvvn8wp2rn64ywgk8o17-wpengine.netdna-ssl.com/wp-content/uploads/2016/03/guinness-draught.jpg');
 
 COMMIT;
 
@@ -398,11 +432,66 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beer_budsdb`;
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 1, 2, 'One of my favorites', '2021-01-01 12:05:32');
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (4, 2, 1, 'Tastes hoppy.', '2021-02-01 12:05:32');
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (3, 3, 3, 'Would pair well with fish.', '2021-03-01 12:05:32');
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 4, 4, 'The bitterness to sweetness balanace is off.', '2021-04-01 12:05:32');
-INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 5, 5, 'Pretty good.', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 6, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 6, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 6, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 6, 4, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 6, 5, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 6, 6, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (4, 6, 7, 'Good', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 9, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 9, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 9, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (4, 9, 4, 'Good', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 2, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 2, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 2, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 2, 4, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (3, 2, 5, 'Okay', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 7, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 7, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 7, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 7, 4, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 7, 5, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 7, 6, 'Not Good', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 1, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 1, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 1, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 1, 4, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (3, 1, 5, 'Okay', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 3, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 3, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 3, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 3, 4, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 3, 5, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 4, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 4, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 4, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 4, 4, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 4, 5, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 4, 6, 'Not Good', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 4, 7, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 5, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 5, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 5, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 5, 4, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 5, 5, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 5, 6, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 8, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 8, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 8, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 8, 4, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 8, 5, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 8, 6, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 8, 7, 'Not Good', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 10, 1, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (2, 10, 2, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 12, 1, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 12, 2, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (5, 12, 3, 'Excellent', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 12, 4, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (1, 12, 5, 'Bad', '2021-05-01 12:05:32');
+INSERT INTO `rating` (`rating`, `beer_id`, `user_id`, `comment`, `rating_date`) VALUES (3, 12, 6, 'Okay', '2021-05-01 12:05:32');
 
 COMMIT;
 

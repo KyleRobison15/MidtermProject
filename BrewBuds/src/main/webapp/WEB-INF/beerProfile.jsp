@@ -13,9 +13,11 @@
 </head>
 <body>
 
-<div class="container">
-<h1 class="display-3">${beer.name}</h1>
- 		<c:choose>
+	<div class="container">
+	
+		<h1 class="display-3">${beer.name}</h1>
+
+		<c:choose>
 			<c:when test="${!empty message }">
 				<div class="container">
 					<div class="alert alert-primary" role="alert">${message }</div>
@@ -26,7 +28,7 @@
 		<c:choose>
 			<c:when test="${not empty beer.imageURL}">
 				<img src="${beer.imageURL}" width="128" height="128"
-					class="beer-img" alt="stockBeer"/>
+					class="beer-img" alt="stockBeer" />
 			</c:when>
 
 			<c:otherwise>
@@ -47,6 +49,15 @@
 						</c:choose>
 				</tr>
 				<tr>
+					<th scope="row">User</th>
+					<td><a class="link-dark" href="showNonUserProfile.do?id=${beer.user.id }">${beer.user.username}</a></td>
+				</tr>
+				<tr>
+					<th scope="row">Brewery</th>
+					<td><a class="link-dark"
+						href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></td>
+				</tr>
+				<tr>
 					<th scope="row">Description</th>
 					<td>${beer.description}</td>
 				</tr>
@@ -63,16 +74,11 @@
 					<td>${beer.bitterness}</td>
 				</tr>
 				<tr>
-					<th scope="row">Brewery</th>
-					<td><a class="link-dark"  href="BreweryInfo.do?id=${beer.brewery.id }">${beer.brewery.name}</a></td>
-				</tr>
-				<tr>
 					<th>Category</th>
 					<td>${beer.subCategory.name}</td>
 				</tr>
 			</tbody>
 		</table>
-
 
 		<%-- <ul>
 >>>>>>> d0f8d5eb153662f426500c013730fc41ccf3296f
@@ -110,125 +116,181 @@
 | sub_category_id   | int(11)       | NO   | MUL | NULL    |                |
 | beer_image_url    | va -->
 
-<div class="container">
-	<c:choose>
-		<c:when test="${!empty sessionScope.user }">
-			<c:choose>
-				<c:when test="${!alreadyRated }">
-					<form action="submitRating.do" method="POST">
+	<div class="container">
+		<c:choose>
+			<c:when test="${!empty sessionScope.user }">
+				<c:choose>
+					<c:when test="${!alreadyRated }">
+						<form action="submitRating.do" method="POST">
+						<div class="row g-3">
+							<div class="col">
+							<label class="form-check-label" for="ticked"> Rating </label>
+							
+							<div class="form-check form-check-inline">
+								<label class="form-check-label" for="rating1">1</label> 
+								<input class="form-check-input" type="radio" name="rating" id="rating1" value="1"> 
+							</div>
+							
+							<div class="form-check form-check-inline">
+								<label class="form-check-label" for="rating2">2</label>
+								<input class="form-check-input" type="radio" name="rating" id="rating2" value="2">  
+							</div>	
+								
+							<div class="form-check form-check-inline">
+								<label class="form-check-label" for="rating3">3</label> 
+								<input class="form-check-input" type="radio" name="rating" id="rating3" value="3"> 
+							</div>
+							
+							<div class="form-check form-check-inline">
+								<label class="form-check-label" for="rating4">4</label> 
+								<input class="form-check-input" type="radio" name="rating" id="rating4" value="4"> 
+							</div>
+							
+							<div class="form-check form-check-inline">
+								<label class="form-check-label" for="rating5">5</label>  
+								<input class="form-check-input" type="radio" name="rating" id="rating5" value="5" checked>
+							</div> 
+							 
+							</div>
+							
+							<div class="col">
+								<input type="text" name="comment" placeholder="comment"/> 
+								<input type="hidden" name="beerId" value="${beer.id}" /> 
+								<input type="hidden" name="userId" value="${sessionScope.user.id}" /> 
+								<input type="submit" value="rate" />
+							</div>
+							
+						</div>
+						</form>
+					</c:when>
+					<c:otherwise>
+						<hr>
+						<h4>Your Review</h4>
+						<form action="editRating.do" method="POST">
+							<label class="form-check-label" for="ticked"><strong>Rating</strong></label>
+							<c:choose>
+								<c:when test="${userReview.rating == 1}">
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating1" value="1" checked disabled readonly>
+									<label class="form-check-label" for="rating1">1</label>
+								</div>	
+									
+								</c:when>
+								<c:otherwise>
+								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating1" value="1" disabled readonly>
+									<label class="form-check-label" for="rating1">1</label>
+								</div>	
+									
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${userReview.rating == 2}">
+								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating2" value="2" checked readonly>
+									<label class="form-check-label" for="rating2">2</label>
+								</div>	
+									
+								</c:when>
+								<c:otherwise>
+								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating2" value="2" disabled readonly>
+									<label class="form-check-label" for="rating2">2</label>
+								</div>	
+									
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${userReview.rating == 3}">
+								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating3" value="3" checked disabled readonly>
+									<label class="form-check-label" for="rating3">3</label>
+								</div>	
+									
+								</c:when>
+								<c:otherwise>
+								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating3" value="3" disabled readonly>
+									<label class="form-check-label" for="rating3">3</label>
+								</div>	
+									
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+							
+								<c:when test="${userReview.rating == 4}">
+								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating4" value="4" checked disabled readonly>
+									<label class="form-check-label" for="rating4">4</label>
+								</div>	
+									
+								</c:when>
+								<c:otherwise>
+								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating4" value="4" disabled readonly>
+									<label class="form-check-label" for="rating4">4</label>
+								</div>	
+									
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${userReview.rating == 5}">
+								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating5" value="5" checked disabled readonly>
+									<label class="form-check-label" for="rating5">5</label>
+								</div>	
+									
+								</c:when>
+								<c:otherwise>
+								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="rating" id="rating5" value="5" disabled readonly>
+									<label class="form-check-label" for="rating5">5</label>
+								</div>	
+									
+								</c:otherwise>
+							</c:choose>
+							
+							<input type="text" name="comment" size="70" value="${userReview.comment }" readonly /> 
+							<input type="hidden" name="beerId" value="${beer.id}" /> 
+							<input type="hidden" name="userId" value="${sessionScope.user.id}" /> 
+							<input type="hidden" name="rating" value="${userReview.rating}" /> 
+							<input class="btn btn-outline-dark" type="submit" value="Edit" />
 
-						<input class="form-check-input" type="radio" name="rating"
-							id="rating1" value="1"> <label for="rating1">1</label> <input
-							class="form-check-input" type="radio" name="rating" id="rating2"
-							value="2"> <label for="rating2">2</label> <input
-							class="form-check-input" type="radio" name="rating" id="rating3"
-							value="3"> <label for="rating3">3</label> <input
-							class="form-check-input" type="radio" name="rating" id="rating4"
-							value="4"> <label for="rating4">4</label> <input
-							class="form-check-input" type="radio" name="rating" id="rating5"
-							value="5" checked> <label for="rating5">5</label> <label
-							class="form-check-label" for="ticked"> Rating </label> Comment: <input
-							type="text" name="comment" /> <input type="hidden" name="beerId"
-							value="${beer.id}" /> <input type="hidden" name="userId"
-							value="${sessionScope.user.id}" /> <input type="submit"
-							value="rate" />
+						</form>
+					</c:otherwise>
+				</c:choose>
+			</c:when>
+			<c:otherwise>
+				<br />
+				<p>
+					New to brewBuds? <a href="createAccountPage.do">Create Account</a>
+				</p>
+			</c:otherwise>
+		</c:choose>
 
-					</form>
-				</c:when>
-				<c:otherwise>
-					<hr>
-					<h6>Your review:</h6>
-					<form action="editRating.do" method="POST">
-						<c:choose>
-							<c:when test="${userReview.rating == 1}">
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating1" value="1" checked   readonly>
-								<label for="rating1">1</label>
-							</c:when>
-							<c:otherwise>
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating1" value="1"   readonly>
-								<label for="rating1">1</label>
-							</c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="${userReview.rating == 2}">
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating2" value="2" checked   readonly>
-								<label for="rating2">2</label>
-							</c:when>
-							<c:otherwise>
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating2" value="2"   readonly>
-								<label for="rating2">2</label>
-							</c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="${userReview.rating == 3}">
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating3" value="3" checked   readonly>
-								<label for="rating3">3</label>
-							</c:when>
-							<c:otherwise>
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating3" value="3"   readonly>
-								<label for="rating3">3</label>
-							</c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="${userReview.rating == 4}">
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating4" value="4" checked   readonly>
-								<label for="rating4">4</label>
-							</c:when>
-							<c:otherwise>
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating4" value="4"   readonly>
-								<label for="rating4">4</label>
-							</c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="${userReview.rating == 5}">
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating5" value="5" checked   readonly>
-								<label for="rating5">5</label>
-							</c:when>
-							<c:otherwise>
-								<input class="form-check-input" type="radio" name="rating"
-									id="rating5" value="5" readonly>
-								<label for="rating5">5</label>
-							</c:otherwise>
-						</c:choose>
-						<label class="form-check-label" for="ticked"> Rating </label>
-
-						Comment: <input type="text" name="comment"
-							value="${userReview.comment }" readonly/> 
-							<input type="hidden"
-							name="beerId" value="${beer.id}" /> 
-							<input type="hidden"
-							name="userId" value="${sessionScope.user.id}" /> 
-							<input
-							type="submit" value="edit" />
-
-					</form>
-					<%-- <form action="deleteRating.do" method="POST">
-						<input type="hidden" name="beerId" value="${beer.id}" /> <input
-							type="hidden" name="userId" value="${sessionScope.user.id}" /> <input
-							type="submit" value="delete" />
-					</form> --%>
-				</c:otherwise>
-			</c:choose>
-		</c:when>
-		<c:otherwise>
-			<br />
-			<p>
-				New to BeerBuds? <a href="createAccountPage.do">Create Account</a>
-			</p>
-		</c:otherwise>
-	</c:choose>
-
-	<hr>
-	<h1>Reviews:</h1>
+		<hr>
+		
+		<c:choose>
+			<c:when test="${!empty sessionScope.user }">
+				<form action="AddFavoriteBeerProfilePage.do?id=${beer.id}"
+					method="post">
+					<input class="btn btn-outline-dark btn-lg" type="submit"
+						value="Add to Favorites" />
+				</form>
+			</c:when>
+		</c:choose><br>
+		
+		
+		<h1 class="display-6">Reviews</h1>
 
 	<table class="table">
 		<thead>
@@ -254,6 +316,26 @@
 				</tr>
 				
 				<%-- <hr>
+=======
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">User</th>
+					<th scope="col">Rating</th>
+					<th scope="col">Comment</th>
+					<th scope="col">Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${beer.ratings}" var="rating">
+					<tr>
+						<td>${rating.user.username}</td>
+						<td>${rating.rating}</td>
+						<td>${rating.comment}</td>
+						<td>${rating.ratingDate}</td>
+					</tr>
+					<%-- <hr>
+>>>>>>> a2e641e93b23baa846def9c9b0603c0ee9a4d5fb
 <ul>
 <li>User: ${rating.user.username}</li>
 <li>Rating: ${rating.rating}</li>
@@ -262,23 +344,9 @@
 </ul> --%>
 
 
-			</c:forEach>
-		</tbody>
-	</table>
-
-	<c:choose>
-		<c:when test="${!empty sessionScope.user }">
-			<form action="AddFavoriteBeerProfilePage.do?id=${beer.id}"
-				method="post">
-				<input type="submit" value="Add to Favorites" />
-			</form>
-		</c:when>
-	</c:choose>
-
-
-
-
-<a href=""></a>
-</div>
+				</c:forEach>
+			</tbody>
+		</table>		
+	</div>
 </body>
 </html>

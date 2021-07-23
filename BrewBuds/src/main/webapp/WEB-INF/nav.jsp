@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/nav.css">
 </head>
 <body>
 
@@ -57,15 +58,15 @@
 			</form>
 			<c:choose>
 				<c:when test="${!empty sessionScope.user}">
-					<div class="d-flex">
+					<div class="d-flex" id="profileImage">
 						<c:choose>
 							<c:when test="${!empty sessionScope.user.imageURL}">
 								<a href="showProfileAdd.do"> <img
-									src="${sessionScope.user.imageURL}" class="rounded-circle" height="70" width="70">
+									src="${sessionScope.user.imageURL}"  class="rounded-circle" height="60" width="60">
 								</a>
 							</c:when>
 							<c:otherwise>
-								<a href="showProfileAdd.do"> <img width="70" height="70"
+								<a href="showProfileAdd.do"> <img width="60" height="60"
 									alt="${sessionScope.user.username}"
 									src="img/defaultProfileImage.png" class="rounded-circle">
 								</a>
