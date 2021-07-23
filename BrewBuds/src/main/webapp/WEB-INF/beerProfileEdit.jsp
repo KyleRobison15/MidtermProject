@@ -202,6 +202,7 @@
 							type="submit" value="update" />
 
 					</form>
+					
 					<form action="deleteRating.do" method="POST">
 						<input type="hidden" name="beerId" value="${beer.id}" /> <input
 							type="hidden" name="userId" value="${sessionScope.user.id}" /> <input

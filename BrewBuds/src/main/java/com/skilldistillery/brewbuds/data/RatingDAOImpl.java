@@ -163,8 +163,8 @@ public class RatingDAOImpl implements RatingDAO {
 		
 		average = (double) total / (double) beers.size();
 		
-       // DecimalFormat df = new DecimalFormat("#.##");
-       // average = Double.valueOf(df.format(average));
+        DecimalFormat df = new DecimalFormat("#.##");
+        average = Double.valueOf(df.format(average));
 		
 		return average;
 	}
