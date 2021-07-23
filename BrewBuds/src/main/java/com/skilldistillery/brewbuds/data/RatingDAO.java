@@ -25,7 +25,7 @@ public interface RatingDAO {
 	public Map<Double, Brewery> getBreweriesSortedByRating();
 	public Map<Double, Beer> getBeersAndRatingsSortedByRating();
 	public Map<Double, Beer> getBeersAndRatingsByKeyword(String keyword);
-	public Map<Double, User> getUsersSortedByRating();
+	public Map<Double, User> getUsersSortedByRating(); 
 	public List<Beer> getBeersSortedByRating();
 	
 }
