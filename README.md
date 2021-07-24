@@ -3,10 +3,10 @@
 ## Authors
 Each author participated as co-developers on this project and worked on every single part of the code base.
 
-Matthew Lee: Software Engineer / Scrum Master
-Chris Riddle: Software Engineer / DevOps
-Kyle Robison: Software Engineer / GitHub Repository Owner
-Thomas Stagnaro: Software Engineer / Database Administrator
+* Matthew Lee: Software Engineer / Scrum Master
+* Chris Riddle: Software Engineer / DevOps
+* Kyle Robison: Software Engineer / GitHub Repository Owner
+* Thomas Stagnaro: Software Engineer / Database Administrator
 
 ## Application Overview
 brewBuds is a social web application for beer lovers. Both die-hard beer connoisseurs and casual beer drinkers alike can view and rate beers that have been posted to the site.
