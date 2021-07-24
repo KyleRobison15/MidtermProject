@@ -72,4 +72,9 @@ public class HomeController {
 		return "login";
 	}
 	
+	@RequestMapping(path = "about.do")
+	public String showAboutPage(Model model) {
+		return "about";
+	}
+	
 }

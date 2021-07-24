@@ -1,0 +1,31 @@
+.footerDivBadge {
+	width: 15vw;
+	font-size: 20px;
+}
+
+.footer {
+	height: 55px;
+	background: rgb(255, 255, 255);
+}
+
+.d-flex.footerDivBadge.justify-content-between {
+	width: 11vw;
+	font-size: 18px;
+}
+
+.footerName{
+	color:black;
+}
+
+p.footerName{
+	font-size: 1.2rem;
+}
+
+i.bi.bi-github{
+	background: black;
+	padding: 1%; 
+}
+
+i.bi.bi-linkedin, i.bi.bi-github  {
+	font-size: 25px;
+}

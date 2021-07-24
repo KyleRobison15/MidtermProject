@@ -13,7 +13,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="home.do"> <img
-				src="img/navbarLogo.jpg" alt="" width="70" height="70" >
+				src="img/navbarLogo.jpg" alt="" width="70" height="70">
 			</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -33,6 +33,8 @@
 								href="loginPage.do"> Login </a></li>
 							<li class="nav-item"><a class="nav-link active"
 								href="createAccountPage.do"> Create Account </a></li>
+							<li class="nav-item"><a class="nav-link active"
+								href="about.do"> About </a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item"><a class="nav-link active"
@@ -43,6 +45,8 @@
 								href="ShowAll.do"> Reviews </a></li>
 							<li class="nav-item"><a class="nav-link active"
 								href="account.do"> My Account </a></li>
+							<li class="nav-item"><a class="nav-link active"
+								href="about.do"> About </a></li>
 							<li class="nav-item"><a class="nav-link active"
 								href="logout.do"> Logout </a></li>
 
@@ -62,7 +66,8 @@
 						<c:choose>
 							<c:when test="${!empty sessionScope.user.imageURL}">
 								<a href="showProfileAdd.do"> <img
-									src="${sessionScope.user.imageURL}"  class="rounded-circle" height="60" width="60">
+									src="${sessionScope.user.imageURL}" class="rounded-circle"
+									height="60" width="60">
 								</a>
 							</c:when>
 							<c:otherwise>
@@ -77,7 +82,5 @@
 			</c:choose>
 		</div>
 	</nav>
-
-
 </body>
 </html>

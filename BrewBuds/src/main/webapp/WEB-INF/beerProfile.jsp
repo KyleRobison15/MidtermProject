@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="styles.jsp"%>
 <%@ include file="nav.jsp"%>
-
+<%@ include file="footer.jsp"%>
 
 
 <!DOCTYPE html>
