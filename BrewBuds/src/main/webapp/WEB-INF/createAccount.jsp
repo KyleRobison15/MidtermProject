@@ -12,7 +12,7 @@
 <body>
 
 	<div class="container">
-		<h1 class="display-3">Get started by creating a BrewBuds account.</h1>
+		<h1 class="display-3">Get started by creating a brewBuds account.</h1>
 		<p>Become a brew master by posting delicious beers, or simply find a cold one to try out! Already have an account? <a href="loginPage.do">Log in</a></p> 
 	</div>
 	
