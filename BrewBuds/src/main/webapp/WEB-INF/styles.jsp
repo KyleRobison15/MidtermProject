@@ -70,10 +70,10 @@
 										<h5>Tom Stagnaro: </h5>
 									</div>
 									<div class="col-1">
-										<a id="lBadge" class="" href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+										<a id="lBadge" class="" href="https://www.linkedin.com/in/tomstagnaro/" target="_blank"><i class="bi bi-linkedin"></i></a>
 									</div>
 									<div class="col-1">
-										<a id="gBadge" class="badge badge-light" href="#" target="_blank"><i class="bi bi-github"></i></a>
+										<a id="gBadge" class="badge badge-light" href="https://github.com/run8" target="_blank"><i class="bi bi-github"></i></a>
 									</div>
 								</div>
 								
