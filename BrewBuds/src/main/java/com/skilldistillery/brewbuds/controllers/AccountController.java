@@ -232,10 +232,6 @@ public class AccountController {
 	@RequestMapping(path = "RemoveFavorite.do", method = RequestMethod.POST)
 	public String removeFavorite(@RequestParam("beerId") int beerId, Model model, HttpSession session, RedirectAttributes redir) {
 		
-		System.out.println("===============USER==================");
-		System.out.println((User) session.getAttribute("user"));
-		System.out.println("========================================");
-		
 		User user = (User) session.getAttribute("user"); 
 //		userDao.removeFromFavoriteList(beerId, user.getId());
 		userDao.removeFromFavoriteList(beerId, user);

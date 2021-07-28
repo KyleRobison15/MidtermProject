@@ -68,19 +68,19 @@
 					<div class="container">
 						<c:choose>
 							<c:when test="${rating < 1}">
-								<img src="/img/apprentice.jpg" class="img-fluid" alt="">
+								<img src="img/apprentice.jpg" class="img-fluid" alt="">
 							</c:when>
 							<c:when test="${rating >= 1 && rating < 2}">
-								<img src="/img/shiftBrewer.jpg" class="img-fluid" alt="">
+								<img src="img/shiftBrewer.jpg" class="img-fluid" alt="">
 							</c:when>
 							<c:when test="${rating >= 2 && rating < 3}">
-								<img src="/img/productionBrewer.jpg" class="img-fluid" alt="">
+								<img src="img/productionBrewer.jpg" class="img-fluid" alt="">
 							</c:when>
 							<c:when test="${rating >= 3 && rating < 4}">
-								<img src="/img/headBrewer.jpg" class="img-fluid" alt="">
+								<img src="img/headBrewer.jpg" class="img-fluid" alt="">
 							</c:when>
 							<c:when test="${rating >= 4}">
-								<img src="/img/brewMaster.jpeg" class="img-fluid" alt="">
+								<img src="img/brewMaster.jpeg" class="img-fluid" alt="">
 							</c:when>
 						</c:choose>
 					</div>
@@ -111,7 +111,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
 	</div>
 </body>
 </html>
