@@ -169,21 +169,21 @@ public class Beer {
 		}
 	}
 	
-	public void addUser(User user) {
+	public void addFavoriteUser(User user) {
 		if (users == null) {
-			users = new ArrayList<>(); // If films is null - we need to instantiate a new ArrayList
+			users = new ArrayList<>();
 		}
 		if (!users.contains(user)) {
 			users.add(user);
-			user.addBeer(this);
+			user.addFavoriteBeer(this);
 		}
-
+		
 	}
-
-	public void removeUser(User user) {
+	
+	public void removeFavoriteUser(User user) {
 		if (users != null && users.contains(user)) {
 			users.remove(user);
-			user.removeBeer(this);
+			user.removeFavoriteBeer(this);
 		}
 	}
 

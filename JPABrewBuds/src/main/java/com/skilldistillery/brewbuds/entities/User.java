@@ -221,7 +221,7 @@ public class User {
 		}
 		if (!addedBeers.contains(beer)) {
 			addedBeers.add(beer);
-			beer.addUser(this);
+			beer.setUser(this);
 		}
 		
 	}
@@ -229,7 +229,7 @@ public class User {
 	public void removeBeer(Beer beer) {
 		if (addedBeers != null && addedBeers.contains(beer)) {
 			addedBeers.remove(beer);
-			beer.removeUser(this);
+			beer.setUser(null);
 		}
 	}
 	
@@ -239,14 +239,14 @@ public class User {
 		}
 		if(!favoriteBeers.contains(beer)) {
 			favoriteBeers.add(beer);
-			beer.addUser(this);
+			beer.addFavoriteUser(this);
 		}
 	}
 	
 	public void removeFavoriteBeer(Beer beer) {
 		if(favoriteBeers != null && favoriteBeers.contains(beer)) {
 			favoriteBeers.remove(beer);
-			beer.removeUser(null);
+			beer.removeFavoriteUser(this);
 		}
 	}
 	

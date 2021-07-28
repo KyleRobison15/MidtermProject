@@ -105,8 +105,13 @@ public class UserDAOImpl implements UserDAO {
 	public boolean removeFromFavoriteList(int beerId, User user) {
 		
 		Beer beer = em.find(Beer.class, beerId);
-		
+		System.out.println("================BEFORE===================");
+		System.out.println(user.getFavoriteBeers().size());
+		System.out.println("=============================================");
 		user.removeFavoriteBeer(beer);
+		System.out.println("================AFTER===================");
+		System.out.println(user.getFavoriteBeers().size());
+		System.out.println("=============================================");
 		
 		em.merge(user); 
 		

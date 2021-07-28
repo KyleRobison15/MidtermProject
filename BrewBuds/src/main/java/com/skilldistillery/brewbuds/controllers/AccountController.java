@@ -232,20 +232,22 @@ public class AccountController {
 	@RequestMapping(path = "RemoveFavorite.do", method = RequestMethod.POST)
 	public String removeFavorite(@RequestParam("beerId") int beerId, Model model, HttpSession session, RedirectAttributes redir) {
 		
-		User user = (User) session.getAttribute("user"); 
+		System.out.println("===============USER==================");
+		System.out.println((User) session.getAttribute("user"));
+		System.out.println("========================================");
 		
+		User user = (User) session.getAttribute("user"); 
 //		userDao.removeFromFavoriteList(beerId, user.getId());
 		userDao.removeFromFavoriteList(beerId, user);
+		List<Beer> favorites = userDao.getFavoriteList(user.getId());
+		model.addAttribute("beers", favorites);
 		
-		session.setAttribute("user", user);
-		
-		redir.addFlashAttribute("user", user);
-		
-		return "redirect:ShowFavorites.do"; 
+		return "userFavorites"; 
 	}
 	
 	@RequestMapping(path = "ShowFavorites.do", method = RequestMethod.GET)
-	public String showFavorites(Model model, User user) {
+	public String showFavorites(Model model, HttpSession session) {
+		User user = (User) session.getAttribute("user");
 		
 		List<Beer> favorites = userDao.getFavoriteList(user.getId());
 		model.addAttribute("beers", favorites);
