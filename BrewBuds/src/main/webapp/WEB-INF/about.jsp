@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="styles.jsp"%>
 <%@ include file="nav.jsp"%>
-<%@ include file="footer.jsp"%>
+<%-- <%@ include file="footer.jsp"%> --%>
 
 <!DOCTYPE html>
 <html>
@@ -12,9 +12,12 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="display-1" align="center">About brewBuds</h1>
+		<!-- <h1 class="display-1" align="center">About brewBuds</h1> -->
 
-		<h1 class="display-5">The thirst quenching, social beer app</h1>
+		<div class="container" align="center"><img alt="brewBuds Logo" src="img/navbarLogo.jpg"></div><br>
+		<div class="text-center">
+		<a href="https://github.com/KyleRobison15/MidtermProject/blob/main/README.md">Visit our GitHub Page</a><br><br>
+		<h1 class="display-5">A Social Beer App</h1>
 
 		<h5>brewBuds is a social web application for beer lovers. Both
 			die-hard beer connoisseurs and casual beer drinkers alike can view
@@ -35,7 +38,7 @@
 			rating), Production Brewer (2 - 2.99 rating), Head Brewer (3 - 3.99
 			rating) and Brew Master (4 - 5 rating).</h5>
 
-		<h1 class="display-5">For the casual beer drinkers</h1>
+		<h1 class="display-5">Casual Beer Drinkers</h1>
 
 		<h5>More casual beer drinkers can use the app to simply find beers
 			to try. Each beer has a comprehensive profile that shows its
@@ -57,6 +60,7 @@
 			have a high brewBuds ranking in order to find more delicious beers to
 			try. Users can also customize their account by changing their profile
 			photo and account details.</h5>
+	</div>
 	</div>
 </body>
 </html>

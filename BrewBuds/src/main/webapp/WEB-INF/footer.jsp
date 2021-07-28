@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <div class="d-flex justify-content-around fixed-bottom footer">
+<div class="d-flex justify-content-around fixed-bottom footer">
   	  	<div class="row align-content-center">
   			 <div class="col-7">
   				<p class="footerName m-0 mt-1">Matthew Lee:</p>

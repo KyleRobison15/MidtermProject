@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+i.bi.bi-github{
+	background: black;
+	padding: 1%; 
+}
+
+i.bi.bi-linkedin, i.bi.bi-github  {
+	font-size: 25px;
+}

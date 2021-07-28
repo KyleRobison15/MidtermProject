@@ -231,7 +231,7 @@ INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `p
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (4, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (6, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (6, '742 Evergreen Terrace', NULL, 'Springfield', 'IL', '11111', 'US', '9709999999');
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (7, '100 Paulaner Beer Road', NULL, 'Munich', 'Bavaria', '3000', 'GE', '12345678990');
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (8, '200 Dogfish Head Lane', NULL, 'Milton', 'DE', '4000', 'US', '6666666666');
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (9, '399 Barrel Brothers Street', NULL, 'Windsor', 'CA', '95492', 'US', '7076969487');
@@ -248,6 +248,7 @@ INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `p
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (20, 'Aarschotsesteenweg 20', NULL, 'Leuven', NULL, '3000', 'BE', NULL);
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (21, '123 Default Address', NULL, 'Default City', 'VA', '20147', 'US', '1234567890');
 INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (22, '123 Default Address', NULL, 'Default City', 'VA', '20147', 'US', '1234567890');
+INSERT INTO `address` (`id`, `address`, `address2`, `city`, `state_province`, `postal_code`, `country_code`, `phone`) VALUES (23, '123 Default Address', NULL, 'Colorado Springs', 'CO', '88888', 'US', '9999999999');
 
 COMMIT;
 
@@ -288,6 +289,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `em
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (8, 'WhinerTheDiner', 'beer', 'Samuel', 'Smith', 'samuelsmith@example.com', '2020-07-16 12:00:00', 1, 'user', 12, '2wCEAAoHCBYSFRgVFRUYGBgYGBgYHBwYGhoYGBoaHBwZHBwYHBocIS4lHh4tIBocJkYmKy81NUM1GiQ7QDszPy40NTEBDAwMEA8QHxISHz0rJCg0PT82OjgxNDQ0PzQ9MTQ0MTQ0NjQ0NzU0NDE2NDQ0NjQ2NDQ9NDQxNDE2NDQ0PTQxNP');
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (9, 'SurferDude89', 'beer', 'Caitlin', 'Kipps', 'caitlinkipps@example.com', '2020-07-16 12:00:00', 1, 'user', 13, 'https://static.wikia.nocookie.net/characterprofile/images/5/5c/Silver_The_Hedgehog_Sirfer.png/revision/latest/scale-to-width-down/250?cb=20161105175410');
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (10, 'PinkyDestroyerOfFoam', 'beer', 'Jordan', 'Darnell', 'jordandarnell@example.com', '2020-07-16 12:00:00', 1, 'user', 14, 'https://1.bp.blogspot.com/_QnWMzNoOKj0/TP7mSBocGDI/AAAAAAAABu0/10VpIaFuTIg/s1600/nose+shot+cropped.jpg');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `create_date`, `enabled`, `role`, `address_id`, `profile_image_url`) VALUES (11, 'TestUser', 'beer', 'Bob', 'Smith', 'bobsmith@example.com', '2020-07-16 12:00:00', 1, 'user', 23, 'https://images.pexels.com/photos/6223374/pexels-photo-6223374.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
 
 COMMIT;
 

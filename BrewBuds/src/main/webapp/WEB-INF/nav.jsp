@@ -35,6 +35,8 @@
 								href="createAccountPage.do"> Create Account </a></li>
 							<li class="nav-item"><a class="nav-link active"
 								href="about.do"> About </a></li>
+							<li class="nav-item"><a class="nav-link active"
+								href="" data-bs-toggle="modal" data-bs-target="#authors" id="viewAuthors"> Authors </a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item"><a class="nav-link active"
@@ -48,6 +50,8 @@
 							<li class="nav-item"><a class="nav-link active"
 								href="about.do"> About </a></li>
 							<li class="nav-item"><a class="nav-link active"
+								href="" data-bs-toggle="modal" data-bs-target="#authors" id="viewAuthors"> Authors </a></li>
+							<li class="nav-item"><a class="nav-link active"
 								href="logout.do"> Logout </a></li>
 
 						</c:otherwise>
@@ -56,7 +60,7 @@
 			</div>
 			<form class="d-flex" action="findBeers.do" method="GET">
 				<input class="form-control me-2" type="search"
-					placeholder="Search Beers and Breweries" size="50" name="keyword"
+					placeholder="Search Beers and Breweries" size="40" name="keyword"
 					aria-label="Search">
 				<button class="btn btn-outline-success" type="submit">Search</button>
 			</form>
