@@ -22,6 +22,7 @@
 		<label for="breweryName" class="col-sm-2 col-form-label">Brewery</label>
 		<input type="text" class="form-control" id="breweryName" name="breweryName" required>
 		
+		
 <!-- ///////////////////////////////////////////// NAME ////////////////////////////////////////////////////////////// -->
 		
 		<label for="name" class="col-sm-2 col-form-label">Name</label>

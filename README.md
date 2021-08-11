@@ -27,7 +27,7 @@ Feel free to login to the app in one of two ways:
 2. Create your own account:
 * Please note! Passwords are NOT encrypted and therefore not secure. Any password you input will be visible in the database. Please use a dummy password that is not representative of any of your real-world passwords.
 
-Once you've logged in, you can begin adding, reviewing and rating beers. 
+Once you've logged in, you can begin adding, reviewing and rating beers.
 
 ### Agile Development Framework
 In order to implement effective practices for a constructive and efficient sprint and overall project, Agile methodology was used.
@@ -57,6 +57,9 @@ When the team felt we had achieved a minimum viable product, we were then able t
 * Zoom
 * Discord
 * Google Docs
+
+### Database Schema Design
+![Image of MySQL Database Schema](/BrewBuds/src/main/webapp/img/databaseSchema.jpg)
 
 ### Lessons Learned
 #### Agile methodology is very effective.
